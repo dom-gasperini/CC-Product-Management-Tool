@@ -16,6 +16,7 @@
 #include <ProductData.h>
 #include <DatabaseManager.h>
 #include <QStyleFactory>
+#include <QMessageBox>
 
 // namespace
 QT_BEGIN_NAMESPACE
@@ -54,5 +55,7 @@ private slots:
 
     void on_actionDark_Mode_toggled(bool arg1);
     void on_actionAbout_triggered();
+    void on_clearBtn_clicked();
+    void on_addProductBtn_clicked();
 };
 #endif // MAINWINDOW_H

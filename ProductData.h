@@ -92,6 +92,11 @@ public:
     // functions
     QString productTypeToQString();
     QString productClassToQString();
+    QString productStatusToQString();
+
+    ProductStatus QStringToProductStatus(QString str);
+    ProductClass QStringToProductClass(QString str);
+    ProductType QStringToProductType(QString str);
 
 
 private:

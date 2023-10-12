@@ -42,6 +42,119 @@ ProductData::ProductData()
 //                      Functions
 // -------------------------------------------------- //
 
+ProductClass ProductData::QStringToProductClass(QString str) {
+    ProductClass pclass = NO_CLASS;
+
+    if (str == "Display") {
+        pclass = DISPLAY;
+    }
+    else if (str == "Cable") {
+        pclass = CABLE;
+    }
+    else {
+        pclass = NO_CLASS;
+    }
+
+    return pclass;
+}
+
+
+/**
+ * @brief ProductData::QStringToProductStatus
+ * @param str
+ * @return
+ */
+ProductStatus ProductData::QStringToProductStatus(QString str) {
+    ProductStatus status = NO_STATUS;
+
+    if (str == "On-Loan") {
+        status = ON_LOAN;
+    }
+    else if (str == "In-Stock") {
+        status = IN_STOCK;
+    }
+    else if (str == "FAE Unit") {
+        status = FAE_UNIT;
+    }
+    else {
+        status = NO_STATUS;
+    }
+
+    return status;
+}
+
+ProductType ProductData::QStringToProductType(QString str) {
+    ProductType type = NO_TYPE;
+
+    if (str == "VI-2") {
+        type = VI2;
+    }
+    else if (str == "VS") {
+        type = VS;
+    }
+    else if (str == "V510") {
+        type = V510;
+    }
+    else if (str == "V710") {
+        type = V710;
+    }
+    else if (str == "V700") {
+        type = V700;
+    }
+    else if (str == "V1000") {
+        type = V1000;
+    }
+    else if (str == "V1200") {
+        type = V1200;
+    }
+    else if (str == "X900") {
+        type = X900;
+    }
+    else if (str == "X1200") {
+        type = X1200;
+    }
+    else if (str == "X1400") {
+        type = X1400;
+    }
+    else {
+        type = NO_TYPE;
+    }
+
+    return type;
+}
+
+/**
+ * @brief ProductData::productStatusToQString
+ * @return
+ */
+QString ProductData::productStatusToQString() {
+    QString str = "";
+
+    switch(this->getProductStatus()) {
+    case NO_STATUS:
+        str = "No Status";
+        break;
+    case ON_LOAN:
+        str = "On-Loan";
+        break;
+    case IN_STOCK:
+        str = "In-Stock";
+        break;
+    case FAE_UNIT:
+        str = "FAE Unit";
+        break;
+    default:
+        str = "No Status";
+        break;
+    }
+
+    return str;
+}
+
+/**
+ * @brief ProductData::productClassToQString
+ * @return
+ */
 QString ProductData::productClassToQString() {
     QString str = "";
 
@@ -50,10 +163,10 @@ QString ProductData::productClassToQString() {
         str = "No Class";
         break;
     case DISPLAY:
-        str = "Display";
+        str = "Displays";
         break;
     case CABLE:
-        str = "Cable";
+        str = "Cables";
         break;
     default:
         str = "No Class";

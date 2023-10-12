@@ -36,16 +36,25 @@ DatabaseManager::DatabaseManager(QString path)
  * @param product
  * @return
  */
-bool DatabaseManager::addProduct(ProductData product)
+bool DatabaseManager::addProduct(ProductData* product)
 {
    // inits
    bool success = false;
    QSqlQuery query;
    QString queryStr, values;
+   QString inserts = "(type, variant, article_number, serial_number, revision, account, comments, status, location)";
 
    // prepare query
-   values = product.productTypeToQString() + "";
-   queryStr = "INSERT INTO " + product.productClassToQString() + " VALUES " + values;
+   values = "\'" + product->productTypeToQString() + "\', ";
+   values += "\'" + product->getProductVariant() + "\', ";
+   values += "\'" + product->getArticleNumber() + "\', ";
+   values += "\'" + QString::number(product->getSerialNumber()) + "\', ";
+   values += "\'" + QString::number(product->getProductRevision()) + "\',";
+   values += "\'" + product->getAccount() + "\', ";
+   values += "\'" + product->getComments() + "\', ";
+   values += "\'" + product->productStatusToQString() + "\', ";
+   values += "\'" + product->getLocation() + "\'";
+   queryStr = "INSERT INTO " + product->productClassToQString() + " " + inserts + " VALUES(" + values + ");";
    query.prepare(queryStr);
    qDebug() << "Query: " << queryStr;
 
@@ -70,14 +79,14 @@ bool DatabaseManager::addProduct(ProductData product)
  * @param product
  * @return
  */
-bool DatabaseManager::removeProduct(ProductData product, QString paramType, QString param) {
+bool DatabaseManager::removeProduct(ProductData* product, QString paramType, QString param) {
     // inits
     bool success = false;
     QSqlQuery query;
     QString queryStr;
 
     // prepare query
-    queryStr = "DELETE " + paramType + " FROM " + product.productClassToQString() + " WHERE " + paramType + "=" + param;
+    queryStr = "DELETE " + paramType + " FROM " + product->productClassToQString() + " WHERE " + paramType + "=" + param;
     query.prepare(queryStr);
     qDebug() << "Query: " << queryStr;
 
@@ -106,14 +115,14 @@ bool DatabaseManager::removeProduct(ProductData product, QString paramType, QStr
  * @param product
  * @return
  */
-QVector<ProductData> DatabaseManager::findProduct(ProductData product, QString paramType, QString param) {
+QVector<ProductData> DatabaseManager::findProduct(ProductData* product, QString paramType, QString param) {
     // inits
     bool success = false;
     QSqlQuery query;
     QString queryStr;
 
     // prepare query
-    query.prepare("SELECT " + paramType + " FROM " + product.productClassToQString() + " WHERE " + paramType + "=" + QString(""));
+    query.prepare("SELECT " + paramType + " FROM " + product->productClassToQString() + " WHERE " + paramType + "=" + QString(""));
     qDebug() << "Query: " << queryStr;
 
     // execute query

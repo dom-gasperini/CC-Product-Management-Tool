@@ -48,37 +48,55 @@ void MainWindow::UpdateDisplay() {
     // set database active status
 
 
-    // set product image
-    if (m_productData->getProductClass() == DISPLAY) {
-        switch (m_productData->getProductType()) {
-        case VI2:
-            ui->productImageLbl->setPixmap(QPixmap("vi2.png"));
-            break;
-        case VS:
-            break;
-        case V510:
-            break;
-        case V700:
-            break;
-        case V710:
-            break;
-        case V1000:
-            break;
-        case V1200:
-            break;
-        case X900:
-            break;
-        case X1200:
-            break;
-        case X1400:
-            break;
+    // tab switcher
+    if (ui->tab_1->isActiveWindow()) {
+        // set last updated
+        ui->inventoryDateDTBx->setDateTime(QDateTime::currentDateTime());
 
-        default:
-            break;
+        // set product image
+        if (m_productData->getProductClass() == DISPLAY) {
+            switch (m_productData->getProductType()) {
+            case VI2:
+                ui->productImageLbl->setPixmap(QPixmap("vi2.png"));
+                break;
+            case VS:
+                break;
+            case V510:
+                break;
+            case V700:
+                break;
+            case V710:
+                break;
+            case V1000:
+                break;
+            case V1200:
+                break;
+            case X900:
+                break;
+            case X1200:
+                break;
+            case X1400:
+                break;
+
+            default:
+                break;
+            }
+        }
+        else {
+            ui->productImageLbl->setPixmap(QPixmap("cables.png"));
         }
     }
-    else {
-        ui->productImageLbl->setPixmap(QPixmap("cables.png"));
+
+    if (ui->tab_2->isActiveWindow()) {
+
+    }
+
+    if (ui->tab_3->isActiveWindow()) {
+
+    }
+
+    if (ui->tab_4->isActiveWindow()) {
+
     }
 
 }
@@ -145,8 +163,75 @@ void MainWindow::on_actionDark_Mode_toggled(bool checked) {
     }
 }
 
+
 void MainWindow::on_actionAbout_triggered()
 {
     m_aboutDialog->show();
+}
+
+
+void MainWindow::on_clearBtn_clicked()
+{
+    // reset fields
+    ui->productStatusCmbx->setCurrentIndex(0);
+    ui->productClassCmbx->setCurrentIndex(0);
+    ui->productTypeCmbx->setCurrentIndex(0);
+
+    ui->serialNumberSbx->clear();
+    ui->productRevisionSbx->clear();
+    ui->accountLineBx->clear();
+    ui->productVariantBx->clear();
+    ui->articleLineBx->clear();
+    ui->locationBx->clear();
+    ui->commentsTbx->clear();
+
+    ui->buildDateDTBx->clear();
+
+    // reset variable data
+    m_productData = new ProductData();
+}
+
+
+void MainWindow::on_addProductBtn_clicked()
+{
+    // inits
+    bool save;
+
+    // popup
+    switch(QMessageBox::question(this, tr("Add Product to Inventory"), tr("Are you sure you want to add this product to the inventory?"), QMessageBox::Yes | QMessageBox::No))
+    {
+      case QMessageBox::Yes:
+        save = true;
+        break;
+      case QMessageBox::No:
+        save = false;
+        break;
+      default:
+        save = false;
+        qDebug( "close" );
+        break;
+    }
+
+    // add product
+    if (save) {
+        // update product values
+        m_productData->setProductClass(m_productData->QStringToProductClass(ui->productClassCmbx->currentText()));
+        m_productData->setProductType(m_productData->QStringToProductType(ui->productTypeCmbx->currentText()));
+        m_productData->setProductStatus(m_productData->QStringToProductStatus(ui->productStatusCmbx->currentText()));
+
+        m_productData->setProductVariant(ui->productVariantBx->text());
+        m_productData->setArticleNumber(ui->articleLineBx->text());
+        m_productData->setSerialNumber(ui->serialNumberSbx->value());
+        m_productData->setProductRevision(ui->productRevisionSbx->value());
+        m_productData->setAccount(ui->accountLineBx->text());
+        m_productData->setComments(ui->commentsTbx->toPlainText());
+        m_productData->setLocation(ui->locationBx->text());
+
+        m_productData->setBuildDate(ui->buildDateDTBx->dateTime());
+        m_productData->setLastUpdate(ui->inventoryDateDTBx->dateTime());
+
+        // save to database
+        m_database->addProduct(m_productData);
+    }
 }
 

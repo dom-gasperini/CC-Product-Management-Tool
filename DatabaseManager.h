@@ -24,6 +24,11 @@ class DatabaseManager
 public:
     DatabaseManager(QString path);
 
+    // functions
+    bool addProduct(ProductData* product);
+    bool removeProduct(ProductData* product, QString paramType, QString param);
+    QVector<ProductData> findProduct(ProductData* product, QString paramType, QString param);
+
     // getters
     bool getDatabaseActive();
 
@@ -32,10 +37,7 @@ private:
     QSqlDatabase m_db;
     bool m_databaseActive;
 
-    // functions
-    bool addProduct(ProductData product);
-    bool removeProduct(ProductData product, QString paramType, QString param);
-    QVector<ProductData> findProduct(ProductData product, QString paramType, QString param);
+
 };
 
 #endif // DATABASEMANAGER_H
