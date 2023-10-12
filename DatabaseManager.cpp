@@ -115,30 +115,57 @@ bool DatabaseManager::removeProduct(ProductData* product, QString paramType, QSt
  * @param product
  * @return
  */
-QVector<ProductData> DatabaseManager::findProduct(ProductData* product, QString paramType, QString param) {
+QVector<ProductData> DatabaseManager::findProduct(QString productClass, QVector<QString> paramType, QVector<QString> param) {
     // inits
-    bool success = false;
+    QVector<ProductData> productList;
     QSqlQuery query;
     QString queryStr;
+    QString whereClause = "";
 
     // prepare query
-    query.prepare("SELECT " + paramType + " FROM " + product->productClassToQString() + " WHERE " + paramType + "=" + QString(""));
+    if (paramType.length() > 1) {
+        for (int i = 0; i < paramType.length() - 1; ++i) {
+            paramType.at(0) + "=\'" + param.at(0) + "\' AND ";
+        }
+        whereClause += paramType.at(paramType.length() -1) + + "=\'" + param.at(paramType.length() - 1) + "\';";
+    }
+    else {
+        whereClause = paramType.at(0) + "=\'" + param.at(0) + "\';";
+    }
+
+    query.prepare("SELECT * FROM " + productClass + " WHERE " + whereClause);
     qDebug() << "Query: " << queryStr;
 
     // execute query
-    if (query.exec())
-    {
-       if (query.next())
-       {
-//           QSqlQuery query("SELECT * FROM people");
+    if (query.exec()) {
+       if (query.next()) {
 //           int idName = query.record().indexOf("name");
-//           while (query.next())
-//           {
+           while (query.next()) {
 //              QString name = query.value(idName).toString();
-//              qDebug() << name;
-//           }
+              qDebug() << "Product List:\n";
+           }
        }
     }
+
+    return productList;
+}
+
+/**
+ * @brief DatabaseManager::printAll
+ * @return
+ */
+QVector<ProductData> DatabaseManager::printAll() {
+    // inits
+    QVector<ProductData> productList;
+    //           QSqlQuery query("SELECT * FROM people");
+    //           int idName = query.record().indexOf("name");
+    //           while (query.next())
+    //           {
+    //              QString name = query.value(idName).toString();
+    //              qDebug() << name;
+    //           }
+
+    return productList;
 }
 
 

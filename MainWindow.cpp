@@ -25,6 +25,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     this->setWindowTitle("Cross Control Product Manager");
     this->setWindowIcon(QIcon(""));
     m_currentPalette = qApp->palette();
+    ui->tabWidget->setCurrentIndex(0);
 
     // setup about dialog
     m_aboutDialog = new AboutDlg();

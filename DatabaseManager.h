@@ -27,7 +27,8 @@ public:
     // functions
     bool addProduct(ProductData* product);
     bool removeProduct(ProductData* product, QString paramType, QString param);
-    QVector<ProductData> findProduct(ProductData* product, QString paramType, QString param);
+    QVector<ProductData> findProduct(QString productClass, QVector<QString> paramType, QVector<QString> param);
+    QVector<ProductData> printAll();
 
     // getters
     bool getDatabaseActive();
