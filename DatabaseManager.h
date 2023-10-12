@@ -36,8 +36,6 @@ private:
     // database variables
     QSqlDatabase m_db;
     bool m_databaseActive;
-
-
 };
 
 #endif // DATABASEMANAGER_H

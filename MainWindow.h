@@ -57,5 +57,7 @@ private slots:
     void on_actionAbout_triggered();
     void on_clearBtn_clicked();
     void on_addProductBtn_clicked();
+    void on_resetFiltersSearchBtn_clicked();
+    void on_clearSearchBtn_clicked();
 };
 #endif // MAINWINDOW_H

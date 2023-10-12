@@ -92,7 +92,25 @@ void MainWindow::UpdateDisplay() {
     }
 
     if (ui->tab_3->isActiveWindow()) {
-
+        // handle checkboxes
+        if (ui->classSearchCb->isChecked()) ui->productClassSearchCbx->setEnabled(true);
+        else ui->productClassSearchCbx->setEnabled(false);
+        if (ui->typeSearchCb->isChecked()) ui->typeSearchCbx->setEnabled(true);
+        else ui->typeSearchCbx->setEnabled(false);
+        if (ui->statusSearchCb->isChecked()) ui->statusSearchCbx->setEnabled(true);
+        else ui->statusSearchCbx->setEnabled(false);
+        if (ui->serialNumberSearchCb->isChecked()) ui->serialNumberSearchSbx->setEnabled(true);
+        else ui->serialNumberSearchSbx->setEnabled(false);
+        if (ui->revisionSearchCb->isChecked()) ui->productRevisionSearchSbx->setEnabled(true);
+        else ui->productRevisionSearchSbx->setEnabled(false);
+        if (ui->accountSearchCb->isChecked()) ui->accountSearchLineBx->setEnabled(true);
+        else ui->accountSearchLineBx->setEnabled(false);
+        if (ui->varientSearchCb->isChecked()) ui->productVariantSearchBx->setEnabled(true);
+        else ui->productVariantSearchBx->setEnabled(false);
+        if (ui->articleNumberSearchCb->isChecked()) ui->articleSearchLineBx->setEnabled(true);
+        else ui->articleSearchLineBx->setEnabled(false);
+        if (ui->locationSearchCb->isChecked()) ui->locationSearchBx->setEnabled(true);
+        else ui->locationSearchBx->setEnabled(false);
     }
 
     if (ui->tab_4->isActiveWindow()) {
@@ -233,5 +251,36 @@ void MainWindow::on_addProductBtn_clicked()
         // save to database
         m_database->addProduct(m_productData);
     }
+}
+
+
+void MainWindow::on_resetFiltersSearchBtn_clicked()
+{
+    // set all to unchecked
+    ui->classSearchCb->setChecked(false);
+    ui->typeSearchCb->setChecked(false);
+    ui->statusSearchCb->setChecked(false);
+    ui->serialNumberSearchCb->setChecked(false);
+    ui->revisionSearchCb->setChecked(false);
+    ui->accountSearchCb->setChecked(false);
+    ui->varientSearchCb->setChecked(false);
+    ui->articleNumberSearchCb->setChecked(false);
+    ui->locationSearchCb->setChecked(false);
+}
+
+
+void MainWindow::on_clearSearchBtn_clicked()
+{
+    // reset fields
+    ui->productClassSearchCbx->setCurrentIndex(0);
+    ui->typeSearchCbx->setCurrentIndex(0);
+    ui->statusSearchCbx->setCurrentIndex(0);
+
+    ui->serialNumberSearchSbx->clear();
+    ui->productRevisionSearchSbx->clear();
+    ui->accountSearchLineBx->clear();
+    ui->productVariantSearchBx->clear();
+    ui->articleSearchLineBx->clear();
+    ui->locationSearchBx->clear();
 }
 

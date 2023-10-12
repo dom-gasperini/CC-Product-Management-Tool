@@ -6,9 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>812</width>
-    <height>615</height>
+    <width>810</width>
+    <height>620</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>810</width>
+    <height>620</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>810</width>
+    <height>620</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -19,12 +31,12 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>781</width>
+      <width>791</width>
       <height>561</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="tab_1">
      <attribute name="title">
@@ -217,7 +229,7 @@
        <rect>
         <x>10</x>
         <y>170</y>
-        <width>381</width>
+        <width>441</width>
         <height>351</height>
        </rect>
       </property>
@@ -229,7 +241,7 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>361</width>
+         <width>421</width>
          <height>321</height>
         </rect>
        </property>
@@ -275,7 +287,7 @@
          <widget class="QLineEdit" name="locationBx">
           <property name="maximumSize">
            <size>
-            <width>200</width>
+            <width>250</width>
             <height>16777215</height>
            </size>
           </property>
@@ -291,7 +303,7 @@
          <widget class="QLineEdit" name="articleLineBx">
           <property name="maximumSize">
            <size>
-            <width>200</width>
+            <width>250</width>
             <height>16777215</height>
            </size>
           </property>
@@ -321,7 +333,7 @@
          <widget class="QLineEdit" name="productVariantBx">
           <property name="maximumSize">
            <size>
-            <width>200</width>
+            <width>250</width>
             <height>16777215</height>
            </size>
           </property>
@@ -334,7 +346,7 @@
          <widget class="QLineEdit" name="accountLineBx">
           <property name="maximumSize">
            <size>
-            <width>75</width>
+            <width>100</width>
             <height>16777215</height>
            </size>
           </property>
@@ -367,9 +379,9 @@
          </widget>
         </item>
         <item row="3" column="0">
-         <widget class="QLabel" name="productVarientLbl">
+         <widget class="QLabel" name="productVariantLbl">
           <property name="text">
-           <string>Product Varient: </string>
+           <string>Product Variant: </string>
           </property>
          </widget>
         </item>
@@ -431,22 +443,22 @@
      <widget class="QGroupBox" name="groupBox_4">
       <property name="geometry">
        <rect>
-        <x>410</x>
-        <y>170</y>
-        <width>350</width>
-        <height>350</height>
+        <x>470</x>
+        <y>220</y>
+        <width>300</width>
+        <height>300</height>
        </rect>
       </property>
       <property name="minimumSize">
        <size>
-        <width>350</width>
-        <height>350</height>
+        <width>300</width>
+        <height>300</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
-        <width>350</width>
-        <height>350</height>
+        <width>300</width>
+        <height>300</height>
        </size>
       </property>
       <property name="title">
@@ -472,7 +484,7 @@
         <x>570</x>
         <y>10</y>
         <width>191</width>
-        <height>151</height>
+        <height>201</height>
        </rect>
       </property>
       <property name="title">
@@ -484,7 +496,7 @@
          <x>10</x>
          <y>30</y>
          <width>171</width>
-         <height>41</height>
+         <height>61</height>
         </rect>
        </property>
        <property name="text">
@@ -495,9 +507,9 @@
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>100</y>
+         <y>120</y>
          <width>171</width>
-         <height>41</height>
+         <height>61</height>
         </rect>
        </property>
        <property name="text">
@@ -515,85 +527,13 @@
      <attribute name="title">
       <string>Find Product</string>
      </attribute>
-     <widget class="QGroupBox" name="groupBox_6">
-      <property name="geometry">
-       <rect>
-        <x>280</x>
-        <y>10</y>
-        <width>251</width>
-        <height>151</height>
-       </rect>
-      </property>
-      <property name="title">
-       <string>Tracking and Updates</string>
-      </property>
-      <widget class="QWidget" name="layoutWidget_2">
-       <property name="geometry">
-        <rect>
-         <x>11</x>
-         <y>30</y>
-         <width>238</width>
-         <height>111</height>
-        </rect>
-       </property>
-       <layout class="QGridLayout" name="gridLayout_4">
-        <item row="0" column="0">
-         <widget class="QLabel" name="buildDateLbl_2">
-          <property name="text">
-           <string>Build Date: </string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0" colspan="2">
-         <widget class="QLabel" name="lastUpdateLbl_2">
-          <property name="text">
-           <string>Last Updated: </string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="2" colspan="2">
-         <widget class="QDateTimeEdit" name="lastUpdatedDTBx_2">
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-          <property name="buttonSymbols">
-           <enum>QAbstractSpinBox::NoButtons</enum>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0" colspan="3">
-         <widget class="QLabel" name="daysSinceLastUpdateLbl_2">
-          <property name="text">
-           <string>Days Since Last Update: </string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="3">
-         <widget class="QSpinBox" name="daysSinceLastUpdateSbx_2">
-          <property name="alignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-          <property name="buttonSymbols">
-           <enum>QAbstractSpinBox::NoButtons</enum>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1" colspan="3">
-         <widget class="QDateTimeEdit" name="buildDateDTBx_2"/>
-        </item>
-       </layout>
-      </widget>
-     </widget>
      <widget class="QGroupBox" name="groupBox_7">
       <property name="geometry">
        <rect>
         <x>10</x>
         <y>10</y>
         <width>251</width>
-        <height>151</height>
+        <height>181</height>
        </rect>
       </property>
       <property name="title">
@@ -605,19 +545,19 @@
          <x>10</x>
          <y>20</y>
          <width>231</width>
-         <height>121</height>
+         <height>151</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_5">
         <item row="0" column="0">
-         <widget class="QLabel" name="productClassLbl_2">
+         <widget class="QLabel" name="productClassSearchLbl">
           <property name="text">
            <string>Product Class:</string>
           </property>
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QComboBox" name="comboBox_4">
+         <widget class="QComboBox" name="productClassSearchCbx">
           <item>
            <property name="text">
             <string>Display</string>
@@ -631,14 +571,14 @@
          </widget>
         </item>
         <item row="1" column="0">
-         <widget class="QLabel" name="productTyepLbl_2">
+         <widget class="QLabel" name="productTyepSearchLbl">
           <property name="text">
            <string>Product Type:</string>
           </property>
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="QComboBox" name="comboBox_5">
+         <widget class="QComboBox" name="typeSearchCbx">
           <item>
            <property name="text">
             <string>VI-2</string>
@@ -692,14 +632,14 @@
          </widget>
         </item>
         <item row="2" column="0">
-         <widget class="QLabel" name="productStatusLbl_2">
+         <widget class="QLabel" name="productStatusSearchLbl">
           <property name="text">
            <string>Product Status:</string>
           </property>
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="QComboBox" name="comboBox_6">
+         <widget class="QComboBox" name="statusSearchCbx">
           <item>
            <property name="text">
             <string>In-Stock</string>
@@ -720,51 +660,13 @@
        </layout>
       </widget>
      </widget>
-     <widget class="QGroupBox" name="groupBox_8">
-      <property name="geometry">
-       <rect>
-        <x>410</x>
-        <y>170</y>
-        <width>350</width>
-        <height>350</height>
-       </rect>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>350</width>
-        <height>350</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>350</width>
-        <height>350</height>
-       </size>
-      </property>
-      <property name="title">
-       <string>Preview</string>
-      </property>
-      <widget class="QLabel" name="productImageLbl_2">
-       <property name="geometry">
-        <rect>
-         <x>120</x>
-         <y>180</y>
-         <width>111</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Product Image</string>
-       </property>
-      </widget>
-     </widget>
      <widget class="QGroupBox" name="groupBox_9">
       <property name="geometry">
        <rect>
-        <x>550</x>
-        <y>10</y>
-        <width>211</width>
-        <height>151</height>
+        <x>530</x>
+        <y>320</y>
+        <width>251</width>
+        <height>201</height>
        </rect>
       </property>
       <property name="title">
@@ -775,8 +677,8 @@
         <rect>
          <x>10</x>
          <y>30</y>
-         <width>191</width>
-         <height>41</height>
+         <width>231</width>
+         <height>71</height>
         </rect>
        </property>
        <property name="text">
@@ -787,13 +689,26 @@
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>100</y>
-         <width>191</width>
-         <height>41</height>
+         <y>110</y>
+         <width>111</width>
+         <height>81</height>
         </rect>
        </property>
        <property name="text">
         <string>Clear All</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="resetFiltersSearchBtn">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>110</y>
+         <width>111</width>
+         <height>81</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Reset Filters</string>
        </property>
       </widget>
      </widget>
@@ -801,9 +716,9 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>170</y>
-        <width>381</width>
-        <height>351</height>
+        <y>200</y>
+        <width>351</width>
+        <height>321</height>
        </rect>
       </property>
       <property name="title">
@@ -814,137 +729,30 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>361</width>
-         <height>321</height>
+         <width>331</width>
+         <height>291</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_6">
-        <item row="0" column="1">
-         <widget class="QSpinBox" name="serialNumberSbx_2">
-          <property name="maximumSize">
-           <size>
-            <width>75</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-          </property>
-          <property name="buttonSymbols">
-           <enum>QAbstractSpinBox::NoButtons</enum>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0">
-         <widget class="QLabel" name="serialNumberLbl_2">
-          <property name="text">
-           <string>Serial Number:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="0">
-         <widget class="QLabel" name="articleNumberLbl_2">
-          <property name="text">
-           <string>Article Number:</string>
-          </property>
-         </widget>
-        </item>
         <item row="1" column="0">
-         <widget class="QLabel" name="productRevisionLbl_2">
+         <widget class="QLabel" name="productRevisionSearchLbl">
           <property name="text">
            <string>Product Revision: </string>
           </property>
          </widget>
         </item>
-        <item row="5" column="1">
-         <widget class="QLineEdit" name="locationBx_2">
-          <property name="maximumSize">
-           <size>
-            <width>200</width>
-            <height>16777215</height>
-           </size>
-          </property>
-         </widget>
-        </item>
         <item row="4" column="1">
-         <widget class="QLineEdit" name="articleLineBx_2">
+         <widget class="QLineEdit" name="articleSearchLineBx">
           <property name="maximumSize">
            <size>
             <width>200</width>
             <height>16777215</height>
            </size>
-          </property>
-         </widget>
-        </item>
-        <item row="8" column="0" colspan="2">
-         <widget class="QTextEdit" name="commentsTbx_2">
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>100</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="0">
-         <widget class="QLabel" name="locationLbl_2">
-          <property name="text">
-           <string>Location:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="1">
-         <widget class="QLineEdit" name="productVariantBx_2">
-          <property name="maximumSize">
-           <size>
-            <width>200</width>
-            <height>16777215</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="1">
-         <widget class="QLineEdit" name="accountLineBx_2">
-          <property name="maximumSize">
-           <size>
-            <width>75</width>
-            <height>16777215</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item row="7" column="1">
-         <spacer name="horizontalSpacer_2">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="7" column="0">
-         <widget class="QLabel" name="commentsLbl_2">
-          <property name="text">
-           <string>Comments:</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="0">
-         <widget class="QLabel" name="productVarientLbl_2">
-          <property name="text">
-           <string>Product Varient: </string>
           </property>
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="QDoubleSpinBox" name="productRevisionSbx_2">
+         <widget class="QDoubleSpinBox" name="productRevisionSearchSbx">
           <property name="maximumSize">
            <size>
             <width>75</width>
@@ -962,47 +770,255 @@
           </property>
          </widget>
         </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="serialNumberSearchLbl">
+          <property name="text">
+           <string>Serial Number:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="1">
+         <widget class="QLineEdit" name="locationSearchBx">
+          <property name="maximumSize">
+           <size>
+            <width>200</width>
+            <height>16777215</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QSpinBox" name="serialNumberSearchSbx">
+          <property name="maximumSize">
+           <size>
+            <width>75</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+          <property name="buttonSymbols">
+           <enum>QAbstractSpinBox::NoButtons</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <widget class="QLabel" name="articleNumberSearchLbl">
+          <property name="text">
+           <string>Article Number:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="productVarientSearchLbl">
+          <property name="text">
+           <string>Product Variant: </string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="0">
+         <widget class="QLabel" name="locationSearchLbl">
+          <property name="text">
+           <string>Location:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QLineEdit" name="accountSearchLineBx">
+          <property name="maximumSize">
+           <size>
+            <width>75</width>
+            <height>16777215</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QLineEdit" name="productVariantSearchBx">
+          <property name="maximumSize">
+           <size>
+            <width>200</width>
+            <height>16777215</height>
+           </size>
+          </property>
+         </widget>
+        </item>
         <item row="2" column="0">
-         <widget class="QLabel" name="accountLbl_2">
+         <widget class="QLabel" name="accountSearchLbl">
           <property name="text">
            <string>Account: </string>
           </property>
          </widget>
         </item>
-        <item row="6" column="0">
-         <spacer name="verticalSpacer_3">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_8">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>200</y>
+        <width>151</width>
+        <height>321</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Search Filters</string>
+      </property>
+      <widget class="QWidget" name="">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>131</width>
+         <height>281</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QCheckBox" name="classSearchCb">
+          <property name="text">
+           <string>Class</string>
           </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
+         </widget>
         </item>
-        <item row="6" column="1">
-         <spacer name="verticalSpacer_4">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
+        <item>
+         <widget class="QCheckBox" name="typeSearchCb">
+          <property name="text">
+           <string>Type</string>
           </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="statusSearchCb">
+          <property name="text">
+           <string>Status</string>
           </property>
-         </spacer>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="serialNumberSearchCb">
+          <property name="text">
+           <string>Serial Number</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="revisionSearchCb">
+          <property name="text">
+           <string>Revision</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="accountSearchCb">
+          <property name="text">
+           <string>Account</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="varientSearchCb">
+          <property name="text">
+           <string>Variant</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="articleNumberSearchCb">
+          <property name="text">
+           <string>Article Number</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="locationSearchCb">
+          <property name="text">
+           <string>Location</string>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_6">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>10</y>
+        <width>511</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Results</string>
+      </property>
+      <widget class="QListView" name="searchResultsList">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>491</width>
+         <height>141</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QPushButton" name="openItemSearchBtn">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>220</y>
+        <width>201</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Open Item</string>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="tab_4">
      <attribute name="title">
       <string>Show All Products</string>
      </attribute>
+     <widget class="QGroupBox" name="groupBox_11">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>771</width>
+        <height>461</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>All Products</string>
+      </property>
+      <widget class="QListView" name="allProductsList">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>751</width>
+         <height>421</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="geometry">
+       <rect>
+        <x>610</x>
+        <y>480</y>
+        <width>171</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Open Item</string>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>
@@ -1011,7 +1027,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>812</width>
+     <width>810</width>
      <height>21</height>
     </rect>
    </property>
