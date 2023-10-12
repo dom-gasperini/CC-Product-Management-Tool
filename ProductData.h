@@ -89,6 +89,10 @@ public:
     void setLastUpdate(QDateTime lastUpdate);
     void setDaysSinceLastUpdate();
 
+    // functions
+    QString productTypeToQString();
+    QString productClassToQString();
+
 
 private:
     // general product data

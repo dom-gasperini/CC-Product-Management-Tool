@@ -42,7 +42,7 @@
       <property name="title">
        <string>General Information</string>
       </property>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -97,7 +97,7 @@
       <property name="title">
        <string>Tracking and Updates</string>
       </property>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -115,27 +115,27 @@
          </widget>
         </item>
         <item row="0" column="1" colspan="3">
-         <widget class="QLineEdit" name="lineEdit_6"/>
+         <widget class="QLineEdit" name="buildDateLineBx"/>
         </item>
         <item row="1" column="0" colspan="2">
-         <widget class="QLabel" name="label_2">
+         <widget class="QLabel" name="lastUpdateLbl">
           <property name="text">
            <string>Last Updated: </string>
           </property>
          </widget>
         </item>
         <item row="1" column="2" colspan="2">
-         <widget class="QLineEdit" name="lineEdit_5"/>
+         <widget class="QLineEdit" name="lastUpdateLineBx"/>
         </item>
         <item row="2" column="0" colspan="3">
-         <widget class="QLabel" name="label_3">
+         <widget class="QLabel" name="daysSinceLastUpdateLbl">
           <property name="text">
            <string>Days Since Last Update: </string>
           </property>
          </widget>
         </item>
         <item row="2" column="3">
-         <widget class="QSpinBox" name="spinBox_2">
+         <widget class="QSpinBox" name="daysSinceLastUpdateSbx">
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
@@ -159,7 +159,7 @@
       <property name="title">
        <string>Product Details</string>
       </property>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -170,7 +170,7 @@
        </property>
        <layout class="QGridLayout" name="gridLayout_3">
         <item row="0" column="1">
-         <widget class="QSpinBox" name="spinBox">
+         <widget class="QSpinBox" name="serialNumberSbx">
           <property name="maximumSize">
            <size>
             <width>75</width>
@@ -207,7 +207,7 @@
          </widget>
         </item>
         <item row="5" column="1">
-         <widget class="QLineEdit" name="lineEdit_3">
+         <widget class="QLineEdit" name="locationBx">
           <property name="maximumSize">
            <size>
             <width>200</width>
@@ -217,7 +217,7 @@
          </widget>
         </item>
         <item row="4" column="1">
-         <widget class="QLineEdit" name="lineEdit">
+         <widget class="QLineEdit" name="articleLineBx">
           <property name="maximumSize">
            <size>
             <width>200</width>
@@ -227,7 +227,7 @@
          </widget>
         </item>
         <item row="8" column="0" colspan="2">
-         <widget class="QTextEdit" name="textEdit">
+         <widget class="QTextEdit" name="commentsTbx">
           <property name="maximumSize">
            <size>
             <width>16777215</width>
@@ -244,7 +244,7 @@
          </widget>
         </item>
         <item row="3" column="1">
-         <widget class="QLineEdit" name="lineEdit_4">
+         <widget class="QLineEdit" name="productVariantBx">
           <property name="maximumSize">
            <size>
             <width>200</width>
@@ -254,7 +254,7 @@
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="QLineEdit" name="lineEdit_2">
+         <widget class="QLineEdit" name="accountLineBx">
           <property name="maximumSize">
            <size>
             <width>75</width>
@@ -287,14 +287,14 @@
          </widget>
         </item>
         <item row="3" column="0">
-         <widget class="QLabel" name="label">
+         <widget class="QLabel" name="productVarientLbl">
           <property name="text">
            <string>Product Varient: </string>
           </property>
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="QDoubleSpinBox" name="doubleSpinBox">
+         <widget class="QDoubleSpinBox" name="productRevisionSbx">
           <property name="maximumSize">
            <size>
             <width>75</width>
@@ -372,11 +372,11 @@
       <property name="title">
        <string>Preview</string>
       </property>
-      <widget class="QLabel" name="label_4">
+      <widget class="QLabel" name="productImageLbl">
        <property name="geometry">
         <rect>
          <x>120</x>
-         <y>150</y>
+         <y>180</y>
          <width>111</width>
          <height>16</height>
         </rect>
@@ -398,7 +398,7 @@
       <property name="title">
        <string>Actions</string>
       </property>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="saveBtn">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -411,7 +411,7 @@
         <string>Save</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="clearBtn">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -456,10 +456,32 @@
     <property name="title">
      <string>Options</string>
     </property>
+    <addaction name="actionDark_Mode"/>
+    <addaction name="separator"/>
+    <addaction name="actionAbout"/>
+    <addaction name="actionSelect_Database"/>
    </widget>
    <addaction name="menuOptions"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionDark_Mode">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Dark Mode</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="actionSelect_Database">
+   <property name="text">
+    <string>Select Database</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

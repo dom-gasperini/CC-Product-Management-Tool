@@ -37,6 +37,81 @@ ProductData::ProductData()
     m_daysSinceLastUpdate = 0;
 }
 
+
+// -------------------------------------------------- //
+//                      Functions
+// -------------------------------------------------- //
+
+QString ProductData::productClassToQString() {
+    QString str = "";
+
+    switch(this->getProductClass()) {
+    case NO_CLASS:
+        str = "No Class";
+        break;
+    case DISPLAY:
+        str = "Display";
+        break;
+    case CABLE:
+        str = "Cable";
+        break;
+    default:
+        str = "No Class";
+        break;
+    }
+
+    return str;
+}
+
+/**
+ * @brief ProductData::productTypeToQString
+ * @return
+ */
+QString ProductData::productTypeToQString() {
+    QString str = "";
+
+    switch(this->getProductType()) {
+    case NO_TYPE:
+        str = "No Display Type";
+        break;
+    case VI2:
+        str = "VI-2";
+        break;
+    case VS:
+        str = "VS";
+        break;
+    case V510:
+        str = "V510";
+        break;
+    case V700:
+        str = "V700";
+        break;
+    case V710:
+        str = "V710";
+        break;
+    case V1000:
+        str = "V1000";
+        break;
+    case V1200:
+        str = "V1200";
+        break;
+    case X900:
+        str = "X900";
+        break;
+    case X1200:
+        str = "X1200";
+        break;
+    case X1400:
+        str = "X1400";
+        break;
+    default:
+        str = "No Display Type";
+        break;
+    }
+
+    return str;
+}
+
 // -------------------------------------------------- //
 //                      Getters
 // -------------------------------------------------- //
