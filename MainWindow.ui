@@ -187,12 +187,12 @@
       <property name="title">
        <string>Tracking and Updates</string>
       </property>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>251</width>
+         <width>253</width>
          <height>121</height>
         </rect>
        </property>
@@ -866,7 +866,7 @@
       <property name="title">
        <string>Search Filters</string>
       </property>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -876,13 +876,6 @@
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
-        <item>
-         <widget class="QCheckBox" name="classSearchCb">
-          <property name="text">
-           <string>Class</string>
-          </property>
-         </widget>
-        </item>
         <item>
          <widget class="QCheckBox" name="typeSearchCb">
           <property name="text">
@@ -954,7 +947,7 @@
       <property name="title">
        <string>Results</string>
       </property>
-      <widget class="QListView" name="searchResultsList">
+      <widget class="QListWidget" name="searchResultsList">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -970,7 +963,7 @@
        <rect>
         <x>550</x>
         <y>220</y>
-        <width>201</width>
+        <width>211</width>
         <height>81</height>
        </rect>
       </property>

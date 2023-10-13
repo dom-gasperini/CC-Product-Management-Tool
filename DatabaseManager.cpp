@@ -121,11 +121,12 @@ QVector<ProductData> DatabaseManager::findProduct(QString productClass, QVector<
     QSqlQuery query;
     QString queryStr;
     QString whereClause = "";
+    QString fff = "none";
 
     // prepare query
     if (paramType.length() > 1) {
         for (int i = 0; i < paramType.length() - 1; ++i) {
-            paramType.at(0) + "=\'" + param.at(0) + "\' AND ";
+            whereClause += paramType.at(0) + "=\'" + param.at(0) + "\' AND ";
         }
         whereClause += paramType.at(paramType.length() -1) + + "=\'" + param.at(paramType.length() - 1) + "\';";
     }
@@ -133,19 +134,20 @@ QVector<ProductData> DatabaseManager::findProduct(QString productClass, QVector<
         whereClause = paramType.at(0) + "=\'" + param.at(0) + "\';";
     }
 
-    query.prepare("SELECT * FROM " + productClass + " WHERE " + whereClause);
+    queryStr = "SELECT * FROM " + productClass + " WHERE " + whereClause;
+    query.prepare(queryStr);
     qDebug() << "Query: " << queryStr;
 
     // execute query
     if (query.exec()) {
        if (query.next()) {
-//           int idName = query.record().indexOf("name");
-           while (query.next()) {
-//              QString name = query.value(idName).toString();
-              qDebug() << "Product List:\n";
+           while(query.next()) {
+               fff = query.value(0).toString();
            }
        }
     }
+
+    qDebug() << "Product List: " << fff;
 
     return productList;
 }

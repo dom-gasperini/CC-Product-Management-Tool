@@ -94,8 +94,6 @@ void MainWindow::UpdateDisplay() {
 
     if (ui->tab_3->isActiveWindow()) {
         // handle checkboxes
-        if (ui->classSearchCb->isChecked()) ui->productClassSearchCbx->setEnabled(true);
-        else ui->productClassSearchCbx->setEnabled(false);
         if (ui->typeSearchCb->isChecked()) ui->typeSearchCbx->setEnabled(true);
         else ui->typeSearchCbx->setEnabled(false);
         if (ui->statusSearchCb->isChecked()) ui->statusSearchCbx->setEnabled(true);
@@ -112,6 +110,19 @@ void MainWindow::UpdateDisplay() {
         else ui->articleSearchLineBx->setEnabled(false);
         if (ui->locationSearchCb->isChecked()) ui->locationSearchBx->setEnabled(true);
         else ui->locationSearchBx->setEnabled(false);
+
+        // handle search button logic
+        if (ui->typeSearchCb->isChecked() ||
+                ui->statusSearchCb->isChecked() ||
+                ui->serialNumberSearchCb->isChecked() ||
+                ui->revisionSearchCb->isChecked() ||
+                ui->accountSearchCb->isChecked() ||
+                ui->varientSearchCb->isChecked() ||
+                ui->articleNumberSearchCb->isChecked() ||
+                ui->locationSearchCb->isChecked()) {
+            ui->searchBtn->setEnabled(true);
+        }
+        else ui->searchBtn->setEnabled(false);
     }
 
     if (ui->tab_4->isActiveWindow()) {
@@ -119,8 +130,6 @@ void MainWindow::UpdateDisplay() {
     }
 
 }
-
-
 
 
 void MainWindow::on_actionDark_Mode_toggled(bool checked) {
@@ -258,7 +267,6 @@ void MainWindow::on_addProductBtn_clicked()
 void MainWindow::on_resetFiltersSearchBtn_clicked()
 {
     // set all to unchecked
-    ui->classSearchCb->setChecked(false);
     ui->typeSearchCb->setChecked(false);
     ui->statusSearchCb->setChecked(false);
     ui->serialNumberSearchCb->setChecked(false);
@@ -283,5 +291,77 @@ void MainWindow::on_clearSearchBtn_clicked()
     ui->productVariantSearchBx->clear();
     ui->articleSearchLineBx->clear();
     ui->locationSearchBx->clear();
+}
+
+
+void MainWindow::on_searchBtn_clicked()
+{
+    // inits
+    QString productClass, tmp;
+    QVector<QString> paramType, params;
+    QVector<ProductData> results;
+
+    // gather search parameters
+    tmp = ui->productClassSearchCbx->currentText();
+    if (tmp == "Display") productClass = "Displays";
+    else if (tmp == "Cable") productClass = "Cables";
+    else productClass = "none";
+
+    if (ui->typeSearchCb->isChecked()) {
+        paramType.append("type");
+        params.append(ui->typeSearchCbx->currentText());
+    }
+    if (ui->statusSearchCb->isChecked()) {
+        paramType.append("status");
+        params.append(ui->statusSearchCbx->currentText());
+    }
+    if (ui->serialNumberSearchCb->isChecked()) {
+        paramType.append("serial_number");
+        params.append(QString::number(ui->serialNumberSearchSbx->value()));
+    }
+    if (ui->revisionSearchCb->isChecked()) {
+        paramType.append("revision");
+        params.append(QString::number(ui->productRevisionSearchSbx->value()));
+    }
+    if (ui->accountSearchCb->isChecked()) {
+        paramType.append("account_number");
+        params.append(ui->accountSearchLineBx->text());
+    }
+    if (ui->varientSearchCb->isChecked()) {
+        paramType.append("variant");
+        params.append(ui->productVariantSearchBx->text());
+    }
+    if (ui->articleNumberSearchCb->isChecked()) {
+        paramType.append("article");
+        params.append(ui->articleSearchLineBx->text());
+    }
+    if (ui->locationSearchCb->isChecked()) {
+        paramType.append("location");
+        params.append(ui->locationSearchBx->text());
+    }
+
+    qDebug() << "types: ";
+    for (auto i : paramType) {
+        qDebug() << QString(i);
+    }
+    qDebug() << "params: ";
+    for (auto i : params) {
+        qDebug() << i;
+    }
+
+    // clear current results list
+    ui->searchResultsList->clear();
+
+    // do search
+    results = m_database->findProduct(productClass, paramType, params);
+
+    // populate results
+    for (ProductData i : results) {
+        QString summarized = "";
+        summarized += i.productTypeToQString() + " ";
+        summarized += i.productClassToQString() + " ";
+        summarized += i.productStatusToQString();
+        ui->searchResultsList->addItem(summarized);
+    }
 }
 

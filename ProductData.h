@@ -47,9 +47,9 @@ typedef enum ProductStatus {
 /**
  * @brief The ProductData class
  */
-class ProductData : public QObject
+class ProductData
 {
-    Q_OBJECT
+//    Q_OBJECT
 
 public:
     // constructor

@@ -59,5 +59,6 @@ private slots:
     void on_addProductBtn_clicked();
     void on_resetFiltersSearchBtn_clicked();
     void on_clearSearchBtn_clicked();
+    void on_searchBtn_clicked();
 };
 #endif // MAINWINDOW_H
