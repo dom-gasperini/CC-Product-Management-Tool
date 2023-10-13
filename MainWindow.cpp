@@ -89,12 +89,11 @@ void MainWindow::UpdateDisplay() {
         else {
             ui->productImageLbl->setPixmap(QPixmap(":/images/cables.webp").scaledToWidth(ui->productImageLbl->width()));
         }
-
     }
 
     // remove a product
     if (ui->tab_2->isActiveWindow()) {
-
+        // nothing needs to be done proactivly here
     }
 
     // search for a product or products
@@ -581,4 +580,3 @@ void MainWindow::on_deleteProductBtn_clicked()
     // reset button state
     ui->deleteProductBtn->setEnabled(false);
 }
-
