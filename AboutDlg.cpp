@@ -27,6 +27,7 @@ AboutDlg::AboutDlg(QWidget *parent) : QDialog(parent), ui(new Ui::AboutDlg)
     ui->qtLogoLbl->setPixmap(QPixmap(":/images/qt_logo.png").scaledToWidth(ui->qtLogoLbl->width()));
 
     // Fill in text boxes with information
+    ui->authorNameLbl->setText("newt");
     ui->cppVersionNumLbl->setText(QString::number(CPP_VERSION));
     ui->qtVersionNumLbl->setText(getQtVersion());
 }

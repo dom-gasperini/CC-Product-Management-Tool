@@ -959,8 +959,18 @@ compiler_rcc_clean:
 	-$(DEL_FILE) qrc_images.cpp
 qrc_images.cpp: images.qrc \
 		../../../Qt/6.3.1/gcc_64/libexec/rcc \
+		vs.jpg \
+		v700.jpg \
 		qt_logo.png \
+		x1400.jpg \
+		v1200.jpg \
+		x900.jpg \
+		v510.png \
+		x1200.png \
+		v710.png \
+		vi.jpg \
 		crosscontrol-rgb-300dpi-png \
+		v1000.jpg \
 		cc-logo.ico
 	/home/dom_gasperini/Qt/6.3.1/gcc_64/libexec/rcc -name images images.qrc -o qrc_images.cpp
 
@@ -1479,6 +1489,7 @@ AboutDlg.o: AboutDlg.cpp AboutDlg.h \
 		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QPushButton \
 		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qpushbutton.h \
 		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QSpacerItem \
 		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QVBoxLayout \
 		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o AboutDlg.o AboutDlg.cpp

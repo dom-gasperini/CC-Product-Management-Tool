@@ -42,6 +42,12 @@ ProductData::ProductData()
 //                      Functions
 // -------------------------------------------------- //
 
+
+/**
+ * @brief ProductData::QStringToProductClass
+ * @param str
+ * @return
+ */
 ProductClass ProductData::QStringToProductClass(QString str) {
     ProductClass pclass = NO_CLASS;
 
@@ -84,6 +90,12 @@ ProductStatus ProductData::QStringToProductStatus(QString str) {
     return status;
 }
 
+
+/**
+ * @brief ProductData::QStringToProductType
+ * @param str
+ * @return
+ */
 ProductType ProductData::QStringToProductType(QString str) {
     ProductType type = NO_TYPE;
 

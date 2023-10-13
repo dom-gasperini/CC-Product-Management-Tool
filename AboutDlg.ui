@@ -6,19 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>390</width>
+    <width>280</width>
     <height>500</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>390</width>
+    <width>280</width>
     <height>500</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>390</width>
+    <width>280</width>
     <height>500</height>
    </size>
   </property>
@@ -28,9 +28,9 @@
   <widget class="QPushButton" name="exitBtn">
    <property name="geometry">
     <rect>
-     <x>90</x>
+     <x>10</x>
      <y>450</y>
-     <width>251</width>
+     <width>261</width>
      <height>41</height>
     </rect>
    </property>
@@ -43,7 +43,7 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>371</width>
+     <width>261</width>
      <height>431</height>
     </rect>
    </property>
@@ -56,10 +56,27 @@
          <string notr="true">font: 500 oblique 25pt &quot;DejaVu Sans&quot;;</string>
         </property>
         <property name="text">
-         <string>Product Management 
+         <string>Product 
+Management 
 Tool</string>
         </property>
        </widget>
+      </item>
+      <item>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Minimum</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
       </item>
       <item>
        <layout class="QGridLayout" name="gridLayout">
@@ -74,9 +91,9 @@ Tool</string>
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QLabel" name="label">
+         <widget class="QLabel" name="authorNameLbl">
           <property name="text">
-           <string>Dominic Gasperini</string>
+           <string/>
           </property>
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>

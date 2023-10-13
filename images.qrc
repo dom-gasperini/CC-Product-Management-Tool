@@ -3,5 +3,15 @@
         <file>crosscontrol-rgb-300dpi-png</file>
         <file>qt_logo.png</file>
         <file>cc-logo.ico</file>
+        <file>v510.png</file>
+        <file>v700.jpg</file>
+        <file>v710.png</file>
+        <file>v1000.jpg</file>
+        <file>v1200.jpg</file>
+        <file>vi.jpg</file>
+        <file>vs.jpg</file>
+        <file>x900.jpg</file>
+        <file>x1200.png</file>
+        <file>x1400.jpg</file>
     </qresource>
 </RCC>

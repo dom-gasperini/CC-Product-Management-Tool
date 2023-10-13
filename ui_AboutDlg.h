@@ -15,6 +15,7 @@
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -28,9 +29,10 @@ public:
     QVBoxLayout *verticalLayout_3;
     QVBoxLayout *verticalLayout;
     QPushButton *TitleBtn;
+    QSpacerItem *verticalSpacer;
     QGridLayout *gridLayout;
     QLabel *authorLbl;
-    QLabel *label;
+    QLabel *authorNameLbl;
     QLabel *LogoLbl;
     QVBoxLayout *verticalLayout_2;
     QGridLayout *gridLayout_2;
@@ -44,15 +46,15 @@ public:
     {
         if (AboutDlg->objectName().isEmpty())
             AboutDlg->setObjectName(QString::fromUtf8("AboutDlg"));
-        AboutDlg->resize(390, 500);
-        AboutDlg->setMinimumSize(QSize(390, 500));
-        AboutDlg->setMaximumSize(QSize(390, 500));
+        AboutDlg->resize(280, 500);
+        AboutDlg->setMinimumSize(QSize(280, 500));
+        AboutDlg->setMaximumSize(QSize(280, 500));
         exitBtn = new QPushButton(AboutDlg);
         exitBtn->setObjectName(QString::fromUtf8("exitBtn"));
-        exitBtn->setGeometry(QRect(90, 450, 251, 41));
+        exitBtn->setGeometry(QRect(10, 450, 261, 41));
         layoutWidget = new QWidget(AboutDlg);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(10, 10, 371, 431));
+        layoutWidget->setGeometry(QRect(10, 10, 261, 431));
         verticalLayout_3 = new QVBoxLayout(layoutWidget);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         verticalLayout_3->setContentsMargins(0, 0, 0, 0);
@@ -64,6 +66,10 @@ public:
 
         verticalLayout->addWidget(TitleBtn);
 
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        verticalLayout->addItem(verticalSpacer);
+
         gridLayout = new QGridLayout();
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         authorLbl = new QLabel(layoutWidget);
@@ -72,11 +78,11 @@ public:
 
         gridLayout->addWidget(authorLbl, 0, 0, 1, 1);
 
-        label = new QLabel(layoutWidget);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        authorNameLbl = new QLabel(layoutWidget);
+        authorNameLbl->setObjectName(QString::fromUtf8("authorNameLbl"));
+        authorNameLbl->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
-        gridLayout->addWidget(label, 0, 1, 1, 1);
+        gridLayout->addWidget(authorNameLbl, 0, 1, 1, 1);
 
 
         verticalLayout->addLayout(gridLayout);
@@ -140,10 +146,11 @@ public:
     {
         AboutDlg->setWindowTitle(QCoreApplication::translate("AboutDlg", "Dialog", nullptr));
         exitBtn->setText(QCoreApplication::translate("AboutDlg", "Done", nullptr));
-        TitleBtn->setText(QCoreApplication::translate("AboutDlg", "Product Management \n"
+        TitleBtn->setText(QCoreApplication::translate("AboutDlg", "Product \n"
+"Management \n"
 "Tool", nullptr));
         authorLbl->setText(QCoreApplication::translate("AboutDlg", "Author:", nullptr));
-        label->setText(QCoreApplication::translate("AboutDlg", "Dominic Gasperini", nullptr));
+        authorNameLbl->setText(QString());
         LogoLbl->setText(QCoreApplication::translate("AboutDlg", "Logo", nullptr));
         qtVersionNumLbl->setText(QCoreApplication::translate("AboutDlg", "QT VERSION", nullptr));
         qtVersionLbl->setText(QCoreApplication::translate("AboutDlg", "Qt Version:", nullptr));

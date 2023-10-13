@@ -57,8 +57,6 @@ MainWindow::~MainWindow()
  * @brief MainWindow::UpdateDisplay
  */
 void MainWindow::UpdateDisplay() {
-    // set database active status
-
 
     // add a product
     if (ui->tab_1->isActiveWindow()) {
@@ -66,37 +64,32 @@ void MainWindow::UpdateDisplay() {
         ui->inventoryDateDTBx->setDateTime(QDateTime::currentDateTime());
 
         // set product image
-        if (m_productData->getProductClass() == DISPLAY) {
-            switch (m_productData->getProductType()) {
-            case VI2:
-                ui->productImageLbl->setPixmap(QPixmap("vi2.png"));
-                break;
-            case VS:
-                break;
-            case V510:
-                break;
-            case V700:
-                break;
-            case V710:
-                break;
-            case V1000:
-                break;
-            case V1200:
-                break;
-            case X900:
-                break;
-            case X1200:
-                break;
-            case X1400:
-                break;
-
-            default:
-                break;
-            }
+        if (ui->productClassCmbx->currentText() == "Displays") {
+            if (ui->productTypeCmbx->currentText() == "VI-2")
+                ui->productImageLbl->setPixmap(QPixmap(":/images/vi.jpg").scaledToWidth(ui->productImageLbl->width()));
+            if (ui->productTypeCmbx->currentText() == "VS")
+                ui->productImageLbl->setPixmap(QPixmap(":/images/vs.jpg").scaledToWidth(ui->productImageLbl->width()));
+            if (ui->productTypeCmbx->currentText() == "V510")
+                ui->productImageLbl->setPixmap(QPixmap(":/images/v510.png").scaledToWidth(ui->productImageLbl->width()));
+            if (ui->productTypeCmbx->currentText() == "V700")
+                ui->productImageLbl->setPixmap(QPixmap(":/images/v700.jpg").scaledToWidth(ui->productImageLbl->width()));
+            if (ui->productTypeCmbx->currentText() == "V710")
+                ui->productImageLbl->setPixmap(QPixmap(":/images/v710.png").scaledToWidth(ui->productImageLbl->width()));
+            if (ui->productTypeCmbx->currentText() == "V1000")
+                ui->productImageLbl->setPixmap(QPixmap(":/images/v1000.jpg").scaledToWidth(ui->productImageLbl->width()));
+            if (ui->productTypeCmbx->currentText() == "V1200")
+                ui->productImageLbl->setPixmap(QPixmap(":/images/v1200.jpg").scaledToWidth(ui->productImageLbl->width()));
+            if (ui->productTypeCmbx->currentText() == "X900")
+                ui->productImageLbl->setPixmap(QPixmap(":/images/x900.jpg").scaledToWidth(ui->productImageLbl->width()));
+            if (ui->productTypeCmbx->currentText() == "X1200")
+                ui->productImageLbl->setPixmap(QPixmap(":/images/x1200.png").scaledToWidth(ui->productImageLbl->width()));
+            if (ui->productTypeCmbx->currentText() == "X1400")
+                ui->productImageLbl->setPixmap(QPixmap(":/images/x1400.jpg").scaledToWidth(ui->productImageLbl->width()));
         }
         else {
-            ui->productImageLbl->setPixmap(QPixmap("cables.png"));
+            ui->productImageLbl->setPixmap(QPixmap(":/images/cables.jpg").scaledToWidth(ui->productImageLbl->width()));
         }
+
     }
 
     // remove a product
@@ -517,6 +510,9 @@ void MainWindow::on_openItemAllBtn_clicked()
 }
 
 
+/**
+ * @brief MainWindow::on_confirmProductDeleteBtn_clicked
+ */
 void MainWindow::on_confirmProductDeleteBtn_clicked()
 {
     // inits
@@ -559,6 +555,9 @@ void MainWindow::on_confirmProductDeleteBtn_clicked()
 }
 
 
+/**
+ * @brief MainWindow::on_deleteProductBtn_clicked
+ */
 void MainWindow::on_deleteProductBtn_clicked()
 {
     bool deleteComplete;

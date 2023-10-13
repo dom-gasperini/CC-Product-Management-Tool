@@ -62,23 +62,23 @@ public:
     QGroupBox *groupBox_3;
     QWidget *layoutWidget2;
     QGridLayout *gridLayout_3;
-    QSpinBox *serialNumberSbx;
-    QLabel *serialNumberLbl;
-    QLabel *articleNumberLbl;
-    QLabel *productRevisionLbl;
+    QSpacerItem *verticalSpacer;
     QLineEdit *locationBx;
-    QLineEdit *articleLineBx;
-    QTextEdit *commentsTbx;
-    QLabel *locationLbl;
-    QLineEdit *productVariantBx;
-    QLineEdit *accountLineBx;
     QSpacerItem *horizontalSpacer;
-    QLabel *commentsLbl;
-    QLabel *productVariantLbl;
+    QTextEdit *commentsTbx;
+    QLineEdit *articleLineBx;
+    QSpacerItem *verticalSpacer_2;
     QDoubleSpinBox *productRevisionSbx;
     QLabel *accountLbl;
-    QSpacerItem *verticalSpacer;
-    QSpacerItem *verticalSpacer_2;
+    QLabel *productVariantLbl;
+    QLabel *articleNumberLbl;
+    QLabel *locationLbl;
+    QLineEdit *accountLineBx;
+    QLabel *commentsLbl;
+    QLabel *productRevisionLbl;
+    QLabel *serialNumberLbl;
+    QSpinBox *serialNumberSbx;
+    QLineEdit *productVariantBx;
     QGroupBox *groupBox_4;
     QLabel *productImageLbl;
     QGroupBox *groupBox_5;
@@ -294,29 +294,9 @@ public:
         gridLayout_3 = new QGridLayout(layoutWidget2);
         gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
         gridLayout_3->setContentsMargins(0, 0, 0, 0);
-        serialNumberSbx = new QSpinBox(layoutWidget2);
-        serialNumberSbx->setObjectName(QString::fromUtf8("serialNumberSbx"));
-        serialNumberSbx->setMaximumSize(QSize(75, 16777215));
-        serialNumberSbx->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
-        serialNumberSbx->setButtonSymbols(QAbstractSpinBox::NoButtons);
-        serialNumberSbx->setMaximum(999999999);
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        gridLayout_3->addWidget(serialNumberSbx, 0, 1, 1, 1);
-
-        serialNumberLbl = new QLabel(layoutWidget2);
-        serialNumberLbl->setObjectName(QString::fromUtf8("serialNumberLbl"));
-
-        gridLayout_3->addWidget(serialNumberLbl, 0, 0, 1, 1);
-
-        articleNumberLbl = new QLabel(layoutWidget2);
-        articleNumberLbl->setObjectName(QString::fromUtf8("articleNumberLbl"));
-
-        gridLayout_3->addWidget(articleNumberLbl, 4, 0, 1, 1);
-
-        productRevisionLbl = new QLabel(layoutWidget2);
-        productRevisionLbl->setObjectName(QString::fromUtf8("productRevisionLbl"));
-
-        gridLayout_3->addWidget(productRevisionLbl, 1, 0, 1, 1);
+        gridLayout_3->addItem(verticalSpacer, 6, 0, 1, 1);
 
         locationBx = new QLineEdit(layoutWidget2);
         locationBx->setObjectName(QString::fromUtf8("locationBx"));
@@ -324,11 +304,9 @@ public:
 
         gridLayout_3->addWidget(locationBx, 5, 1, 1, 1);
 
-        articleLineBx = new QLineEdit(layoutWidget2);
-        articleLineBx->setObjectName(QString::fromUtf8("articleLineBx"));
-        articleLineBx->setMaximumSize(QSize(250, 16777215));
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        gridLayout_3->addWidget(articleLineBx, 4, 1, 1, 1);
+        gridLayout_3->addItem(horizontalSpacer, 7, 1, 1, 1);
 
         commentsTbx = new QTextEdit(layoutWidget2);
         commentsTbx->setObjectName(QString::fromUtf8("commentsTbx"));
@@ -336,37 +314,15 @@ public:
 
         gridLayout_3->addWidget(commentsTbx, 8, 0, 1, 2);
 
-        locationLbl = new QLabel(layoutWidget2);
-        locationLbl->setObjectName(QString::fromUtf8("locationLbl"));
+        articleLineBx = new QLineEdit(layoutWidget2);
+        articleLineBx->setObjectName(QString::fromUtf8("articleLineBx"));
+        articleLineBx->setMaximumSize(QSize(250, 16777215));
 
-        gridLayout_3->addWidget(locationLbl, 5, 0, 1, 1);
+        gridLayout_3->addWidget(articleLineBx, 4, 1, 1, 1);
 
-        productVariantBx = new QLineEdit(layoutWidget2);
-        productVariantBx->setObjectName(QString::fromUtf8("productVariantBx"));
-        productVariantBx->setMaximumSize(QSize(250, 16777215));
+        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        gridLayout_3->addWidget(productVariantBx, 3, 1, 1, 1);
-
-        accountLineBx = new QLineEdit(layoutWidget2);
-        accountLineBx->setObjectName(QString::fromUtf8("accountLineBx"));
-        accountLineBx->setMaximumSize(QSize(100, 16777215));
-
-        gridLayout_3->addWidget(accountLineBx, 2, 1, 1, 1);
-
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_3->addItem(horizontalSpacer, 7, 1, 1, 1);
-
-        commentsLbl = new QLabel(layoutWidget2);
-        commentsLbl->setObjectName(QString::fromUtf8("commentsLbl"));
-        commentsLbl->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
-
-        gridLayout_3->addWidget(commentsLbl, 7, 0, 1, 1);
-
-        productVariantLbl = new QLabel(layoutWidget2);
-        productVariantLbl->setObjectName(QString::fromUtf8("productVariantLbl"));
-
-        gridLayout_3->addWidget(productVariantLbl, 3, 0, 1, 1);
+        gridLayout_3->addItem(verticalSpacer_2, 6, 1, 1, 1);
 
         productRevisionSbx = new QDoubleSpinBox(layoutWidget2);
         productRevisionSbx->setObjectName(QString::fromUtf8("productRevisionSbx"));
@@ -382,13 +338,57 @@ public:
 
         gridLayout_3->addWidget(accountLbl, 2, 0, 1, 1);
 
-        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        productVariantLbl = new QLabel(layoutWidget2);
+        productVariantLbl->setObjectName(QString::fromUtf8("productVariantLbl"));
 
-        gridLayout_3->addItem(verticalSpacer, 6, 0, 1, 1);
+        gridLayout_3->addWidget(productVariantLbl, 3, 0, 1, 1);
 
-        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        articleNumberLbl = new QLabel(layoutWidget2);
+        articleNumberLbl->setObjectName(QString::fromUtf8("articleNumberLbl"));
 
-        gridLayout_3->addItem(verticalSpacer_2, 6, 1, 1, 1);
+        gridLayout_3->addWidget(articleNumberLbl, 4, 0, 1, 1);
+
+        locationLbl = new QLabel(layoutWidget2);
+        locationLbl->setObjectName(QString::fromUtf8("locationLbl"));
+
+        gridLayout_3->addWidget(locationLbl, 5, 0, 1, 1);
+
+        accountLineBx = new QLineEdit(layoutWidget2);
+        accountLineBx->setObjectName(QString::fromUtf8("accountLineBx"));
+        accountLineBx->setMaximumSize(QSize(100, 16777215));
+
+        gridLayout_3->addWidget(accountLineBx, 2, 1, 1, 1);
+
+        commentsLbl = new QLabel(layoutWidget2);
+        commentsLbl->setObjectName(QString::fromUtf8("commentsLbl"));
+        commentsLbl->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
+
+        gridLayout_3->addWidget(commentsLbl, 7, 0, 1, 1);
+
+        productRevisionLbl = new QLabel(layoutWidget2);
+        productRevisionLbl->setObjectName(QString::fromUtf8("productRevisionLbl"));
+
+        gridLayout_3->addWidget(productRevisionLbl, 1, 0, 1, 1);
+
+        serialNumberLbl = new QLabel(layoutWidget2);
+        serialNumberLbl->setObjectName(QString::fromUtf8("serialNumberLbl"));
+
+        gridLayout_3->addWidget(serialNumberLbl, 0, 0, 1, 1);
+
+        serialNumberSbx = new QSpinBox(layoutWidget2);
+        serialNumberSbx->setObjectName(QString::fromUtf8("serialNumberSbx"));
+        serialNumberSbx->setMaximumSize(QSize(75, 16777215));
+        serialNumberSbx->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        serialNumberSbx->setButtonSymbols(QAbstractSpinBox::NoButtons);
+        serialNumberSbx->setMaximum(999999999);
+
+        gridLayout_3->addWidget(serialNumberSbx, 0, 1, 1, 1);
+
+        productVariantBx = new QLineEdit(layoutWidget2);
+        productVariantBx->setObjectName(QString::fromUtf8("productVariantBx"));
+        productVariantBx->setMaximumSize(QSize(250, 16777215));
+
+        gridLayout_3->addWidget(productVariantBx, 3, 1, 1, 1);
 
         groupBox_4 = new QGroupBox(tab_1);
         groupBox_4->setObjectName(QString::fromUtf8("groupBox_4"));
@@ -397,7 +397,8 @@ public:
         groupBox_4->setMaximumSize(QSize(300, 300));
         productImageLbl = new QLabel(groupBox_4);
         productImageLbl->setObjectName(QString::fromUtf8("productImageLbl"));
-        productImageLbl->setGeometry(QRect(120, 180, 111, 16));
+        productImageLbl->setGeometry(QRect(10, 30, 281, 261));
+        productImageLbl->setAlignment(Qt::AlignCenter);
         groupBox_5 = new QGroupBox(tab_1);
         groupBox_5->setObjectName(QString::fromUtf8("groupBox_5"));
         groupBox_5->setGeometry(QRect(570, 10, 191, 201));
@@ -916,18 +917,18 @@ public:
         buildDateLbl->setText(QCoreApplication::translate("MainWindow", "Build Date: ", nullptr));
         inventoryDateLbl->setText(QCoreApplication::translate("MainWindow", "Inventory Date:  ", nullptr));
         groupBox_3->setTitle(QCoreApplication::translate("MainWindow", "Product Details", nullptr));
-        serialNumberLbl->setText(QCoreApplication::translate("MainWindow", "Serial Number:", nullptr));
-        articleNumberLbl->setText(QCoreApplication::translate("MainWindow", "Article Number:", nullptr));
-        productRevisionLbl->setText(QCoreApplication::translate("MainWindow", "Product Revision: ", nullptr));
         locationBx->setText(QString());
         locationBx->setPlaceholderText(QCoreApplication::translate("MainWindow", "Burlington, VT", nullptr));
         articleLineBx->setPlaceholderText(QCoreApplication::translate("MainWindow", "FAE", nullptr));
+        accountLbl->setText(QCoreApplication::translate("MainWindow", "Account: ", nullptr));
+        productVariantLbl->setText(QCoreApplication::translate("MainWindow", "Product Variant: ", nullptr));
+        articleNumberLbl->setText(QCoreApplication::translate("MainWindow", "Article Number:", nullptr));
         locationLbl->setText(QCoreApplication::translate("MainWindow", "Location:", nullptr));
-        productVariantBx->setPlaceholderText(QCoreApplication::translate("MainWindow", "Standard", nullptr));
         accountLineBx->setPlaceholderText(QCoreApplication::translate("MainWindow", "C137", nullptr));
         commentsLbl->setText(QCoreApplication::translate("MainWindow", "Comments:", nullptr));
-        productVariantLbl->setText(QCoreApplication::translate("MainWindow", "Product Variant: ", nullptr));
-        accountLbl->setText(QCoreApplication::translate("MainWindow", "Account: ", nullptr));
+        productRevisionLbl->setText(QCoreApplication::translate("MainWindow", "Product Revision: ", nullptr));
+        serialNumberLbl->setText(QCoreApplication::translate("MainWindow", "Serial Number:", nullptr));
+        productVariantBx->setPlaceholderText(QCoreApplication::translate("MainWindow", "Standard", nullptr));
         groupBox_4->setTitle(QCoreApplication::translate("MainWindow", "Preview", nullptr));
         productImageLbl->setText(QCoreApplication::translate("MainWindow", "Product Image", nullptr));
         groupBox_5->setTitle(QCoreApplication::translate("MainWindow", "Actions", nullptr));
