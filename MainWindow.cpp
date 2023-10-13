@@ -389,14 +389,21 @@ void MainWindow::on_searchBtn_clicked()
     // do search
     m_database->findProduct(productClass, paramType, params);
 
-    // populate results
-    for (ProductData i : m_database->getSearchResults()) {
-        QString summarized = "";
-        summarized += i.productClassToQString() + ": ";
-        summarized += i.productTypeToQString() + " - ";
-        summarized += i.productStatusToQString() + " | Owned by: ";
-        summarized += i.getAccount();
-        ui->searchResultsList->addItem(summarized);
+    // handle different numbers of results
+    if (m_database->getSearchResults().length() == 0) {
+        QMessageBox::warning(this, "Search Results Warning", "No results found based upon the input parameters!");
+    }
+
+    else {
+        // populate results
+        for (ProductData i : m_database->getSearchResults()) {
+            QString summarized = "";
+            summarized += i.productClassToQString() + ": ";
+            summarized += i.productTypeToQString() + " - ";
+            summarized += i.productStatusToQString() + " | Owned by: ";
+            summarized += i.getAccount();
+            ui->searchResultsList->addItem(summarized);
+        }
     }
 }
 
