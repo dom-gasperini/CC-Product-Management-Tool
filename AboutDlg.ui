@@ -6,19 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>430</width>
+    <width>390</width>
     <height>500</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>430</width>
+    <width>390</width>
     <height>500</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>430</width>
+    <width>390</width>
     <height>500</height>
    </size>
   </property>
@@ -43,7 +43,7 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>411</width>
+     <width>371</width>
      <height>431</height>
     </rect>
    </property>
@@ -53,7 +53,7 @@
       <item>
        <widget class="QPushButton" name="TitleBtn">
         <property name="styleSheet">
-         <string notr="true">font: 700 oblique 25pt &quot;DejaVu Sans&quot;;</string>
+         <string notr="true">font: 500 oblique 25pt &quot;DejaVu Sans&quot;;</string>
         </property>
         <property name="text">
          <string>Product Management 

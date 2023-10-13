@@ -573,7 +573,7 @@ public:
         searchResultsList = new QListWidget(groupBox_6);
         searchResultsList->setObjectName(QString::fromUtf8("searchResultsList"));
         searchResultsList->setGeometry(QRect(10, 30, 491, 141));
-        searchResultsList->setStyleSheet(QString::fromUtf8("font: 500 16pt \"Fira Mono\";"));
+        searchResultsList->setStyleSheet(QString::fromUtf8("font: 300 16pt \"Fira Mono\";"));
         openItemSearchBtn = new QPushButton(tab_3);
         openItemSearchBtn->setObjectName(QString::fromUtf8("openItemSearchBtn"));
         openItemSearchBtn->setGeometry(QRect(550, 220, 211, 81));
@@ -586,6 +586,7 @@ public:
         allProductsList = new QListWidget(groupBox_11);
         allProductsList->setObjectName(QString::fromUtf8("allProductsList"));
         allProductsList->setGeometry(QRect(10, 30, 751, 421));
+        allProductsList->setStyleSheet(QString::fromUtf8("font: 300 16pt \"Fira Mono\";"));
         openItemAllBtn = new QPushButton(tab_4);
         openItemAllBtn->setObjectName(QString::fromUtf8("openItemAllBtn"));
         openItemAllBtn->setGeometry(QRect(610, 480, 171, 41));

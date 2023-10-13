@@ -2,5 +2,6 @@
     <qresource prefix="/images">
         <file>crosscontrol-rgb-300dpi-png</file>
         <file>qt_logo.png</file>
+        <file>cc-logo.ico</file>
     </qresource>
 </RCC>

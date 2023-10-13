@@ -24,7 +24,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     // setup UI
     ui->setupUi(this);
     this->setWindowTitle("Cross Control Product Manager");
-    this->setWindowIcon(QIcon(""));
+    this->setWindowIcon(QIcon(":/images/cc-logo.ico"));
     m_currentPalette = qApp->palette();
     ui->tabWidget->setCurrentIndex(0);
 
@@ -392,9 +392,10 @@ void MainWindow::on_searchBtn_clicked()
     // populate results
     for (ProductData i : m_database->getSearchResults()) {
         QString summarized = "";
-        summarized += i.productClassToQString() + " | ";
-        summarized += i.productTypeToQString() + " | ";
-        summarized += i.productStatusToQString();
+        summarized += i.productClassToQString() + ": ";
+        summarized += i.productTypeToQString() + " - ";
+        summarized += i.productStatusToQString() + " | Owned by: ";
+        summarized += i.getAccount();
         ui->searchResultsList->addItem(summarized);
     }
 }
@@ -446,10 +447,10 @@ void MainWindow::on_refreshAllBtn_clicked()
     // refresh list of all products
     for (ProductData i : m_database->getAllProducts()) {
         QString summarized = "";
-        summarized += i.productClassToQString() + " | ";
-        summarized += i.productTypeToQString() + " | ";
-        summarized += i.productStatusToQString() + " | ";
-        summarized += i.getAccount() + " | ";
+        summarized += i.productClassToQString() + ": ";
+        summarized += i.productTypeToQString() + " - ";
+        summarized += i.productStatusToQString() + " | Owned by: ";
+        summarized += i.getAccount();
         ui->allProductsList->addItem(summarized);
     }
 }

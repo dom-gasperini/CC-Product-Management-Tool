@@ -58,8 +58,7 @@ SOURCES       = AboutDlg.cpp \
 		main.cpp \
 		MainWindow.cpp qrc_images.cpp \
 		moc_AboutDlg.cpp \
-		moc_MainWindow.cpp \
-		moc_ProductData.cpp
+		moc_MainWindow.cpp
 OBJECTS       = AboutDlg.o \
 		DatabaseManager.o \
 		ProductData.o \
@@ -67,8 +66,7 @@ OBJECTS       = AboutDlg.o \
 		MainWindow.o \
 		qrc_images.o \
 		moc_AboutDlg.o \
-		moc_MainWindow.o \
-		moc_ProductData.o
+		moc_MainWindow.o
 DIST          = ../../../Qt/6.3.1/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../Qt/6.3.1/gcc_64/mkspecs/common/unix.conf \
 		../../../Qt/6.3.1/gcc_64/mkspecs/common/linux.conf \
@@ -962,7 +960,8 @@ compiler_rcc_clean:
 qrc_images.cpp: images.qrc \
 		../../../Qt/6.3.1/gcc_64/libexec/rcc \
 		qt_logo.png \
-		crosscontrol-rgb-300dpi-png
+		crosscontrol-rgb-300dpi-png \
+		cc-logo.ico
 	/home/dom_gasperini/Qt/6.3.1/gcc_64/libexec/rcc -name images images.qrc -o qrc_images.cpp
 
 compiler_moc_predefs_make_all: moc_predefs.h
@@ -971,9 +970,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: ../../../Qt/6.3.1/gcc_64/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -std=gnu++1z -Wall -Wextra -dM -E -o moc_predefs.h ../../../Qt/6.3.1/gcc_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_AboutDlg.cpp moc_MainWindow.cpp moc_ProductData.cpp
+compiler_moc_header_make_all: moc_AboutDlg.cpp moc_MainWindow.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_AboutDlg.cpp moc_MainWindow.cpp moc_ProductData.cpp
+	-$(DEL_FILE) moc_AboutDlg.cpp moc_MainWindow.cpp
 moc_AboutDlg.cpp: AboutDlg.h \
 		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QDialog \
 		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qdialog.h \
@@ -1281,95 +1280,6 @@ moc_MainWindow.cpp: MainWindow.h \
 		moc_predefs.h \
 		../../../Qt/6.3.1/gcc_64/libexec/moc
 	/home/dom_gasperini/Qt/6.3.1/gcc_64/libexec/moc $(DEFINES) --include '/home/dom_gasperini/Documents/Qt Projects/CC-Product-Management-Tool/moc_predefs.h' -I/home/dom_gasperini/Qt/6.3.1/gcc_64/mkspecs/linux-g++ -I'/home/dom_gasperini/Documents/Qt Projects/CC-Product-Management-Tool' -I/home/dom_gasperini/Qt/6.3.1/gcc_64/include -I/home/dom_gasperini/Qt/6.3.1/gcc_64/include/QtWidgets -I/home/dom_gasperini/Qt/6.3.1/gcc_64/include/QtGui -I/home/dom_gasperini/Qt/6.3.1/gcc_64/include/QtSql -I/home/dom_gasperini/Qt/6.3.1/gcc_64/include/QtCore -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include MainWindow.h -o moc_MainWindow.cpp
-
-moc_ProductData.cpp: ProductData.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/QObject \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qobject.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qobjectdefs.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qnamespace.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qglobal.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qconfig.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qtcore-config.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qtcoreexports.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qsystemdetection.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qprocessordetection.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qcompilerdetection.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qtypeinfo.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qcontainerfwd.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qsysinfo.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qlogging.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qflags.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qcompare_impl.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qatomic.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qbasicatomic.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qgenericatomic.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qatomic_cxx11.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qglobalstatic.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qnumeric.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qversiontagging.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qtmetamacros.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qobjectdefs_impl.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qstring.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qchar.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qstringview.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qbytearray.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qrefcount.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qarraydata.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qpair.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qarraydatapointer.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qarraydataops.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qcontainertools_impl.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qbytearrayalgorithms.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qbytearrayview.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qstringliteral.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qstringalgorithms.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qanystringview.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qutf8stringview.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qstringtokenizer.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qstringbuilder.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qlist.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qhashfunctions.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qiterator.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qbytearraylist.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qstringlist.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qalgorithms.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qstringmatcher.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qcoreevent.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qscopedpointer.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qmetatype.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qcompare.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qvarlengtharray.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qscopeguard.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qdatastream.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qiodevicebase.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qiterable.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qmetacontainer.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qcontainerinfo.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qtaggedpointer.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qmath.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qobject_impl.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qbindingstorage.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/QDateTime \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qdatetime.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qshareddata.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qcalendar.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qlocale.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qvariant.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qmap.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qshareddata_impl.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qhash.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qdebug.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qtextstream.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qstringconverter.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qset.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qcontiguouscache.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qsharedpointer.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qsharedpointer_impl.h \
-		moc_predefs.h \
-		../../../Qt/6.3.1/gcc_64/libexec/moc
-	/home/dom_gasperini/Qt/6.3.1/gcc_64/libexec/moc $(DEFINES) --include '/home/dom_gasperini/Documents/Qt Projects/CC-Product-Management-Tool/moc_predefs.h' -I/home/dom_gasperini/Qt/6.3.1/gcc_64/mkspecs/linux-g++ -I'/home/dom_gasperini/Documents/Qt Projects/CC-Product-Management-Tool' -I/home/dom_gasperini/Qt/6.3.1/gcc_64/include -I/home/dom_gasperini/Qt/6.3.1/gcc_64/include/QtWidgets -I/home/dom_gasperini/Qt/6.3.1/gcc_64/include/QtGui -I/home/dom_gasperini/Qt/6.3.1/gcc_64/include/QtSql -I/home/dom_gasperini/Qt/6.3.1/gcc_64/include/QtCore -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ProductData.h -o moc_ProductData.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -2166,7 +2076,8 @@ MainWindow.o: MainWindow.cpp MainWindow.h \
 		../../../Qt/6.3.1/gcc_64/include/QtGui/qtextformat.h \
 		../../../Qt/6.3.1/gcc_64/include/QtGui/qpen.h \
 		../../../Qt/6.3.1/gcc_64/include/QtGui/qtextoption.h \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QListView \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QListWidget \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qlistwidget.h \
 		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qlistview.h \
 		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qabstractitemview.h \
 		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
@@ -2196,9 +2107,6 @@ moc_AboutDlg.o: moc_AboutDlg.cpp
 
 moc_MainWindow.o: moc_MainWindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_MainWindow.o moc_MainWindow.cpp
-
-moc_ProductData.o: moc_ProductData.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_ProductData.o moc_ProductData.cpp
 
 ####### Install
 

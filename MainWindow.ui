@@ -957,7 +957,7 @@
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">font: 500 16pt &quot;Fira Mono&quot;;</string>
+        <string notr="true">font: 300 16pt &quot;Fira Mono&quot;;</string>
        </property>
       </widget>
      </widget>
@@ -999,6 +999,9 @@
          <width>751</width>
          <height>421</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 300 16pt &quot;Fira Mono&quot;;</string>
        </property>
       </widget>
      </widget>
