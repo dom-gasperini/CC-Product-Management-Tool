@@ -15,6 +15,7 @@
 #include <stdint.h>
 #include <QDateTime>
 
+
 // enumerations
 typedef enum ProductClass {
     NO_CLASS,

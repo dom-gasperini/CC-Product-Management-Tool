@@ -14,6 +14,7 @@
 // defines
 #define DISPLAY_UPDATE_INTERVAL   200     // in milliseconds
 
+
 /**
  * @brief MainWindow::MainWindow
  * @param parent
@@ -40,11 +41,19 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     m_database = new DatabaseManager("cc-product-database.db");
 }
 
+
+/**
+ * @brief MainWindow::~MainWindow
+ */
 MainWindow::~MainWindow()
 {
     delete ui;
 }
 
+
+/**
+ * @brief MainWindow::UpdateDisplay
+ */
 void MainWindow::UpdateDisplay() {
     // set database active status
 
@@ -132,6 +141,10 @@ void MainWindow::UpdateDisplay() {
 }
 
 
+/**
+ * @brief MainWindow::on_actionDark_Mode_toggled
+ * @param checked
+ */
 void MainWindow::on_actionDark_Mode_toggled(bool checked) {
     if (checked) {
         // Set Style
@@ -192,12 +205,18 @@ void MainWindow::on_actionDark_Mode_toggled(bool checked) {
 }
 
 
+/**
+ * @brief MainWindow::on_actionAbout_triggered
+ */
 void MainWindow::on_actionAbout_triggered()
 {
     m_aboutDialog->show();
 }
 
 
+/**
+ * @brief MainWindow::on_clearBtn_clicked
+ */
 void MainWindow::on_clearBtn_clicked()
 {
     // reset fields
@@ -220,6 +239,9 @@ void MainWindow::on_clearBtn_clicked()
 }
 
 
+/**
+ * @brief MainWindow::on_addProductBtn_clicked
+ */
 void MainWindow::on_addProductBtn_clicked()
 {
     // inits
@@ -264,6 +286,9 @@ void MainWindow::on_addProductBtn_clicked()
 }
 
 
+/**
+ * @brief MainWindow::on_resetFiltersSearchBtn_clicked
+ */
 void MainWindow::on_resetFiltersSearchBtn_clicked()
 {
     // set all to unchecked
@@ -278,6 +303,9 @@ void MainWindow::on_resetFiltersSearchBtn_clicked()
 }
 
 
+/**
+ * @brief MainWindow::on_clearSearchBtn_clicked
+ */
 void MainWindow::on_clearSearchBtn_clicked()
 {
     // reset fields
@@ -294,6 +322,9 @@ void MainWindow::on_clearSearchBtn_clicked()
 }
 
 
+/**
+ * @brief MainWindow::on_searchBtn_clicked
+ */
 void MainWindow::on_searchBtn_clicked()
 {
     // inits
@@ -364,6 +395,9 @@ void MainWindow::on_searchBtn_clicked()
 }
 
 
+/**
+ * @brief MainWindow::on_openItemSearchBtn_clicked
+ */
 void MainWindow::on_openItemSearchBtn_clicked()
 {
     // inits
@@ -386,7 +420,6 @@ void MainWindow::on_openItemSearchBtn_clicked()
     productInfo += "Article Number: " + selectedProduct.getArticleNumber() + "\n";
     productInfo += "Location: " + selectedProduct.getLocation() + "\n";
     productInfo += "Comments: " + selectedProduct.getComments();
-
 
     // do popup
     QMessageBox::information(this, "Product Information", productInfo);

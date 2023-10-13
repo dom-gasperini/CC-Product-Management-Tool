@@ -21,11 +21,11 @@ DatabaseManager::DatabaseManager(QString path)
     m_db.setDatabaseName(path);
 
     if (!m_db.open()) {
-        m_databaseActive = true;
+        m_databaseActive = false;
         qDebug() << "Database Connection Status: ERROR";
     }
     else {
-        m_databaseActive = false;
+        m_databaseActive = true;
         qDebug() << "Database Connection Status: OK";
     }
 }
@@ -110,6 +110,7 @@ bool DatabaseManager::removeProduct(ProductData* product, QString paramType, QSt
     return success;
 }
 
+
 /**
  * @brief DatabaseManager::findProduct
  * @param product
@@ -166,6 +167,7 @@ void DatabaseManager::findProduct(QString productClass, QVector<QString> paramTy
     }
 }
 
+
 /**
  * @brief DatabaseManager::printAll
  * @return
@@ -184,6 +186,7 @@ QVector<ProductData> DatabaseManager::printAll() {
     return productList;
 }
 
+
 /**
  * @brief DatabaseManager::clearSearchResults
  */
@@ -195,6 +198,7 @@ void DatabaseManager::clearSearchResults() {
 QVector<ProductData> DatabaseManager::getSearchResults() {
     return m_searchResults;
 }
+
 
 /**
  * @brief DatabaseManager::getDatabaseActive
