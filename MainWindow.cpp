@@ -302,10 +302,7 @@ void MainWindow::on_searchBtn_clicked()
     QVector<ProductData> results;
 
     // gather search parameters
-    tmp = ui->productClassSearchCbx->currentText();
-    if (tmp == "Display") productClass = "Displays";
-    else if (tmp == "Cable") productClass = "Cables";
-    else productClass = "none";
+    productClass = ui->productClassSearchCbx->currentText();
 
     if (ui->typeSearchCb->isChecked()) {
         paramType.append("type");
@@ -340,28 +337,58 @@ void MainWindow::on_searchBtn_clicked()
         params.append(ui->locationSearchBx->text());
     }
 
-    qDebug() << "types: ";
-    for (auto i : paramType) {
-        qDebug() << QString(i);
-    }
-    qDebug() << "params: ";
-    for (auto i : params) {
-        qDebug() << i;
-    }
+//    qDebug() << "types: ";
+//    for (auto i : paramType) {
+//        qDebug() << QString(i);
+//    }
+//    qDebug() << "params: ";
+//    for (auto i : params) {
+//        qDebug() << i;
+//    }
 
     // clear current results list
+    m_database->clearSearchResults();
     ui->searchResultsList->clear();
 
     // do search
-    results = m_database->findProduct(productClass, paramType, params);
+    m_database->findProduct(productClass, paramType, params);
 
     // populate results
-    for (ProductData i : results) {
+    for (ProductData i : m_database->getSearchResults()) {
         QString summarized = "";
-        summarized += i.productTypeToQString() + " ";
-        summarized += i.productClassToQString() + " ";
+        summarized += i.productClassToQString() + " | ";
+        summarized += i.productTypeToQString() + " | ";
         summarized += i.productStatusToQString();
         ui->searchResultsList->addItem(summarized);
     }
+}
+
+
+void MainWindow::on_openItemSearchBtn_clicked()
+{
+    // inits
+    int itemIndex;
+    QString productInfo = "";
+    ProductData selectedProduct;
+
+    // gather selected infromation
+    itemIndex = ui->searchResultsList->currentRow();
+    selectedProduct = m_database->getSearchResults().at(itemIndex);
+
+    productInfo += "General Infromation:\n\n";
+    productInfo += "Product Class: " + selectedProduct.productClassToQString() + "\n";
+    productInfo += "Product Type: " + selectedProduct.productTypeToQString() + "\n";
+    productInfo += "Product Status: " + selectedProduct.productStatusToQString() + "\n";
+    productInfo += "\n\n\nDetailed Information:\n\n";
+    productInfo += "Account Number: " + selectedProduct.getAccount() + "\n";
+    productInfo += "Serial Number: " + QString::number(selectedProduct.getSerialNumber()) + "\n";
+    productInfo += "Revision: " + QString::number(selectedProduct.getProductRevision()) + "\n";
+    productInfo += "Article Number: " + selectedProduct.getArticleNumber() + "\n";
+    productInfo += "Location: " + selectedProduct.getLocation() + "\n";
+    productInfo += "Comments: " + selectedProduct.getComments();
+
+
+    // do popup
+    QMessageBox::information(this, "Product Information", productInfo);
 }
 

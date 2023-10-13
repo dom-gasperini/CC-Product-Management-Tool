@@ -45,10 +45,10 @@ ProductData::ProductData()
 ProductClass ProductData::QStringToProductClass(QString str) {
     ProductClass pclass = NO_CLASS;
 
-    if (str == "Display") {
+    if (str == "Displays") {
         pclass = DISPLAY;
     }
-    else if (str == "Cable") {
+    else if (str == "Cables") {
         pclass = CABLE;
     }
     else {
@@ -73,10 +73,11 @@ ProductStatus ProductData::QStringToProductStatus(QString str) {
     else if (str == "In-Stock") {
         status = IN_STOCK;
     }
-    else if (str == "FAE Unit") {
+    else if (str == "FAE-Unit") {
         status = FAE_UNIT;
     }
     else {
+        qDebug() << "failed: " << str;
         status = NO_STATUS;
     }
 
@@ -141,7 +142,7 @@ QString ProductData::productStatusToQString() {
         str = "In-Stock";
         break;
     case FAE_UNIT:
-        str = "FAE Unit";
+        str = "FAE-Unit";
         break;
     default:
         str = "No Status";
@@ -169,6 +170,7 @@ QString ProductData::productClassToQString() {
         str = "Cables";
         break;
     default:
+        qDebug() << "failed: " << str;
         str = "No Class";
         break;
     }

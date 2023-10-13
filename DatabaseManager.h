@@ -27,16 +27,19 @@ public:
     // functions
     bool addProduct(ProductData* product);
     bool removeProduct(ProductData* product, QString paramType, QString param);
-    QVector<ProductData> findProduct(QString productClass, QVector<QString> paramType, QVector<QString> param);
+    void findProduct(QString productClass, QVector<QString> paramType, QVector<QString> param);
     QVector<ProductData> printAll();
+    void clearSearchResults();
 
     // getters
+    QVector<ProductData> getSearchResults();
     bool getDatabaseActive();
 
 private:
     // database variables
     QSqlDatabase m_db;
     bool m_databaseActive;
+    QVector<ProductData> m_searchResults;
 };
 
 #endif // DATABASEMANAGER_H

@@ -60,5 +60,6 @@ private slots:
     void on_resetFiltersSearchBtn_clicked();
     void on_clearSearchBtn_clicked();
     void on_searchBtn_clicked();
+    void on_openItemSearchBtn_clicked();
 };
 #endif // MAINWINDOW_H

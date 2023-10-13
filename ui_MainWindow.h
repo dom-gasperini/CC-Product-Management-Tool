@@ -571,6 +571,7 @@ public:
         searchResultsList = new QListWidget(groupBox_6);
         searchResultsList->setObjectName(QString::fromUtf8("searchResultsList"));
         searchResultsList->setGeometry(QRect(10, 30, 491, 141));
+        searchResultsList->setStyleSheet(QString::fromUtf8("font: 500 16pt \"Fira Mono\";"));
         openItemSearchBtn = new QPushButton(tab_3);
         openItemSearchBtn->setObjectName(QString::fromUtf8("openItemSearchBtn"));
         openItemSearchBtn->setGeometry(QRect(550, 220, 211, 81));
@@ -665,8 +666,8 @@ public:
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QCoreApplication::translate("MainWindow", "Remove Product", nullptr));
         groupBox_7->setTitle(QCoreApplication::translate("MainWindow", "General Information", nullptr));
         productClassSearchLbl->setText(QCoreApplication::translate("MainWindow", "Product Class:", nullptr));
-        productClassSearchCbx->setItemText(0, QCoreApplication::translate("MainWindow", "Display", nullptr));
-        productClassSearchCbx->setItemText(1, QCoreApplication::translate("MainWindow", "Cable", nullptr));
+        productClassSearchCbx->setItemText(0, QCoreApplication::translate("MainWindow", "Displays", nullptr));
+        productClassSearchCbx->setItemText(1, QCoreApplication::translate("MainWindow", "Cables", nullptr));
 
         productTyepSearchLbl->setText(QCoreApplication::translate("MainWindow", "Product Type:", nullptr));
         typeSearchCbx->setItemText(0, QCoreApplication::translate("MainWindow", "VI-2", nullptr));
@@ -683,7 +684,7 @@ public:
         productStatusSearchLbl->setText(QCoreApplication::translate("MainWindow", "Product Status:", nullptr));
         statusSearchCbx->setItemText(0, QCoreApplication::translate("MainWindow", "In-Stock", nullptr));
         statusSearchCbx->setItemText(1, QCoreApplication::translate("MainWindow", "On-Loan", nullptr));
-        statusSearchCbx->setItemText(2, QCoreApplication::translate("MainWindow", "FAE Unit", nullptr));
+        statusSearchCbx->setItemText(2, QCoreApplication::translate("MainWindow", "FAE-Unit", nullptr));
 
         groupBox_9->setTitle(QCoreApplication::translate("MainWindow", "Actions", nullptr));
         searchBtn->setText(QCoreApplication::translate("MainWindow", "Search", nullptr));

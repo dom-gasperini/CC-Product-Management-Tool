@@ -560,12 +560,12 @@
          <widget class="QComboBox" name="productClassSearchCbx">
           <item>
            <property name="text">
-            <string>Display</string>
+            <string>Displays</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>Cable</string>
+            <string>Cables</string>
            </property>
           </item>
          </widget>
@@ -652,7 +652,7 @@
           </item>
           <item>
            <property name="text">
-            <string>FAE Unit</string>
+            <string>FAE-Unit</string>
            </property>
           </item>
          </widget>
@@ -955,6 +955,9 @@
          <width>491</width>
          <height>141</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 500 16pt &quot;Fira Mono&quot;;</string>
        </property>
       </widget>
      </widget>

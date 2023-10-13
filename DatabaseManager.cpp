@@ -115,13 +115,11 @@ bool DatabaseManager::removeProduct(ProductData* product, QString paramType, QSt
  * @param product
  * @return
  */
-QVector<ProductData> DatabaseManager::findProduct(QString productClass, QVector<QString> paramType, QVector<QString> param) {
+void DatabaseManager::findProduct(QString productClass, QVector<QString> paramType, QVector<QString> param) {
     // inits
-    QVector<ProductData> productList;
     QSqlQuery query;
     QString queryStr;
     QString whereClause = "";
-    QString fff = "none";
 
     // prepare query
     if (paramType.length() > 1) {
@@ -142,14 +140,30 @@ QVector<ProductData> DatabaseManager::findProduct(QString productClass, QVector<
     if (query.exec()) {
        if (query.next()) {
            while(query.next()) {
-               fff = query.value(0).toString();
+               ProductData tmpProduct;
+               tmpProduct.setProductClass(tmpProduct.QStringToProductClass(productClass));
+               tmpProduct.setProductType(tmpProduct.QStringToProductType(query.value(0).toString()));
+               tmpProduct.setProductVariant(query.value(1).toString());
+               tmpProduct.setArticleNumber(query.value(2).toString());
+               tmpProduct.setSerialNumber(query.value(3).toInt());
+               tmpProduct.setProductRevision(query.value(4).toFloat());
+               tmpProduct.setAccount(query.value(5).toString());
+               tmpProduct.setComments(query.value(6).toString());
+               tmpProduct.setLocation(query.value(7).toString());
+               tmpProduct.setProductStatus(tmpProduct.QStringToProductStatus(query.value(8).toString()));
+
+//               for (int i = 0; i < 9; ++i) {
+//                   qDebug() << query.value(i) << " ";
+//               }
+               m_searchResults.append(tmpProduct);
            }
        }
     }
 
-    qDebug() << "Product List: " << fff;
-
-    return productList;
+    qDebug() << "Product List: ";
+    for (auto i : m_searchResults) {
+        qDebug() << i.productClassToQString() << " " << i.productTypeToQString() << " " << i.productStatusToQString() << " " << i.getProductRevision();
+    }
 }
 
 /**
@@ -170,6 +184,17 @@ QVector<ProductData> DatabaseManager::printAll() {
     return productList;
 }
 
+/**
+ * @brief DatabaseManager::clearSearchResults
+ */
+void DatabaseManager::clearSearchResults() {
+    // clear em
+    m_searchResults.clear();
+}
+
+QVector<ProductData> DatabaseManager::getSearchResults() {
+    return m_searchResults;
+}
 
 /**
  * @brief DatabaseManager::getDatabaseActive
