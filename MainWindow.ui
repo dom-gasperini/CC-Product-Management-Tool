@@ -36,7 +36,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="tab_1">
      <attribute name="title">
@@ -991,7 +991,7 @@
       <property name="title">
        <string>All Products</string>
       </property>
-      <widget class="QListView" name="allProductsList">
+      <widget class="QListWidget" name="allProductsList">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -1002,7 +1002,7 @@
        </property>
       </widget>
      </widget>
-     <widget class="QPushButton" name="pushButton_2">
+     <widget class="QPushButton" name="openItemAllBtn">
       <property name="geometry">
        <rect>
         <x>610</x>
@@ -1013,6 +1013,52 @@
       </property>
       <property name="text">
        <string>Open Item</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="allProductsClassCmbx">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>480</y>
+        <width>111</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <item>
+       <property name="text">
+        <string>Displays</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Cables</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QLabel" name="productClassAllLbl">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>490</y>
+        <width>141</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Select Product Class: </string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="refreshAllBtn">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>480</y>
+        <width>171</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Refresh</string>
       </property>
      </widget>
     </widget>

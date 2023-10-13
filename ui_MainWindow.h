@@ -20,7 +20,6 @@
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
-#include <QtWidgets/QListView>
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
@@ -132,8 +131,11 @@ public:
     QPushButton *openItemSearchBtn;
     QWidget *tab_4;
     QGroupBox *groupBox_11;
-    QListView *allProductsList;
-    QPushButton *pushButton_2;
+    QListWidget *allProductsList;
+    QPushButton *openItemAllBtn;
+    QComboBox *allProductsClassCmbx;
+    QLabel *productClassAllLbl;
+    QPushButton *refreshAllBtn;
     QMenuBar *menubar;
     QMenu *menuOptions;
     QStatusBar *statusbar;
@@ -581,12 +583,23 @@ public:
         groupBox_11 = new QGroupBox(tab_4);
         groupBox_11->setObjectName(QString::fromUtf8("groupBox_11"));
         groupBox_11->setGeometry(QRect(10, 10, 771, 461));
-        allProductsList = new QListView(groupBox_11);
+        allProductsList = new QListWidget(groupBox_11);
         allProductsList->setObjectName(QString::fromUtf8("allProductsList"));
         allProductsList->setGeometry(QRect(10, 30, 751, 421));
-        pushButton_2 = new QPushButton(tab_4);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        pushButton_2->setGeometry(QRect(610, 480, 171, 41));
+        openItemAllBtn = new QPushButton(tab_4);
+        openItemAllBtn->setObjectName(QString::fromUtf8("openItemAllBtn"));
+        openItemAllBtn->setGeometry(QRect(610, 480, 171, 41));
+        allProductsClassCmbx = new QComboBox(tab_4);
+        allProductsClassCmbx->addItem(QString());
+        allProductsClassCmbx->addItem(QString());
+        allProductsClassCmbx->setObjectName(QString::fromUtf8("allProductsClassCmbx"));
+        allProductsClassCmbx->setGeometry(QRect(160, 480, 111, 41));
+        productClassAllLbl = new QLabel(tab_4);
+        productClassAllLbl->setObjectName(QString::fromUtf8("productClassAllLbl"));
+        productClassAllLbl->setGeometry(QRect(10, 490, 141, 16));
+        refreshAllBtn = new QPushButton(tab_4);
+        refreshAllBtn->setObjectName(QString::fromUtf8("refreshAllBtn"));
+        refreshAllBtn->setGeometry(QRect(420, 480, 171, 41));
         tabWidget->addTab(tab_4, QString());
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
@@ -607,7 +620,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(2);
+        tabWidget->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -710,7 +723,12 @@ public:
         openItemSearchBtn->setText(QCoreApplication::translate("MainWindow", "Open Item", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_3), QCoreApplication::translate("MainWindow", "Find Product", nullptr));
         groupBox_11->setTitle(QCoreApplication::translate("MainWindow", "All Products", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("MainWindow", "Open Item", nullptr));
+        openItemAllBtn->setText(QCoreApplication::translate("MainWindow", "Open Item", nullptr));
+        allProductsClassCmbx->setItemText(0, QCoreApplication::translate("MainWindow", "Displays", nullptr));
+        allProductsClassCmbx->setItemText(1, QCoreApplication::translate("MainWindow", "Cables", nullptr));
+
+        productClassAllLbl->setText(QCoreApplication::translate("MainWindow", "Select Product Class: ", nullptr));
+        refreshAllBtn->setText(QCoreApplication::translate("MainWindow", "Refresh", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_4), QCoreApplication::translate("MainWindow", "Show All Products", nullptr));
         menuOptions->setTitle(QCoreApplication::translate("MainWindow", "Options", nullptr));
     } // retranslateUi

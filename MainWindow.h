@@ -49,6 +49,7 @@ private:
     // data
     ProductData* m_productData;
     DatabaseManager* m_database;
+    int m_refreshCounter;
 
 private slots:
     void UpdateDisplay();
@@ -61,5 +62,8 @@ private slots:
     void on_clearSearchBtn_clicked();
     void on_searchBtn_clicked();
     void on_openItemSearchBtn_clicked();
+    void on_refreshAllBtn_clicked();
+    void on_allProductsClassCmbx_currentTextChanged(const QString &arg1);
+    void on_openItemAllBtn_clicked();
 };
 #endif // MAINWINDOW_H

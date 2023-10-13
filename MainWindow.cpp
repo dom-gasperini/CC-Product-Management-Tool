@@ -39,6 +39,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     // setup data
     m_productData = new ProductData();
     m_database = new DatabaseManager("cc-product-database.db");
+    m_refreshCounter = 0;
 }
 
 
@@ -58,7 +59,7 @@ void MainWindow::UpdateDisplay() {
     // set database active status
 
 
-    // tab switcher
+    // add a product
     if (ui->tab_1->isActiveWindow()) {
         // set last updated
         ui->inventoryDateDTBx->setDateTime(QDateTime::currentDateTime());
@@ -97,10 +98,12 @@ void MainWindow::UpdateDisplay() {
         }
     }
 
+    // remove a product
     if (ui->tab_2->isActiveWindow()) {
 
     }
 
+    // search for a product or products
     if (ui->tab_3->isActiveWindow()) {
         // handle checkboxes
         if (ui->typeSearchCb->isChecked()) ui->typeSearchCbx->setEnabled(true);
@@ -134,10 +137,13 @@ void MainWindow::UpdateDisplay() {
         else ui->searchBtn->setEnabled(false);
     }
 
+    // view all products
     if (ui->tab_4->isActiveWindow()) {
-
+        // if its empty
+        if (ui->allProductsList->count() == 0) {
+            on_refreshAllBtn_clicked();
+        }
     }
-
 }
 
 
@@ -328,9 +334,8 @@ void MainWindow::on_clearSearchBtn_clicked()
 void MainWindow::on_searchBtn_clicked()
 {
     // inits
-    QString productClass, tmp;
+    QString productClass;
     QVector<QString> paramType, params;
-    QVector<ProductData> results;
 
     // gather search parameters
     productClass = ui->productClassSearchCbx->currentText();
@@ -408,6 +413,71 @@ void MainWindow::on_openItemSearchBtn_clicked()
     // gather selected infromation
     itemIndex = ui->searchResultsList->currentRow();
     selectedProduct = m_database->getSearchResults().at(itemIndex);
+
+    productInfo += "General Infromation:\n\n";
+    productInfo += "Product Class: " + selectedProduct.productClassToQString() + "\n";
+    productInfo += "Product Type: " + selectedProduct.productTypeToQString() + "\n";
+    productInfo += "Product Status: " + selectedProduct.productStatusToQString() + "\n";
+    productInfo += "\n\n\nDetailed Information:\n\n";
+    productInfo += "Account Number: " + selectedProduct.getAccount() + "\n";
+    productInfo += "Serial Number: " + QString::number(selectedProduct.getSerialNumber()) + "\n";
+    productInfo += "Revision: " + QString::number(selectedProduct.getProductRevision()) + "\n";
+    productInfo += "Article Number: " + selectedProduct.getArticleNumber() + "\n";
+    productInfo += "Location: " + selectedProduct.getLocation() + "\n";
+    productInfo += "Comments: " + selectedProduct.getComments();
+
+    // do popup
+    QMessageBox::information(this, "Product Information", productInfo);
+}
+
+
+/**
+ * @brief MainWindow::on_refreshAllBtn_clicked
+ */
+void MainWindow::on_refreshAllBtn_clicked()
+{
+    // clear list of products
+    m_database->clearAllProducts();
+    ui->allProductsList->clear();
+
+    // get list of all products
+    m_database->printAll(ui->allProductsClassCmbx->currentText());
+
+    // refresh list of all products
+    for (ProductData i : m_database->getAllProducts()) {
+        QString summarized = "";
+        summarized += i.productClassToQString() + " | ";
+        summarized += i.productTypeToQString() + " | ";
+        summarized += i.productStatusToQString() + " | ";
+        summarized += i.getAccount() + " | ";
+        ui->allProductsList->addItem(summarized);
+    }
+}
+
+
+/**
+ * @brief MainWindow::on_allProductsClassCmbx_currentTextChanged
+ * @param arg1
+ */
+void MainWindow::on_allProductsClassCmbx_currentTextChanged(const QString &arg1)
+{
+    on_refreshAllBtn_clicked();
+}
+
+
+/**
+ * @brief MainWindow::on_openItemAllBtn_clicked
+ */
+void MainWindow::on_openItemAllBtn_clicked()
+{
+    // inits
+    int itemIndex;
+    QString productInfo = "";
+    ProductData selectedProduct;
+
+    // gather selected infromation
+    itemIndex = ui->allProductsList->currentRow();
+    selectedProduct = m_database->getAllProducts().at(itemIndex);
 
     productInfo += "General Infromation:\n\n";
     productInfo += "Product Class: " + selectedProduct.productClassToQString() + "\n";

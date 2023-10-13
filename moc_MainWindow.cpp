@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    const uint offsetsAndSize[24];
-    char stringdata0[237];
+    const uint offsetsAndSize[30];
+    char stringdata0[331];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_MainWindow_t, stringdata0) + ofs), len 
@@ -40,7 +40,10 @@ QT_MOC_LITERAL(103, 24), // "on_addProductBtn_clicked"
 QT_MOC_LITERAL(128, 32), // "on_resetFiltersSearchBtn_clicked"
 QT_MOC_LITERAL(161, 25), // "on_clearSearchBtn_clicked"
 QT_MOC_LITERAL(187, 20), // "on_searchBtn_clicked"
-QT_MOC_LITERAL(208, 28) // "on_openItemSearchBtn_clicked"
+QT_MOC_LITERAL(208, 28), // "on_openItemSearchBtn_clicked"
+QT_MOC_LITERAL(237, 24), // "on_refreshAllBtn_clicked"
+QT_MOC_LITERAL(262, 42), // "on_allProductsClassCmbx_curre..."
+QT_MOC_LITERAL(305, 25) // "on_openItemAllBtn_clicked"
 
     },
     "MainWindow\0UpdateDisplay\0\0"
@@ -49,7 +52,10 @@ QT_MOC_LITERAL(208, 28) // "on_openItemSearchBtn_clicked"
     "on_addProductBtn_clicked\0"
     "on_resetFiltersSearchBtn_clicked\0"
     "on_clearSearchBtn_clicked\0"
-    "on_searchBtn_clicked\0on_openItemSearchBtn_clicked"
+    "on_searchBtn_clicked\0on_openItemSearchBtn_clicked\0"
+    "on_refreshAllBtn_clicked\0"
+    "on_allProductsClassCmbx_currentTextChanged\0"
+    "on_openItemAllBtn_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -59,7 +65,7 @@ static const uint qt_meta_data_MainWindow[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
-       9,   14, // methods
+      12,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -67,15 +73,18 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   68,    2, 0x08,    1 /* Private */,
-       3,    1,   69,    2, 0x08,    2 /* Private */,
-       5,    0,   72,    2, 0x08,    4 /* Private */,
-       6,    0,   73,    2, 0x08,    5 /* Private */,
-       7,    0,   74,    2, 0x08,    6 /* Private */,
-       8,    0,   75,    2, 0x08,    7 /* Private */,
-       9,    0,   76,    2, 0x08,    8 /* Private */,
-      10,    0,   77,    2, 0x08,    9 /* Private */,
-      11,    0,   78,    2, 0x08,   10 /* Private */,
+       1,    0,   86,    2, 0x08,    1 /* Private */,
+       3,    1,   87,    2, 0x08,    2 /* Private */,
+       5,    0,   90,    2, 0x08,    4 /* Private */,
+       6,    0,   91,    2, 0x08,    5 /* Private */,
+       7,    0,   92,    2, 0x08,    6 /* Private */,
+       8,    0,   93,    2, 0x08,    7 /* Private */,
+       9,    0,   94,    2, 0x08,    8 /* Private */,
+      10,    0,   95,    2, 0x08,    9 /* Private */,
+      11,    0,   96,    2, 0x08,   10 /* Private */,
+      12,    0,   97,    2, 0x08,   11 /* Private */,
+      13,    1,   98,    2, 0x08,   12 /* Private */,
+      14,    0,  101,    2, 0x08,   14 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -86,6 +95,9 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,    4,
     QMetaType::Void,
 
        0        // eod
@@ -106,6 +118,9 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 6: _t->on_clearSearchBtn_clicked(); break;
         case 7: _t->on_searchBtn_clicked(); break;
         case 8: _t->on_openItemSearchBtn_clicked(); break;
+        case 9: _t->on_refreshAllBtn_clicked(); break;
+        case 10: _t->on_allProductsClassCmbx_currentTextChanged((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 11: _t->on_openItemAllBtn_clicked(); break;
         default: ;
         }
     }
@@ -119,7 +134,7 @@ const QMetaObject MainWindow::staticMetaObject = { {
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_MainWindow_t
 , QtPrivate::TypeAndForceComplete<MainWindow, std::true_type>
-, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<bool, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<const QString &, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
 
 
 >,
@@ -146,13 +161,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 9)
+        if (_id < 12)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 12;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 9)
+        if (_id < 12)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 9;
+        _id -= 12;
     }
     return _id;
 }

@@ -133,6 +133,7 @@ void DatabaseManager::findProduct(QString productClass, QVector<QString> paramTy
         whereClause = paramType.at(0) + "=\'" + param.at(0) + "\';";
     }
 
+    // prepare query
     queryStr = "SELECT * FROM " + productClass + " WHERE " + whereClause;
     query.prepare(queryStr);
     qDebug() << "Query: " << queryStr;
@@ -172,18 +173,36 @@ void DatabaseManager::findProduct(QString productClass, QVector<QString> paramTy
  * @brief DatabaseManager::printAll
  * @return
  */
-QVector<ProductData> DatabaseManager::printAll() {
+void DatabaseManager::printAll(QString productClass) {
     // inits
-    QVector<ProductData> productList;
-    //           QSqlQuery query("SELECT * FROM people");
-    //           int idName = query.record().indexOf("name");
-    //           while (query.next())
-    //           {
-    //              QString name = query.value(idName).toString();
-    //              qDebug() << name;
-    //           }
+    QSqlQuery query;
 
-    return productList;
+    // prepare query
+    query.prepare("SELECT * FROM " + productClass);
+
+    // execute query
+    if (query.exec()) {
+       if (query.next()) {
+           while(query.next()) {
+               ProductData tmpProduct;
+               tmpProduct.setProductClass(tmpProduct.QStringToProductClass(productClass));
+               tmpProduct.setProductType(tmpProduct.QStringToProductType(query.value(0).toString()));
+               tmpProduct.setProductVariant(query.value(1).toString());
+               tmpProduct.setArticleNumber(query.value(2).toString());
+               tmpProduct.setSerialNumber(query.value(3).toInt());
+               tmpProduct.setProductRevision(query.value(4).toFloat());
+               tmpProduct.setAccount(query.value(5).toString());
+               tmpProduct.setComments(query.value(6).toString());
+               tmpProduct.setLocation(query.value(7).toString());
+               tmpProduct.setProductStatus(tmpProduct.QStringToProductStatus(query.value(8).toString()));
+
+//               for (int i = 0; i < 9; ++i) {
+//                   qDebug() << query.value(i) << " ";
+//               }
+               m_allProducts.append(tmpProduct);
+           }
+       }
+    }
 }
 
 
@@ -195,8 +214,31 @@ void DatabaseManager::clearSearchResults() {
     m_searchResults.clear();
 }
 
+
+/**
+ * @brief DatabaseManager::clearAllProducts
+ */
+void DatabaseManager::clearAllProducts() {
+    // clear em
+    m_allProducts.clear();
+}
+
+
+/**
+ * @brief DatabaseManager::getSearchResults
+ * @return
+ */
 QVector<ProductData> DatabaseManager::getSearchResults() {
     return m_searchResults;
+}
+
+
+/**
+ * @brief DatabaseManager::getAllProducts
+ * @return
+ */
+QVector<ProductData> DatabaseManager::getAllProducts() {
+    return m_allProducts;
 }
 
 

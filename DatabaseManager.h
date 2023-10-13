@@ -16,6 +16,7 @@
 #include <ProductData.h>
 #include <QDebug>
 
+
 /**
  * @brief The DatabaseManager class
  */
@@ -28,18 +29,21 @@ public:
     bool addProduct(ProductData* product);
     bool removeProduct(ProductData* product, QString paramType, QString param);
     void findProduct(QString productClass, QVector<QString> paramType, QVector<QString> param);
-    QVector<ProductData> printAll();
+    void printAll(QString productClass);
     void clearSearchResults();
+    void clearAllProducts();
 
     // getters
-    QVector<ProductData> getSearchResults();
     bool getDatabaseActive();
+    QVector<ProductData> getSearchResults();
+    QVector<ProductData> getAllProducts();
 
 private:
     // database variables
     QSqlDatabase m_db;
     bool m_databaseActive;
     QVector<ProductData> m_searchResults;
+    QVector<ProductData> m_allProducts;
 };
 
 #endif // DATABASEMANAGER_H
