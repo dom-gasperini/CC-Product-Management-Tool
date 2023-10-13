@@ -87,7 +87,7 @@ void MainWindow::UpdateDisplay() {
                 ui->productImageLbl->setPixmap(QPixmap(":/images/x1400.jpg").scaledToWidth(ui->productImageLbl->width()));
         }
         else {
-            ui->productImageLbl->setPixmap(QPixmap(":/images/cables.jpg").scaledToWidth(ui->productImageLbl->width()));
+            ui->productImageLbl->setPixmap(QPixmap(":/images/cables.webp").scaledToWidth(ui->productImageLbl->width()));
         }
 
     }

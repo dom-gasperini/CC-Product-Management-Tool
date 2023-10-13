@@ -13,5 +13,6 @@
         <file>x900.jpg</file>
         <file>x1200.png</file>
         <file>x1400.jpg</file>
+        <file>cables.webp</file>
     </qresource>
 </RCC>

@@ -965,6 +965,7 @@ qrc_images.cpp: images.qrc \
 		x1400.jpg \
 		v1200.jpg \
 		x900.jpg \
+		cables.webp \
 		v510.png \
 		x1200.png \
 		v710.png \
