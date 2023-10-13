@@ -27,6 +27,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     this->setWindowIcon(QIcon(":/images/cc-logo.ico"));
     m_currentPalette = qApp->palette();
     ui->tabWidget->setCurrentIndex(0);
+    ui->deleteProductBtn->setEnabled(false);
 
     // setup about dialog
     m_aboutDialog = new AboutDlg();
@@ -251,7 +252,7 @@ void MainWindow::on_clearBtn_clicked()
 void MainWindow::on_addProductBtn_clicked()
 {
     // inits
-    bool save;
+    bool save, added;
 
     // popup
     switch(QMessageBox::question(this, tr("Add Product to Inventory"), tr("Are you sure you want to add this product to the inventory?"), QMessageBox::Yes | QMessageBox::No))
@@ -264,7 +265,7 @@ void MainWindow::on_addProductBtn_clicked()
         break;
       default:
         save = false;
-        qDebug( "close" );
+        qDebug("close");
         break;
     }
 
@@ -287,7 +288,12 @@ void MainWindow::on_addProductBtn_clicked()
         m_productData->setLastUpdate(ui->inventoryDateDTBx->dateTime());
 
         // save to database
-        m_database->addProduct(m_productData);
+        added = m_database->addProduct(m_productData);
+
+        if (added) {
+            // do popup
+            QMessageBox::information(this, "Product Added", "The product was successfully added to the database!");
+        }
     }
 }
 
@@ -485,21 +491,95 @@ void MainWindow::on_openItemAllBtn_clicked()
 
     // gather selected infromation
     itemIndex = ui->allProductsList->currentRow();
-    selectedProduct = m_database->getAllProducts().at(itemIndex);
 
-    productInfo += "General Infromation:\n\n";
-    productInfo += "Product Class: " + selectedProduct.productClassToQString() + "\n";
-    productInfo += "Product Type: " + selectedProduct.productTypeToQString() + "\n";
-    productInfo += "Product Status: " + selectedProduct.productStatusToQString() + "\n";
-    productInfo += "\n\n\nDetailed Information:\n\n";
-    productInfo += "Account Number: " + selectedProduct.getAccount() + "\n";
-    productInfo += "Serial Number: " + QString::number(selectedProduct.getSerialNumber()) + "\n";
-    productInfo += "Revision: " + QString::number(selectedProduct.getProductRevision()) + "\n";
-    productInfo += "Article Number: " + selectedProduct.getArticleNumber() + "\n";
-    productInfo += "Location: " + selectedProduct.getLocation() + "\n";
-    productInfo += "Comments: " + selectedProduct.getComments();
+    if (itemIndex == -1) {
+        // do popup
+        QMessageBox::warning(this, "Product Information", "No product selected!");
+    }
+    else {
+        selectedProduct = m_database->getAllProducts().at(itemIndex);
 
-    // do popup
-    QMessageBox::information(this, "Product Information", productInfo);
+        productInfo += "General Infromation:\n\n";
+        productInfo += "Product Class: " + selectedProduct.productClassToQString() + "\n";
+        productInfo += "Product Type: " + selectedProduct.productTypeToQString() + "\n";
+        productInfo += "Product Status: " + selectedProduct.productStatusToQString() + "\n";
+        productInfo += "\n\n\nDetailed Information:\n\n";
+        productInfo += "Account Number: " + selectedProduct.getAccount() + "\n";
+        productInfo += "Serial Number: " + QString::number(selectedProduct.getSerialNumber()) + "\n";
+        productInfo += "Revision: " + QString::number(selectedProduct.getProductRevision()) + "\n";
+        productInfo += "Article Number: " + selectedProduct.getArticleNumber() + "\n";
+        productInfo += "Location: " + selectedProduct.getLocation() + "\n";
+        productInfo += "Comments: " + selectedProduct.getComments();
+
+        // do popup
+        QMessageBox::information(this, "Product Information", productInfo);
+    }
+}
+
+
+void MainWindow::on_confirmProductDeleteBtn_clicked()
+{
+    // inits
+    bool confirmDelete;
+    int serialNumber;
+    QString productClass, account, article;
+    ProductData tmpProduct;
+
+    // gather information
+    productClass = ui->productClassDeleteCmbx->currentText();
+    account = ui->accountDeleteLineBx->text();
+    serialNumber = ui->serialNumberDeleteSbx->value();
+    article = ui->articleDeleteLineBx->text();
+
+    // confirm product
+    confirmDelete = m_database->removeProduct(productClass, serialNumber, account, article, false);
+
+    if (confirmDelete) {
+        // get product information
+        tmpProduct = m_database->getProductToDelete();
+
+        // populate information
+        ui->productClassDeleteConfirmInfo->setText(tmpProduct.productClassToQString());
+        ui->productTypeDeleteConfirmInfo->setText(tmpProduct.productTypeToQString());
+        ui->productStatusDeleteInfo->setText(tmpProduct.productStatusToQString());
+        ui->serialNumberDeleteConfirmSbx->setValue(tmpProduct.getSerialNumber());
+        ui->productRevisionDeleteConfirmSbx->setValue(tmpProduct.getProductRevision());
+        ui->accountDeleteConfirmLineBx->setText(tmpProduct.getAccount());
+        ui->productVariantDeleteConfirmBx->setText(tmpProduct.getProductVariant());
+        ui->articleDeleteConfirmLineBx->setText(tmpProduct.getArticleNumber());
+        ui->locationDeleteConfirmBx->setText(tmpProduct.getLocation());
+        ui->commentsDeleteConfirmTbx->setText(tmpProduct.getComments());
+
+        // allow for true deletion
+        ui->deleteProductBtn->setEnabled(true);
+    }
+    else {
+        QMessageBox::warning(this, "Product Confirmation", "This product could not be found!");
+    }
+}
+
+
+void MainWindow::on_deleteProductBtn_clicked()
+{
+    bool deleteComplete;
+    int serialNumber;
+    QString productClass, account, article;
+
+    // gather information
+    productClass = ui->productClassDeleteConfirmInfo->text();
+    account = ui->accountDeleteConfirmLineBx->text();
+    serialNumber = ui->serialNumberDeleteConfirmSbx->value();
+    article = ui->articleDeleteConfirmLineBx->text();
+
+    // delete product
+    deleteComplete = m_database->removeProduct(productClass, serialNumber, account, article, true);
+
+    // popup
+    if (deleteComplete) {
+        QMessageBox::information(this, "Product Deletion", "The product has been deleted!");
+    }
+
+    // reset button state
+    ui->deleteProductBtn->setEnabled(false);
 }
 

@@ -79,25 +79,52 @@ bool DatabaseManager::addProduct(ProductData* product)
  * @param product
  * @return
  */
-bool DatabaseManager::removeProduct(ProductData* product, QString paramType, QString param) {
+bool DatabaseManager::removeProduct(QString productClass, int serialNumber, QString account, QString article, bool confirmDelete) {
     // inits
     bool success = false;
     QSqlQuery query;
     QString queryStr;
 
-    // prepare query
-    queryStr = "DELETE " + paramType + " FROM " + product->productClassToQString() + " WHERE " + paramType + "=" + param;
-    query.prepare(queryStr);
-    qDebug() << "Query: " << queryStr;
+    if (!confirmDelete) {
+        // prepare query
+        queryStr = "SELECT * FROM " + productClass + " WHERE serial_number=\'" + QString::number(serialNumber) + "\' AND account=\'" + account + "\' AND article_number=\'" + article + "\';";
+        query.prepare(queryStr);
+        qDebug() << "Query: " << queryStr;
 
-    // execute query
-    if (query.exec()) {
-       // ensure product exists in database
-       if (query.next()) {
-            QSqlQuery query;
-            query.prepare(queryStr);
-            success = query.exec();
-       }
+        // execute query
+        if (query.exec()) {
+           if (query.next()) {
+               ProductData tmpProduct;
+               tmpProduct.setProductClass(tmpProduct.QStringToProductClass(productClass));
+               tmpProduct.setProductType(tmpProduct.QStringToProductType(query.value(0).toString()));
+               tmpProduct.setProductVariant(query.value(1).toString());
+               tmpProduct.setArticleNumber(query.value(2).toString());
+               tmpProduct.setSerialNumber(query.value(3).toInt());
+               tmpProduct.setProductRevision(query.value(4).toFloat());
+               tmpProduct.setAccount(query.value(5).toString());
+               tmpProduct.setComments(query.value(6).toString());
+               tmpProduct.setLocation(query.value(7).toString());
+               tmpProduct.setProductStatus(tmpProduct.QStringToProductStatus(query.value(8).toString()));
+
+       //      for (int i = 0; i < 9; ++i) {
+       //          qDebug() << query.value(i) << " ";
+       //      }
+               m_productToDelete = tmpProduct;
+               success = true;
+           }
+        }
+    }
+
+    if (confirmDelete) {
+        // prepare query
+        queryStr = "DELETE FROM " + productClass + " WHERE serial_number=\'" + QString::number(serialNumber) + "\' AND account=\'" + account + "\' AND article_number=\'" + article + "\';";
+        query.prepare(queryStr);
+        qDebug() << "Query: " << queryStr;
+
+        // execute query
+        if (query.exec()) {
+            success = true;
+        }
     }
 
     if(success) {
@@ -248,4 +275,13 @@ QVector<ProductData> DatabaseManager::getAllProducts() {
  */
 bool DatabaseManager::getDatabaseActive() {
     return m_databaseActive;
+}
+
+
+/**
+ * @brief DatabaseManager::getProductToDelete
+ * @return
+ */
+ProductData DatabaseManager::getProductToDelete() {
+    return m_productToDelete;
 }

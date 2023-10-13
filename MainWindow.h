@@ -65,5 +65,7 @@ private slots:
     void on_refreshAllBtn_clicked();
     void on_allProductsClassCmbx_currentTextChanged(const QString &arg1);
     void on_openItemAllBtn_clicked();
+    void on_confirmProductDeleteBtn_clicked();
+    void on_deleteProductBtn_clicked();
 };
 #endif // MAINWINDOW_H

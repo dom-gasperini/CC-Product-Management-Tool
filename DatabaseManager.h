@@ -27,7 +27,7 @@ public:
 
     // functions
     bool addProduct(ProductData* product);
-    bool removeProduct(ProductData* product, QString paramType, QString param);
+    bool removeProduct(QString productClass, int serialNumber, QString account, QString article, bool confirmDelete);
     void findProduct(QString productClass, QVector<QString> paramType, QVector<QString> param);
     void printAll(QString productClass);
     void clearSearchResults();
@@ -35,6 +35,7 @@ public:
 
     // getters
     bool getDatabaseActive();
+    ProductData getProductToDelete();
     QVector<ProductData> getSearchResults();
     QVector<ProductData> getAllProducts();
 
@@ -44,6 +45,7 @@ private:
     bool m_databaseActive;
     QVector<ProductData> m_searchResults;
     QVector<ProductData> m_allProducts;
+    ProductData m_productToDelete;
 };
 
 #endif // DATABASEMANAGER_H

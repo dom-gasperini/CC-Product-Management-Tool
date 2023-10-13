@@ -40,7 +40,6 @@ class Ui_MainWindow
 public:
     QAction *actionDark_Mode;
     QAction *actionAbout;
-    QAction *actionSelect_Database;
     QWidget *centralwidget;
     QTabWidget *tabWidget;
     QWidget *tab_1;
@@ -86,6 +85,49 @@ public:
     QPushButton *addProductBtn;
     QPushButton *clearBtn;
     QWidget *tab_2;
+    QGroupBox *groupBox_12;
+    QPushButton *confirmProductDeleteBtn;
+    QPushButton *deleteProductBtn;
+    QPushButton *clearDeleteParametersBtn;
+    QGroupBox *groupBox_13;
+    QWidget *layoutWidget3;
+    QGridLayout *gridLayout_4;
+    QLabel *productClassDeleteLbl;
+    QComboBox *productClassDeleteCmbx;
+    QLabel *serialNumberDeleteLbl;
+    QSpinBox *serialNumberDeleteSbx;
+    QLabel *accountDeleteLbl;
+    QLineEdit *accountDeleteLineBx;
+    QLabel *articleNumberDeleteLbl;
+    QLineEdit *articleDeleteLineBx;
+    QGroupBox *groupBox_14;
+    QWidget *layoutWidget_2;
+    QGridLayout *gridLayout_7;
+    QSpinBox *serialNumberDeleteConfirmSbx;
+    QLabel *serialNumberDeleteLbl_2;
+    QLabel *articleNumberDeleteLbl_2;
+    QLabel *productRevisionDeleteLbl;
+    QLineEdit *locationDeleteConfirmBx;
+    QLineEdit *articleDeleteConfirmLineBx;
+    QTextEdit *commentsDeleteConfirmTbx;
+    QLabel *locationDeleteLbl;
+    QLineEdit *productVariantDeleteConfirmBx;
+    QLineEdit *accountDeleteConfirmLineBx;
+    QSpacerItem *horizontalSpacer_2;
+    QLabel *commentsDeleteLbl;
+    QLabel *productVariantDeleteLbl;
+    QDoubleSpinBox *productRevisionDeleteConfirmSbx;
+    QLabel *accountDeleteLbl_2;
+    QSpacerItem *verticalSpacer_3;
+    QSpacerItem *verticalSpacer_4;
+    QWidget *layoutWidget4;
+    QGridLayout *gridLayout_8;
+    QLabel *productClassConfirmDeleteLbl;
+    QLabel *productTypeDeleteConfirmLbl;
+    QLabel *productStatusDeleteLbl;
+    QLabel *productClassDeleteConfirmInfo;
+    QLabel *productTypeDeleteConfirmInfo;
+    QLabel *productStatusDeleteInfo;
     QWidget *tab_3;
     QGroupBox *groupBox_7;
     QWidget *layoutWidget_3;
@@ -116,7 +158,7 @@ public:
     QLineEdit *productVariantSearchBx;
     QLabel *accountSearchLbl;
     QGroupBox *groupBox_8;
-    QWidget *layoutWidget3;
+    QWidget *layoutWidget5;
     QVBoxLayout *verticalLayout;
     QCheckBox *typeSearchCb;
     QCheckBox *statusSearchCb;
@@ -152,8 +194,6 @@ public:
         actionDark_Mode->setCheckable(true);
         actionAbout = new QAction(MainWindow);
         actionAbout->setObjectName(QString::fromUtf8("actionAbout"));
-        actionSelect_Database = new QAction(MainWindow);
-        actionSelect_Database->setObjectName(QString::fromUtf8("actionSelect_Database"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         tabWidget = new QTabWidget(centralwidget);
@@ -257,8 +297,9 @@ public:
         serialNumberSbx = new QSpinBox(layoutWidget2);
         serialNumberSbx->setObjectName(QString::fromUtf8("serialNumberSbx"));
         serialNumberSbx->setMaximumSize(QSize(75, 16777215));
-        serialNumberSbx->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        serialNumberSbx->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
         serialNumberSbx->setButtonSymbols(QAbstractSpinBox::NoButtons);
+        serialNumberSbx->setMaximum(999999999);
 
         gridLayout_3->addWidget(serialNumberSbx, 0, 1, 1, 1);
 
@@ -330,7 +371,7 @@ public:
         productRevisionSbx = new QDoubleSpinBox(layoutWidget2);
         productRevisionSbx->setObjectName(QString::fromUtf8("productRevisionSbx"));
         productRevisionSbx->setMaximumSize(QSize(75, 16777215));
-        productRevisionSbx->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        productRevisionSbx->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
         productRevisionSbx->setButtonSymbols(QAbstractSpinBox::NoButtons);
         productRevisionSbx->setDecimals(1);
 
@@ -369,6 +410,224 @@ public:
         tabWidget->addTab(tab_1, QString());
         tab_2 = new QWidget();
         tab_2->setObjectName(QString::fromUtf8("tab_2"));
+        groupBox_12 = new QGroupBox(tab_2);
+        groupBox_12->setObjectName(QString::fromUtf8("groupBox_12"));
+        groupBox_12->setGeometry(QRect(380, 10, 401, 171));
+        confirmProductDeleteBtn = new QPushButton(groupBox_12);
+        confirmProductDeleteBtn->setObjectName(QString::fromUtf8("confirmProductDeleteBtn"));
+        confirmProductDeleteBtn->setGeometry(QRect(10, 30, 181, 61));
+        deleteProductBtn = new QPushButton(groupBox_12);
+        deleteProductBtn->setObjectName(QString::fromUtf8("deleteProductBtn"));
+        deleteProductBtn->setGeometry(QRect(210, 30, 181, 61));
+        deleteProductBtn->setCheckable(true);
+        clearDeleteParametersBtn = new QPushButton(groupBox_12);
+        clearDeleteParametersBtn->setObjectName(QString::fromUtf8("clearDeleteParametersBtn"));
+        clearDeleteParametersBtn->setGeometry(QRect(10, 100, 381, 61));
+        groupBox_13 = new QGroupBox(tab_2);
+        groupBox_13->setObjectName(QString::fromUtf8("groupBox_13"));
+        groupBox_13->setGeometry(QRect(10, 10, 361, 171));
+        layoutWidget3 = new QWidget(groupBox_13);
+        layoutWidget3->setObjectName(QString::fromUtf8("layoutWidget3"));
+        layoutWidget3->setGeometry(QRect(10, 30, 341, 131));
+        gridLayout_4 = new QGridLayout(layoutWidget3);
+        gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
+        gridLayout_4->setContentsMargins(0, 0, 0, 0);
+        productClassDeleteLbl = new QLabel(layoutWidget3);
+        productClassDeleteLbl->setObjectName(QString::fromUtf8("productClassDeleteLbl"));
+
+        gridLayout_4->addWidget(productClassDeleteLbl, 0, 0, 1, 1);
+
+        productClassDeleteCmbx = new QComboBox(layoutWidget3);
+        productClassDeleteCmbx->addItem(QString());
+        productClassDeleteCmbx->addItem(QString());
+        productClassDeleteCmbx->setObjectName(QString::fromUtf8("productClassDeleteCmbx"));
+
+        gridLayout_4->addWidget(productClassDeleteCmbx, 0, 1, 1, 1);
+
+        serialNumberDeleteLbl = new QLabel(layoutWidget3);
+        serialNumberDeleteLbl->setObjectName(QString::fromUtf8("serialNumberDeleteLbl"));
+
+        gridLayout_4->addWidget(serialNumberDeleteLbl, 1, 0, 1, 1);
+
+        serialNumberDeleteSbx = new QSpinBox(layoutWidget3);
+        serialNumberDeleteSbx->setObjectName(QString::fromUtf8("serialNumberDeleteSbx"));
+        serialNumberDeleteSbx->setMaximumSize(QSize(75, 16777215));
+        serialNumberDeleteSbx->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        serialNumberDeleteSbx->setButtonSymbols(QAbstractSpinBox::NoButtons);
+        serialNumberDeleteSbx->setMaximum(999999999);
+
+        gridLayout_4->addWidget(serialNumberDeleteSbx, 1, 1, 1, 1);
+
+        accountDeleteLbl = new QLabel(layoutWidget3);
+        accountDeleteLbl->setObjectName(QString::fromUtf8("accountDeleteLbl"));
+
+        gridLayout_4->addWidget(accountDeleteLbl, 2, 0, 1, 1);
+
+        accountDeleteLineBx = new QLineEdit(layoutWidget3);
+        accountDeleteLineBx->setObjectName(QString::fromUtf8("accountDeleteLineBx"));
+        accountDeleteLineBx->setMaximumSize(QSize(100, 16777215));
+
+        gridLayout_4->addWidget(accountDeleteLineBx, 2, 1, 1, 1);
+
+        articleNumberDeleteLbl = new QLabel(layoutWidget3);
+        articleNumberDeleteLbl->setObjectName(QString::fromUtf8("articleNumberDeleteLbl"));
+
+        gridLayout_4->addWidget(articleNumberDeleteLbl, 3, 0, 1, 1);
+
+        articleDeleteLineBx = new QLineEdit(layoutWidget3);
+        articleDeleteLineBx->setObjectName(QString::fromUtf8("articleDeleteLineBx"));
+        articleDeleteLineBx->setMaximumSize(QSize(250, 16777215));
+
+        gridLayout_4->addWidget(articleDeleteLineBx, 3, 1, 1, 1);
+
+        groupBox_14 = new QGroupBox(tab_2);
+        groupBox_14->setObjectName(QString::fromUtf8("groupBox_14"));
+        groupBox_14->setGeometry(QRect(10, 190, 771, 331));
+        layoutWidget_2 = new QWidget(groupBox_14);
+        layoutWidget_2->setObjectName(QString::fromUtf8("layoutWidget_2"));
+        layoutWidget_2->setGeometry(QRect(10, 20, 421, 301));
+        gridLayout_7 = new QGridLayout(layoutWidget_2);
+        gridLayout_7->setObjectName(QString::fromUtf8("gridLayout_7"));
+        gridLayout_7->setContentsMargins(0, 0, 0, 0);
+        serialNumberDeleteConfirmSbx = new QSpinBox(layoutWidget_2);
+        serialNumberDeleteConfirmSbx->setObjectName(QString::fromUtf8("serialNumberDeleteConfirmSbx"));
+        serialNumberDeleteConfirmSbx->setMaximumSize(QSize(75, 16777215));
+        serialNumberDeleteConfirmSbx->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        serialNumberDeleteConfirmSbx->setReadOnly(true);
+        serialNumberDeleteConfirmSbx->setButtonSymbols(QAbstractSpinBox::NoButtons);
+        serialNumberDeleteConfirmSbx->setMaximum(999999999);
+
+        gridLayout_7->addWidget(serialNumberDeleteConfirmSbx, 0, 1, 1, 1);
+
+        serialNumberDeleteLbl_2 = new QLabel(layoutWidget_2);
+        serialNumberDeleteLbl_2->setObjectName(QString::fromUtf8("serialNumberDeleteLbl_2"));
+
+        gridLayout_7->addWidget(serialNumberDeleteLbl_2, 0, 0, 1, 1);
+
+        articleNumberDeleteLbl_2 = new QLabel(layoutWidget_2);
+        articleNumberDeleteLbl_2->setObjectName(QString::fromUtf8("articleNumberDeleteLbl_2"));
+
+        gridLayout_7->addWidget(articleNumberDeleteLbl_2, 4, 0, 1, 1);
+
+        productRevisionDeleteLbl = new QLabel(layoutWidget_2);
+        productRevisionDeleteLbl->setObjectName(QString::fromUtf8("productRevisionDeleteLbl"));
+
+        gridLayout_7->addWidget(productRevisionDeleteLbl, 1, 0, 1, 1);
+
+        locationDeleteConfirmBx = new QLineEdit(layoutWidget_2);
+        locationDeleteConfirmBx->setObjectName(QString::fromUtf8("locationDeleteConfirmBx"));
+        locationDeleteConfirmBx->setMaximumSize(QSize(250, 16777215));
+        locationDeleteConfirmBx->setReadOnly(true);
+
+        gridLayout_7->addWidget(locationDeleteConfirmBx, 5, 1, 1, 1);
+
+        articleDeleteConfirmLineBx = new QLineEdit(layoutWidget_2);
+        articleDeleteConfirmLineBx->setObjectName(QString::fromUtf8("articleDeleteConfirmLineBx"));
+        articleDeleteConfirmLineBx->setMaximumSize(QSize(250, 16777215));
+        articleDeleteConfirmLineBx->setReadOnly(true);
+
+        gridLayout_7->addWidget(articleDeleteConfirmLineBx, 4, 1, 1, 1);
+
+        commentsDeleteConfirmTbx = new QTextEdit(layoutWidget_2);
+        commentsDeleteConfirmTbx->setObjectName(QString::fromUtf8("commentsDeleteConfirmTbx"));
+        commentsDeleteConfirmTbx->setMaximumSize(QSize(16777215, 100));
+        commentsDeleteConfirmTbx->setReadOnly(true);
+
+        gridLayout_7->addWidget(commentsDeleteConfirmTbx, 8, 0, 1, 2);
+
+        locationDeleteLbl = new QLabel(layoutWidget_2);
+        locationDeleteLbl->setObjectName(QString::fromUtf8("locationDeleteLbl"));
+
+        gridLayout_7->addWidget(locationDeleteLbl, 5, 0, 1, 1);
+
+        productVariantDeleteConfirmBx = new QLineEdit(layoutWidget_2);
+        productVariantDeleteConfirmBx->setObjectName(QString::fromUtf8("productVariantDeleteConfirmBx"));
+        productVariantDeleteConfirmBx->setMaximumSize(QSize(250, 16777215));
+        productVariantDeleteConfirmBx->setReadOnly(true);
+
+        gridLayout_7->addWidget(productVariantDeleteConfirmBx, 3, 1, 1, 1);
+
+        accountDeleteConfirmLineBx = new QLineEdit(layoutWidget_2);
+        accountDeleteConfirmLineBx->setObjectName(QString::fromUtf8("accountDeleteConfirmLineBx"));
+        accountDeleteConfirmLineBx->setMaximumSize(QSize(100, 16777215));
+        accountDeleteConfirmLineBx->setReadOnly(true);
+
+        gridLayout_7->addWidget(accountDeleteConfirmLineBx, 2, 1, 1, 1);
+
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_7->addItem(horizontalSpacer_2, 7, 1, 1, 1);
+
+        commentsDeleteLbl = new QLabel(layoutWidget_2);
+        commentsDeleteLbl->setObjectName(QString::fromUtf8("commentsDeleteLbl"));
+        commentsDeleteLbl->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
+
+        gridLayout_7->addWidget(commentsDeleteLbl, 7, 0, 1, 1);
+
+        productVariantDeleteLbl = new QLabel(layoutWidget_2);
+        productVariantDeleteLbl->setObjectName(QString::fromUtf8("productVariantDeleteLbl"));
+
+        gridLayout_7->addWidget(productVariantDeleteLbl, 3, 0, 1, 1);
+
+        productRevisionDeleteConfirmSbx = new QDoubleSpinBox(layoutWidget_2);
+        productRevisionDeleteConfirmSbx->setObjectName(QString::fromUtf8("productRevisionDeleteConfirmSbx"));
+        productRevisionDeleteConfirmSbx->setMaximumSize(QSize(75, 16777215));
+        productRevisionDeleteConfirmSbx->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        productRevisionDeleteConfirmSbx->setReadOnly(true);
+        productRevisionDeleteConfirmSbx->setButtonSymbols(QAbstractSpinBox::NoButtons);
+        productRevisionDeleteConfirmSbx->setDecimals(1);
+
+        gridLayout_7->addWidget(productRevisionDeleteConfirmSbx, 1, 1, 1, 1);
+
+        accountDeleteLbl_2 = new QLabel(layoutWidget_2);
+        accountDeleteLbl_2->setObjectName(QString::fromUtf8("accountDeleteLbl_2"));
+
+        gridLayout_7->addWidget(accountDeleteLbl_2, 2, 0, 1, 1);
+
+        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout_7->addItem(verticalSpacer_3, 6, 0, 1, 1);
+
+        verticalSpacer_4 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout_7->addItem(verticalSpacer_4, 6, 1, 1, 1);
+
+        layoutWidget4 = new QWidget(groupBox_14);
+        layoutWidget4->setObjectName(QString::fromUtf8("layoutWidget4"));
+        layoutWidget4->setGeometry(QRect(470, 100, 251, 121));
+        gridLayout_8 = new QGridLayout(layoutWidget4);
+        gridLayout_8->setObjectName(QString::fromUtf8("gridLayout_8"));
+        gridLayout_8->setContentsMargins(0, 0, 0, 0);
+        productClassConfirmDeleteLbl = new QLabel(layoutWidget4);
+        productClassConfirmDeleteLbl->setObjectName(QString::fromUtf8("productClassConfirmDeleteLbl"));
+
+        gridLayout_8->addWidget(productClassConfirmDeleteLbl, 0, 0, 1, 1);
+
+        productTypeDeleteConfirmLbl = new QLabel(layoutWidget4);
+        productTypeDeleteConfirmLbl->setObjectName(QString::fromUtf8("productTypeDeleteConfirmLbl"));
+
+        gridLayout_8->addWidget(productTypeDeleteConfirmLbl, 1, 0, 1, 1);
+
+        productStatusDeleteLbl = new QLabel(layoutWidget4);
+        productStatusDeleteLbl->setObjectName(QString::fromUtf8("productStatusDeleteLbl"));
+
+        gridLayout_8->addWidget(productStatusDeleteLbl, 2, 0, 1, 1);
+
+        productClassDeleteConfirmInfo = new QLabel(layoutWidget4);
+        productClassDeleteConfirmInfo->setObjectName(QString::fromUtf8("productClassDeleteConfirmInfo"));
+
+        gridLayout_8->addWidget(productClassDeleteConfirmInfo, 0, 1, 1, 1);
+
+        productTypeDeleteConfirmInfo = new QLabel(layoutWidget4);
+        productTypeDeleteConfirmInfo->setObjectName(QString::fromUtf8("productTypeDeleteConfirmInfo"));
+
+        gridLayout_8->addWidget(productTypeDeleteConfirmInfo, 1, 1, 1, 1);
+
+        productStatusDeleteInfo = new QLabel(layoutWidget4);
+        productStatusDeleteInfo->setObjectName(QString::fromUtf8("productStatusDeleteInfo"));
+
+        gridLayout_8->addWidget(productStatusDeleteInfo, 2, 1, 1, 1);
+
         tabWidget->addTab(tab_2, QString());
         tab_3 = new QWidget();
         tab_3->setObjectName(QString::fromUtf8("tab_3"));
@@ -521,48 +780,48 @@ public:
         groupBox_8 = new QGroupBox(tab_3);
         groupBox_8->setObjectName(QString::fromUtf8("groupBox_8"));
         groupBox_8->setGeometry(QRect(370, 200, 151, 321));
-        layoutWidget3 = new QWidget(groupBox_8);
-        layoutWidget3->setObjectName(QString::fromUtf8("layoutWidget3"));
-        layoutWidget3->setGeometry(QRect(10, 30, 131, 281));
-        verticalLayout = new QVBoxLayout(layoutWidget3);
+        layoutWidget5 = new QWidget(groupBox_8);
+        layoutWidget5->setObjectName(QString::fromUtf8("layoutWidget5"));
+        layoutWidget5->setGeometry(QRect(10, 30, 131, 281));
+        verticalLayout = new QVBoxLayout(layoutWidget5);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        typeSearchCb = new QCheckBox(layoutWidget3);
+        typeSearchCb = new QCheckBox(layoutWidget5);
         typeSearchCb->setObjectName(QString::fromUtf8("typeSearchCb"));
 
         verticalLayout->addWidget(typeSearchCb);
 
-        statusSearchCb = new QCheckBox(layoutWidget3);
+        statusSearchCb = new QCheckBox(layoutWidget5);
         statusSearchCb->setObjectName(QString::fromUtf8("statusSearchCb"));
 
         verticalLayout->addWidget(statusSearchCb);
 
-        serialNumberSearchCb = new QCheckBox(layoutWidget3);
+        serialNumberSearchCb = new QCheckBox(layoutWidget5);
         serialNumberSearchCb->setObjectName(QString::fromUtf8("serialNumberSearchCb"));
 
         verticalLayout->addWidget(serialNumberSearchCb);
 
-        revisionSearchCb = new QCheckBox(layoutWidget3);
+        revisionSearchCb = new QCheckBox(layoutWidget5);
         revisionSearchCb->setObjectName(QString::fromUtf8("revisionSearchCb"));
 
         verticalLayout->addWidget(revisionSearchCb);
 
-        accountSearchCb = new QCheckBox(layoutWidget3);
+        accountSearchCb = new QCheckBox(layoutWidget5);
         accountSearchCb->setObjectName(QString::fromUtf8("accountSearchCb"));
 
         verticalLayout->addWidget(accountSearchCb);
 
-        varientSearchCb = new QCheckBox(layoutWidget3);
+        varientSearchCb = new QCheckBox(layoutWidget5);
         varientSearchCb->setObjectName(QString::fromUtf8("varientSearchCb"));
 
         verticalLayout->addWidget(varientSearchCb);
 
-        articleNumberSearchCb = new QCheckBox(layoutWidget3);
+        articleNumberSearchCb = new QCheckBox(layoutWidget5);
         articleNumberSearchCb->setObjectName(QString::fromUtf8("articleNumberSearchCb"));
 
         verticalLayout->addWidget(articleNumberSearchCb);
 
-        locationSearchCb = new QCheckBox(layoutWidget3);
+        locationSearchCb = new QCheckBox(layoutWidget5);
         locationSearchCb->setObjectName(QString::fromUtf8("locationSearchCb"));
 
         verticalLayout->addWidget(locationSearchCb);
@@ -617,7 +876,6 @@ public:
         menuOptions->addAction(actionDark_Mode);
         menuOptions->addSeparator();
         menuOptions->addAction(actionAbout);
-        menuOptions->addAction(actionSelect_Database);
 
         retranslateUi(MainWindow);
 
@@ -632,11 +890,10 @@ public:
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         actionDark_Mode->setText(QCoreApplication::translate("MainWindow", "Dark Mode", nullptr));
         actionAbout->setText(QCoreApplication::translate("MainWindow", "About", nullptr));
-        actionSelect_Database->setText(QCoreApplication::translate("MainWindow", "Select Database", nullptr));
         groupBox->setTitle(QCoreApplication::translate("MainWindow", "General Information", nullptr));
         productClassLbl->setText(QCoreApplication::translate("MainWindow", "Product Class:", nullptr));
-        productClassCmbx->setItemText(0, QCoreApplication::translate("MainWindow", "Display", nullptr));
-        productClassCmbx->setItemText(1, QCoreApplication::translate("MainWindow", "Cable", nullptr));
+        productClassCmbx->setItemText(0, QCoreApplication::translate("MainWindow", "Displays", nullptr));
+        productClassCmbx->setItemText(1, QCoreApplication::translate("MainWindow", "Cables", nullptr));
 
         productTyepLbl->setText(QCoreApplication::translate("MainWindow", "Product Type:", nullptr));
         productTypeCmbx->setItemText(0, QCoreApplication::translate("MainWindow", "VI-2", nullptr));
@@ -653,7 +910,7 @@ public:
         productStatusLbl->setText(QCoreApplication::translate("MainWindow", "Product Status:", nullptr));
         productStatusCmbx->setItemText(0, QCoreApplication::translate("MainWindow", "In-Stock", nullptr));
         productStatusCmbx->setItemText(1, QCoreApplication::translate("MainWindow", "On-Loan", nullptr));
-        productStatusCmbx->setItemText(2, QCoreApplication::translate("MainWindow", "FAE Unit", nullptr));
+        productStatusCmbx->setItemText(2, QCoreApplication::translate("MainWindow", "FAE-Unit", nullptr));
 
         groupBox_2->setTitle(QCoreApplication::translate("MainWindow", "Tracking and Updates", nullptr));
         buildDateLbl->setText(QCoreApplication::translate("MainWindow", "Build Date: ", nullptr));
@@ -677,7 +934,40 @@ public:
         addProductBtn->setText(QCoreApplication::translate("MainWindow", "Add Product to Inventory", nullptr));
         clearBtn->setText(QCoreApplication::translate("MainWindow", "Clear All", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_1), QCoreApplication::translate("MainWindow", "Add Product", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(tab_2), QCoreApplication::translate("MainWindow", "Remove Product", nullptr));
+        groupBox_12->setTitle(QCoreApplication::translate("MainWindow", "Actions", nullptr));
+        confirmProductDeleteBtn->setText(QCoreApplication::translate("MainWindow", "Confirm Product", nullptr));
+        deleteProductBtn->setText(QCoreApplication::translate("MainWindow", "Delete Product", nullptr));
+        clearDeleteParametersBtn->setText(QCoreApplication::translate("MainWindow", "Clear All", nullptr));
+        groupBox_13->setTitle(QCoreApplication::translate("MainWindow", "Deletion Information", nullptr));
+        productClassDeleteLbl->setText(QCoreApplication::translate("MainWindow", "Product Class:", nullptr));
+        productClassDeleteCmbx->setItemText(0, QCoreApplication::translate("MainWindow", "Displays", nullptr));
+        productClassDeleteCmbx->setItemText(1, QCoreApplication::translate("MainWindow", "Cables", nullptr));
+
+        serialNumberDeleteLbl->setText(QCoreApplication::translate("MainWindow", "Serial Number:", nullptr));
+        accountDeleteLbl->setText(QCoreApplication::translate("MainWindow", "Account: ", nullptr));
+        accountDeleteLineBx->setPlaceholderText(QCoreApplication::translate("MainWindow", "C137", nullptr));
+        articleNumberDeleteLbl->setText(QCoreApplication::translate("MainWindow", "Article Number:", nullptr));
+        articleDeleteLineBx->setPlaceholderText(QCoreApplication::translate("MainWindow", "FAE", nullptr));
+        groupBox_14->setTitle(QCoreApplication::translate("MainWindow", "Discovered Product Infromation", nullptr));
+        serialNumberDeleteLbl_2->setText(QCoreApplication::translate("MainWindow", "Serial Number:", nullptr));
+        articleNumberDeleteLbl_2->setText(QCoreApplication::translate("MainWindow", "Article Number:", nullptr));
+        productRevisionDeleteLbl->setText(QCoreApplication::translate("MainWindow", "Product Revision: ", nullptr));
+        locationDeleteConfirmBx->setText(QString());
+        locationDeleteConfirmBx->setPlaceholderText(QCoreApplication::translate("MainWindow", "Burlington, VT", nullptr));
+        articleDeleteConfirmLineBx->setPlaceholderText(QCoreApplication::translate("MainWindow", "FAE", nullptr));
+        locationDeleteLbl->setText(QCoreApplication::translate("MainWindow", "Location:", nullptr));
+        productVariantDeleteConfirmBx->setPlaceholderText(QCoreApplication::translate("MainWindow", "Standard", nullptr));
+        accountDeleteConfirmLineBx->setPlaceholderText(QCoreApplication::translate("MainWindow", "C137", nullptr));
+        commentsDeleteLbl->setText(QCoreApplication::translate("MainWindow", "Comments:", nullptr));
+        productVariantDeleteLbl->setText(QCoreApplication::translate("MainWindow", "Product Variant: ", nullptr));
+        accountDeleteLbl_2->setText(QCoreApplication::translate("MainWindow", "Account: ", nullptr));
+        productClassConfirmDeleteLbl->setText(QCoreApplication::translate("MainWindow", "Product Class: ", nullptr));
+        productTypeDeleteConfirmLbl->setText(QCoreApplication::translate("MainWindow", "Product Type: ", nullptr));
+        productStatusDeleteLbl->setText(QCoreApplication::translate("MainWindow", "Product Status: ", nullptr));
+        productClassDeleteConfirmInfo->setText(QString());
+        productTypeDeleteConfirmInfo->setText(QString());
+        productStatusDeleteInfo->setText(QString());
+        tabWidget->setTabText(tabWidget->indexOf(tab_2), QCoreApplication::translate("MainWindow", "Delete Product", nullptr));
         groupBox_7->setTitle(QCoreApplication::translate("MainWindow", "General Information", nullptr));
         productClassSearchLbl->setText(QCoreApplication::translate("MainWindow", "Product Class:", nullptr));
         productClassSearchCbx->setItemText(0, QCoreApplication::translate("MainWindow", "Displays", nullptr));
