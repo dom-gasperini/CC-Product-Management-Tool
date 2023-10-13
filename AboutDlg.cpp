@@ -23,7 +23,7 @@ AboutDlg::AboutDlg(QWidget *parent) : QDialog(parent), ui(new Ui::AboutDlg)
     // Setup UI
     ui->setupUi(this);
     this->setWindowTitle("About");
-    ui->LogoLbl->setPixmap(QPixmap(":/images/cross_control_logo.png").scaledToWidth(ui->LogoLbl->width()));
+    ui->LogoLbl->setPixmap(QPixmap(":/images/crosscontrol-rgb-300dpi-png").scaledToHeight(ui->LogoLbl->height()));
     ui->qtLogoLbl->setPixmap(QPixmap(":/images/qt_logo.png").scaledToWidth(ui->qtLogoLbl->width()));
 
     // Fill in text boxes with information

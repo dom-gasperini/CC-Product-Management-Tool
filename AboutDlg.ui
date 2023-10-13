@@ -6,19 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>530</width>
+    <width>430</width>
     <height>500</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>500</width>
+    <width>430</width>
     <height>500</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>530</width>
+    <width>430</width>
     <height>500</height>
    </size>
   </property>
@@ -28,7 +28,7 @@
   <widget class="QPushButton" name="exitBtn">
    <property name="geometry">
     <rect>
-     <x>140</x>
+     <x>90</x>
      <y>450</y>
      <width>251</width>
      <height>41</height>
@@ -43,7 +43,7 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>509</width>
+     <width>411</width>
      <height>431</height>
     </rect>
    </property>

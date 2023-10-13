@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 9.0.0, 2023-10-12T15:02:06. -->
+<!-- Written by QtCreator 9.0.0, 2023-10-12T17:34:07. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -202,7 +202,7 @@
     <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/dom_gasperini/Documents/Qt Projects/build-Product-Database-Managment-Tool-Desktop-Profile</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/dom_gasperini/Documents/Qt Projects/CC-Product-Management-Tool</value>
    </valuemap>
    <value type="qlonglong" key="ProjectExplorer.Target.RunConfigurationCount">1</value>
   </valuemap>

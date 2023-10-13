@@ -44,15 +44,15 @@ public:
     {
         if (AboutDlg->objectName().isEmpty())
             AboutDlg->setObjectName(QString::fromUtf8("AboutDlg"));
-        AboutDlg->resize(530, 500);
-        AboutDlg->setMinimumSize(QSize(500, 500));
-        AboutDlg->setMaximumSize(QSize(530, 500));
+        AboutDlg->resize(430, 500);
+        AboutDlg->setMinimumSize(QSize(430, 500));
+        AboutDlg->setMaximumSize(QSize(430, 500));
         exitBtn = new QPushButton(AboutDlg);
         exitBtn->setObjectName(QString::fromUtf8("exitBtn"));
-        exitBtn->setGeometry(QRect(140, 450, 251, 41));
+        exitBtn->setGeometry(QRect(90, 450, 251, 41));
         layoutWidget = new QWidget(AboutDlg);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(10, 10, 509, 431));
+        layoutWidget->setGeometry(QRect(10, 10, 411, 431));
         verticalLayout_3 = new QVBoxLayout(layoutWidget);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         verticalLayout_3->setContentsMargins(0, 0, 0, 0);

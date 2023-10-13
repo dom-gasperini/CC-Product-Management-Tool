@@ -56,7 +56,8 @@ SOURCES       = AboutDlg.cpp \
 		DatabaseManager.cpp \
 		ProductData.cpp \
 		main.cpp \
-		MainWindow.cpp moc_AboutDlg.cpp \
+		MainWindow.cpp qrc_images.cpp \
+		moc_AboutDlg.cpp \
 		moc_MainWindow.cpp \
 		moc_ProductData.cpp
 OBJECTS       = AboutDlg.o \
@@ -64,6 +65,7 @@ OBJECTS       = AboutDlg.o \
 		ProductData.o \
 		main.o \
 		MainWindow.o \
+		qrc_images.o \
 		moc_AboutDlg.o \
 		moc_MainWindow.o \
 		moc_ProductData.o
@@ -317,6 +319,7 @@ DIST          = ../../../Qt/6.3.1/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../Qt/6.3.1/gcc_64/mkspecs/features/qt_config.prf \
 		../../../Qt/6.3.1/gcc_64/mkspecs/linux-g++/qmake.conf \
 		../../../Qt/6.3.1/gcc_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../Qt/6.3.1/gcc_64/mkspecs/features/exclusive_builds.prf \
 		../../../Qt/6.3.1/gcc_64/mkspecs/features/toolchain.prf \
 		../../../Qt/6.3.1/gcc_64/mkspecs/features/default_pre.prf \
@@ -606,6 +609,7 @@ Makefile: Product-Database-Managment-Tool.pro ../../../Qt/6.3.1/gcc_64/mkspecs/l
 		../../../Qt/6.3.1/gcc_64/mkspecs/features/qt_config.prf \
 		../../../Qt/6.3.1/gcc_64/mkspecs/linux-g++/qmake.conf \
 		../../../Qt/6.3.1/gcc_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../Qt/6.3.1/gcc_64/mkspecs/features/exclusive_builds.prf \
 		../../../Qt/6.3.1/gcc_64/mkspecs/features/toolchain.prf \
 		../../../Qt/6.3.1/gcc_64/mkspecs/features/default_pre.prf \
@@ -627,6 +631,7 @@ Makefile: Product-Database-Managment-Tool.pro ../../../Qt/6.3.1/gcc_64/mkspecs/l
 		../../../Qt/6.3.1/gcc_64/mkspecs/features/yacc.prf \
 		../../../Qt/6.3.1/gcc_64/mkspecs/features/lex.prf \
 		Product-Database-Managment-Tool.pro \
+		images.qrc \
 		../../../Qt/6.3.1/gcc_64/lib/libQt6Widgets.prl \
 		../../../Qt/6.3.1/gcc_64/lib/libQt6Gui.prl \
 		../../../Qt/6.3.1/gcc_64/lib/libQt6Sql.prl \
@@ -882,6 +887,7 @@ Makefile: Product-Database-Managment-Tool.pro ../../../Qt/6.3.1/gcc_64/mkspecs/l
 ../../../Qt/6.3.1/gcc_64/mkspecs/features/qt_config.prf:
 ../../../Qt/6.3.1/gcc_64/mkspecs/linux-g++/qmake.conf:
 ../../../Qt/6.3.1/gcc_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../Qt/6.3.1/gcc_64/mkspecs/features/exclusive_builds.prf:
 ../../../Qt/6.3.1/gcc_64/mkspecs/features/toolchain.prf:
 ../../../Qt/6.3.1/gcc_64/mkspecs/features/default_pre.prf:
@@ -903,6 +909,7 @@ Makefile: Product-Database-Managment-Tool.pro ../../../Qt/6.3.1/gcc_64/mkspecs/l
 ../../../Qt/6.3.1/gcc_64/mkspecs/features/yacc.prf:
 ../../../Qt/6.3.1/gcc_64/mkspecs/features/lex.prf:
 Product-Database-Managment-Tool.pro:
+images.qrc:
 ../../../Qt/6.3.1/gcc_64/lib/libQt6Widgets.prl:
 ../../../Qt/6.3.1/gcc_64/lib/libQt6Gui.prl:
 ../../../Qt/6.3.1/gcc_64/lib/libQt6Sql.prl:
@@ -921,6 +928,7 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
+	$(COPY_FILE) --parents images.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../Qt/6.3.1/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents AboutDlg.h DatabaseManager.h MainWindow.h ProductData.h $(DISTDIR)/
 	$(COPY_FILE) --parents AboutDlg.cpp DatabaseManager.cpp ProductData.cpp main.cpp MainWindow.cpp $(DISTDIR)/
@@ -948,8 +956,15 @@ check: first
 
 benchmark: first
 
-compiler_rcc_make_all:
+compiler_rcc_make_all: qrc_images.cpp
 compiler_rcc_clean:
+	-$(DEL_FILE) qrc_images.cpp
+qrc_images.cpp: images.qrc \
+		../../../Qt/6.3.1/gcc_64/libexec/rcc \
+		qt_logo.png \
+		crosscontrol-rgb-300dpi-png
+	/home/dom_gasperini/Qt/6.3.1/gcc_64/libexec/rcc -name images images.qrc -o qrc_images.cpp
+
 compiler_moc_predefs_make_all: moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) moc_predefs.h
@@ -1377,7 +1392,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
+compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
 
@@ -1518,7 +1533,44 @@ AboutDlg.o: AboutDlg.cpp AboutDlg.h \
 		../../../Qt/6.3.1/gcc_64/include/QtGui/QDesktopServices \
 		../../../Qt/6.3.1/gcc_64/include/QtGui/qdesktopservices.h \
 		../../../Qt/6.3.1/gcc_64/include/QtCore/QUrl \
-		ui_AboutDlg.h
+		ui_AboutDlg.h \
+		../../../Qt/6.3.1/gcc_64/include/QtCore/QVariant \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QApplication \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qapplication.h \
+		../../../Qt/6.3.1/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../Qt/6.3.1/gcc_64/include/QtCore/qeventloop.h \
+		../../../Qt/6.3.1/gcc_64/include/QtCore/qcoreapplication_platform.h \
+		../../../Qt/6.3.1/gcc_64/include/QtCore/qfuture.h \
+		../../../Qt/6.3.1/gcc_64/include/QtCore/qfutureinterface.h \
+		../../../Qt/6.3.1/gcc_64/include/QtCore/qmutex.h \
+		../../../Qt/6.3.1/gcc_64/include/QtCore/qresultstore.h \
+		../../../Qt/6.3.1/gcc_64/include/QtCore/qfuture_impl.h \
+		../../../Qt/6.3.1/gcc_64/include/QtCore/qthreadpool.h \
+		../../../Qt/6.3.1/gcc_64/include/QtCore/qthread.h \
+		../../../Qt/6.3.1/gcc_64/include/QtCore/qdeadlinetimer.h \
+		../../../Qt/6.3.1/gcc_64/include/QtCore/qelapsedtimer.h \
+		../../../Qt/6.3.1/gcc_64/include/QtCore/qrunnable.h \
+		../../../Qt/6.3.1/gcc_64/include/QtCore/qexception.h \
+		../../../Qt/6.3.1/gcc_64/include/QtCore/qpromise.h \
+		../../../Qt/6.3.1/gcc_64/include/QtGui/qguiapplication.h \
+		../../../Qt/6.3.1/gcc_64/include/QtGui/qinputmethod.h \
+		../../../Qt/6.3.1/gcc_64/include/QtCore/qlocale.h \
+		../../../Qt/6.3.1/gcc_64/include/QtGui/qguiapplication_platform.h \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QGridLayout \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qlayout.h \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QLabel \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qlabel.h \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qframe.h \
+		../../../Qt/6.3.1/gcc_64/include/QtGui/qpicture.h \
+		../../../Qt/6.3.1/gcc_64/include/QtGui/qtextdocument.h \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QPushButton \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QVBoxLayout \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o AboutDlg.o AboutDlg.cpp
 
 DatabaseManager.o: DatabaseManager.cpp DatabaseManager.h \
@@ -2053,8 +2105,91 @@ MainWindow.o: MainWindow.cpp MainWindow.h \
 		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qstylefactory.h \
 		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QMessageBox \
 		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qmessagebox.h \
-		ui_MainWindow.h
+		ui_MainWindow.h \
+		../../../Qt/6.3.1/gcc_64/include/QtCore/QVariant \
+		../../../Qt/6.3.1/gcc_64/include/QtGui/QAction \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QApplication \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qapplication.h \
+		../../../Qt/6.3.1/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../Qt/6.3.1/gcc_64/include/QtCore/qeventloop.h \
+		../../../Qt/6.3.1/gcc_64/include/QtCore/qcoreapplication_platform.h \
+		../../../Qt/6.3.1/gcc_64/include/QtCore/qfuture.h \
+		../../../Qt/6.3.1/gcc_64/include/QtCore/qfutureinterface.h \
+		../../../Qt/6.3.1/gcc_64/include/QtCore/qmutex.h \
+		../../../Qt/6.3.1/gcc_64/include/QtCore/qresultstore.h \
+		../../../Qt/6.3.1/gcc_64/include/QtCore/qfuture_impl.h \
+		../../../Qt/6.3.1/gcc_64/include/QtCore/qthreadpool.h \
+		../../../Qt/6.3.1/gcc_64/include/QtCore/qthread.h \
+		../../../Qt/6.3.1/gcc_64/include/QtCore/qdeadlinetimer.h \
+		../../../Qt/6.3.1/gcc_64/include/QtCore/qelapsedtimer.h \
+		../../../Qt/6.3.1/gcc_64/include/QtCore/qrunnable.h \
+		../../../Qt/6.3.1/gcc_64/include/QtCore/qexception.h \
+		../../../Qt/6.3.1/gcc_64/include/QtCore/qpromise.h \
+		../../../Qt/6.3.1/gcc_64/include/QtGui/qguiapplication.h \
+		../../../Qt/6.3.1/gcc_64/include/QtGui/qinputmethod.h \
+		../../../Qt/6.3.1/gcc_64/include/QtGui/qguiapplication_platform.h \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QCheckBox \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qcheckbox.h \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QComboBox \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qcombobox.h \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../../Qt/6.3.1/gcc_64/include/QtGui/qvalidator.h \
+		../../../Qt/6.3.1/gcc_64/include/QtCore/qregularexpression.h \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qslider.h \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qstyle.h \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qtabbar.h \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qrubberband.h \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qframe.h \
+		../../../Qt/6.3.1/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QDateTimeEdit \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qdatetimeedit.h \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QDoubleSpinBox \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qspinbox.h \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QGridLayout \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qlayout.h \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QGroupBox \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qgroupbox.h \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QLabel \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qlabel.h \
+		../../../Qt/6.3.1/gcc_64/include/QtGui/qpicture.h \
+		../../../Qt/6.3.1/gcc_64/include/QtGui/qtextdocument.h \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QLineEdit \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qlineedit.h \
+		../../../Qt/6.3.1/gcc_64/include/QtGui/qtextcursor.h \
+		../../../Qt/6.3.1/gcc_64/include/QtGui/qtextformat.h \
+		../../../Qt/6.3.1/gcc_64/include/QtGui/qpen.h \
+		../../../Qt/6.3.1/gcc_64/include/QtGui/qtextoption.h \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QListView \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qlistview.h \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../Qt/6.3.1/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QMenu \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qmenu.h \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QMenuBar \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qmenubar.h \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QPushButton \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QSpacerItem \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QSpinBox \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QStatusBar \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qstatusbar.h \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QTabWidget \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QTextEdit \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qtextedit.h \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QVBoxLayout \
+		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o MainWindow.o MainWindow.cpp
+
+qrc_images.o: qrc_images.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_images.o qrc_images.cpp
 
 moc_AboutDlg.o: moc_AboutDlg.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_AboutDlg.o moc_AboutDlg.cpp
