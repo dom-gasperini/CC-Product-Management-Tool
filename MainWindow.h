@@ -68,5 +68,6 @@ private slots:
     void on_openItemAllBtn_clicked();
     void on_confirmProductDeleteBtn_clicked();
     void on_deleteProductBtn_clicked();
+    void on_clearDeleteParametersBtn_clicked();
 };
 #endif // MAINWINDOW_H

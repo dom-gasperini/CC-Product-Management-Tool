@@ -1457,45 +1457,7 @@ AboutDlg.o: AboutDlg.cpp AboutDlg.h \
 		../../../Qt/6.3.1/gcc_64/include/QtGui/QDesktopServices \
 		../../../Qt/6.3.1/gcc_64/include/QtGui/qdesktopservices.h \
 		../../../Qt/6.3.1/gcc_64/include/QtCore/QUrl \
-		ui_AboutDlg.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/QVariant \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QApplication \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qapplication.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qcoreapplication.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qeventloop.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qcoreapplication_platform.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qfuture.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qfutureinterface.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qmutex.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qresultstore.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qfuture_impl.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qthreadpool.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qthread.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qdeadlinetimer.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qelapsedtimer.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qrunnable.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qexception.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qpromise.h \
-		../../../Qt/6.3.1/gcc_64/include/QtGui/qguiapplication.h \
-		../../../Qt/6.3.1/gcc_64/include/QtGui/qinputmethod.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qlocale.h \
-		../../../Qt/6.3.1/gcc_64/include/QtGui/qguiapplication_platform.h \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QGridLayout \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qgridlayout.h \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qlayout.h \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qlayoutitem.h \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qboxlayout.h \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QLabel \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qlabel.h \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qframe.h \
-		../../../Qt/6.3.1/gcc_64/include/QtGui/qpicture.h \
-		../../../Qt/6.3.1/gcc_64/include/QtGui/qtextdocument.h \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QPushButton \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qpushbutton.h \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qabstractbutton.h \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QSpacerItem \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QVBoxLayout \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QWidget
+		ui_AboutDlg.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o AboutDlg.o AboutDlg.cpp
 
 DatabaseManager.o: DatabaseManager.cpp DatabaseManager.h \
@@ -2040,88 +2002,7 @@ MainWindow.o: MainWindow.cpp MainWindow.h \
 		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qstylefactory.h \
 		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QMessageBox \
 		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qmessagebox.h \
-		ui_MainWindow.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/QVariant \
-		../../../Qt/6.3.1/gcc_64/include/QtGui/QAction \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QApplication \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qapplication.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qcoreapplication.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qeventloop.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qcoreapplication_platform.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qfuture.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qfutureinterface.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qmutex.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qresultstore.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qfuture_impl.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qthreadpool.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qthread.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qdeadlinetimer.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qelapsedtimer.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qrunnable.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qexception.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qpromise.h \
-		../../../Qt/6.3.1/gcc_64/include/QtGui/qguiapplication.h \
-		../../../Qt/6.3.1/gcc_64/include/QtGui/qinputmethod.h \
-		../../../Qt/6.3.1/gcc_64/include/QtGui/qguiapplication_platform.h \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QCheckBox \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qcheckbox.h \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qabstractbutton.h \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QComboBox \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qcombobox.h \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qstyleoption.h \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qabstractspinbox.h \
-		../../../Qt/6.3.1/gcc_64/include/QtGui/qvalidator.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qregularexpression.h \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qslider.h \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qabstractslider.h \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qstyle.h \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qtabbar.h \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qrubberband.h \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qframe.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qabstractitemmodel.h \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QDateTimeEdit \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qdatetimeedit.h \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QDoubleSpinBox \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qspinbox.h \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QGridLayout \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qgridlayout.h \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qlayout.h \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qlayoutitem.h \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qboxlayout.h \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QGroupBox \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qgroupbox.h \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QLabel \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qlabel.h \
-		../../../Qt/6.3.1/gcc_64/include/QtGui/qpicture.h \
-		../../../Qt/6.3.1/gcc_64/include/QtGui/qtextdocument.h \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QLineEdit \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qlineedit.h \
-		../../../Qt/6.3.1/gcc_64/include/QtGui/qtextcursor.h \
-		../../../Qt/6.3.1/gcc_64/include/QtGui/qtextformat.h \
-		../../../Qt/6.3.1/gcc_64/include/QtGui/qpen.h \
-		../../../Qt/6.3.1/gcc_64/include/QtGui/qtextoption.h \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QListWidget \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qlistwidget.h \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qlistview.h \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qabstractitemview.h \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		../../../Qt/6.3.1/gcc_64/include/QtCore/qitemselectionmodel.h \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QMenu \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qmenu.h \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QMenuBar \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qmenubar.h \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QPushButton \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qpushbutton.h \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QSpacerItem \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QSpinBox \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QStatusBar \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qstatusbar.h \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QTabWidget \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QTextEdit \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/qtextedit.h \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QVBoxLayout \
-		../../../Qt/6.3.1/gcc_64/include/QtWidgets/QWidget
+		ui_MainWindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o MainWindow.o MainWindow.cpp
 
 qrc_images.o: qrc_images.cpp 

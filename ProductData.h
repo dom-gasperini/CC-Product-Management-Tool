@@ -69,8 +69,8 @@ public:
     QString getComments();
     QString getLocation();
 
-    QDateTime getBuildDate();
-    QDateTime getLastUpdate();
+    QString getBuildDate();
+    QString getLastUpdate();
     uint16_t getDaysSinceLastUpdate();
 
     // setters
@@ -86,8 +86,8 @@ public:
     void setComments(QString comments);
     void setLocation(QString location);
 
-    void setBuildDate(QDateTime buildDate);
-    void setLastUpdate(QDateTime lastUpdate);
+    void setBuildDate(QString buildDate);
+    void setLastUpdate(QString lastUpdate);
     void setDaysSinceLastUpdate();
 
     // functions
@@ -116,8 +116,8 @@ private:
     QString m_location;
 
     // dates
-    QDateTime m_buildDate;
-    QDateTime m_lastUpdate;
+    QString m_buildDate;
+    QString m_lastUpdate;
     uint16_t m_daysSinceLastUpdate;
 };
 

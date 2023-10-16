@@ -36,7 +36,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab_1">
      <attribute name="title">
@@ -296,6 +296,9 @@
             <height>100</height>
            </size>
           </property>
+          <property name="placeholderText">
+           <string>Comments about the product</string>
+          </property>
          </widget>
         </item>
         <item row="4" column="1">
@@ -340,6 +343,9 @@
           </property>
           <property name="decimals">
            <number>1</number>
+          </property>
+          <property name="value">
+           <double>1.000000000000000</double>
           </property>
          </widget>
         </item>
@@ -937,8 +943,8 @@
       <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
-         <x>470</x>
-         <y>100</y>
+         <x>450</x>
+         <y>40</y>
          <width>251</width>
          <height>121</height>
         </rect>
@@ -981,6 +987,84 @@
         </item>
         <item row="2" column="1">
          <widget class="QLabel" name="productStatusDeleteInfo">
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="">
+       <property name="geometry">
+        <rect>
+         <x>451</x>
+         <y>191</y>
+         <width>311</width>
+         <height>61</height>
+        </rect>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_9">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Build Date:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLabel" name="buildDateDeleteInfo">
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_2">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Last Update:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLabel" name="lastUpdateDeleteInfo">
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="">
+       <property name="geometry">
+        <rect>
+         <x>451</x>
+         <y>261</y>
+         <width>311</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_10">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_6">
+          <property name="text">
+           <string>Days since last update: </string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLabel" name="daysSinceLastUpdateDeleteInfo">
           <property name="text">
            <string/>
           </property>
@@ -1568,6 +1652,63 @@
    </property>
   </action>
  </widget>
+ <tabstops>
+  <tabstop>productClassCmbx</tabstop>
+  <tabstop>productTypeCmbx</tabstop>
+  <tabstop>productStatusCmbx</tabstop>
+  <tabstop>serialNumberSbx</tabstop>
+  <tabstop>productRevisionSbx</tabstop>
+  <tabstop>accountLineBx</tabstop>
+  <tabstop>productVariantBx</tabstop>
+  <tabstop>articleLineBx</tabstop>
+  <tabstop>locationBx</tabstop>
+  <tabstop>commentsTbx</tabstop>
+  <tabstop>buildDateDTBx</tabstop>
+  <tabstop>inventoryDateDTBx</tabstop>
+  <tabstop>addProductBtn</tabstop>
+  <tabstop>clearBtn</tabstop>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>productClassDeleteCmbx</tabstop>
+  <tabstop>serialNumberDeleteSbx</tabstop>
+  <tabstop>accountDeleteLineBx</tabstop>
+  <tabstop>articleDeleteLineBx</tabstop>
+  <tabstop>serialNumberDeleteConfirmSbx</tabstop>
+  <tabstop>productRevisionDeleteConfirmSbx</tabstop>
+  <tabstop>accountDeleteConfirmLineBx</tabstop>
+  <tabstop>productVariantDeleteConfirmBx</tabstop>
+  <tabstop>articleDeleteConfirmLineBx</tabstop>
+  <tabstop>locationDeleteConfirmBx</tabstop>
+  <tabstop>commentsDeleteConfirmTbx</tabstop>
+  <tabstop>confirmProductDeleteBtn</tabstop>
+  <tabstop>clearDeleteParametersBtn</tabstop>
+  <tabstop>deleteProductBtn</tabstop>
+  <tabstop>productClassSearchCbx</tabstop>
+  <tabstop>typeSearchCbx</tabstop>
+  <tabstop>statusSearchCbx</tabstop>
+  <tabstop>searchBtn</tabstop>
+  <tabstop>clearSearchBtn</tabstop>
+  <tabstop>resetFiltersSearchBtn</tabstop>
+  <tabstop>articleSearchLineBx</tabstop>
+  <tabstop>productRevisionSearchSbx</tabstop>
+  <tabstop>locationSearchBx</tabstop>
+  <tabstop>serialNumberSearchSbx</tabstop>
+  <tabstop>accountSearchLineBx</tabstop>
+  <tabstop>productVariantSearchBx</tabstop>
+  <tabstop>typeSearchCb</tabstop>
+  <tabstop>statusSearchCb</tabstop>
+  <tabstop>serialNumberSearchCb</tabstop>
+  <tabstop>revisionSearchCb</tabstop>
+  <tabstop>accountSearchCb</tabstop>
+  <tabstop>varientSearchCb</tabstop>
+  <tabstop>articleNumberSearchCb</tabstop>
+  <tabstop>locationSearchCb</tabstop>
+  <tabstop>searchResultsList</tabstop>
+  <tabstop>openItemSearchBtn</tabstop>
+  <tabstop>allProductsList</tabstop>
+  <tabstop>openItemAllBtn</tabstop>
+  <tabstop>allProductsClassCmbx</tabstop>
+  <tabstop>refreshAllBtn</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

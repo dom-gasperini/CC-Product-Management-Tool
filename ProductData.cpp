@@ -32,8 +32,8 @@ ProductData::ProductData()
     m_location = "";
 
     // dated information
-    m_buildDate = QDateTime(QDate(2023, 10, 12), QTime::currentTime());
-    m_lastUpdate = QDateTime::currentDateTime();
+    m_buildDate = QDateTime(QDate(2023, 10, 12), QTime::currentTime()).toString();
+    m_lastUpdate = QDateTime::currentDateTime().toString();
     m_daysSinceLastUpdate = 0;
 }
 
@@ -283,17 +283,19 @@ QString ProductData::getLocation() {
     return m_location;
 }
 
-QDateTime ProductData::getBuildDate() {
+QString ProductData::getBuildDate() {
     return m_buildDate;
 }
 
-QDateTime ProductData::getLastUpdate() {
+QString ProductData::getLastUpdate() {
     return m_lastUpdate;
 }
 
 uint16_t ProductData::getDaysSinceLastUpdate() {
     QDateTime currentDateTime = QDateTime::currentDateTime();
-    return m_lastUpdate.daysTo(currentDateTime);
+    QDateTime tmpLastUpdate = QDateTime::fromString(m_lastUpdate);
+    int days = tmpLastUpdate.daysTo(currentDateTime);
+    return days;
 }
 
 
@@ -341,11 +343,11 @@ void ProductData::setLocation(QString location) {
     m_location = location;
 }
 
-void ProductData::setBuildDate(QDateTime buildDate) {
+void ProductData::setBuildDate(QString buildDate) {
     m_buildDate = buildDate;
 }
 
-void ProductData::setLastUpdate(QDateTime lastUpdate) {
+void ProductData::setLastUpdate(QString lastUpdate) {
     m_lastUpdate = lastUpdate;
 }
 

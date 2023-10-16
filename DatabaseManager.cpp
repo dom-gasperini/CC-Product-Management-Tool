@@ -42,7 +42,7 @@ bool DatabaseManager::addProduct(ProductData* product)
    bool success = false;
    QSqlQuery query;
    QString queryStr, values;
-   QString inserts = "(type, variant, article_number, serial_number, revision, account, comments, status, location)";
+   QString inserts = "(type, variant, article_number, serial_number, revision, account, comments, status, location, build_date, last_update_date)";
 
    // prepare query
    values = "\'" + product->productTypeToQString() + "\', ";
@@ -53,7 +53,9 @@ bool DatabaseManager::addProduct(ProductData* product)
    values += "\'" + product->getAccount() + "\', ";
    values += "\'" + product->getComments() + "\', ";
    values += "\'" + product->productStatusToQString() + "\', ";
-   values += "\'" + product->getLocation() + "\'";
+   values += "\'" + product->getLocation() + "\', ";
+   values += "\'" + product->getBuildDate() + "\', ";
+   values += "\'" + product->getLastUpdate() + "\'";
    queryStr = "INSERT INTO " + product->productClassToQString() + " " + inserts + " VALUES(" + values + ");";
    query.prepare(queryStr);
    qDebug() << "Query: " << queryStr;
@@ -167,32 +169,30 @@ void DatabaseManager::findProduct(QString productClass, QVector<QString> paramTy
 
     // execute query
     if (query.exec()) {
-       if (query.next()) {
-           while(query.next()) {
-               ProductData tmpProduct;
-               tmpProduct.setProductClass(tmpProduct.QStringToProductClass(productClass));
-               tmpProduct.setProductType(tmpProduct.QStringToProductType(query.value(0).toString()));
-               tmpProduct.setProductVariant(query.value(1).toString());
-               tmpProduct.setArticleNumber(query.value(2).toString());
-               tmpProduct.setSerialNumber(query.value(3).toInt());
-               tmpProduct.setProductRevision(query.value(4).toFloat());
-               tmpProduct.setAccount(query.value(5).toString());
-               tmpProduct.setComments(query.value(6).toString());
-               tmpProduct.setLocation(query.value(7).toString());
-               tmpProduct.setProductStatus(tmpProduct.QStringToProductStatus(query.value(8).toString()));
+       while(query.next()) {
+           ProductData tmpProduct;
+           tmpProduct.setProductClass(tmpProduct.QStringToProductClass(productClass));
+           tmpProduct.setProductType(tmpProduct.QStringToProductType(query.value(0).toString()));
+           tmpProduct.setProductVariant(query.value(1).toString());
+           tmpProduct.setArticleNumber(query.value(2).toString());
+           tmpProduct.setSerialNumber(query.value(3).toInt());
+           tmpProduct.setProductRevision(query.value(4).toFloat());
+           tmpProduct.setAccount(query.value(5).toString());
+           tmpProduct.setComments(query.value(6).toString());
+           tmpProduct.setLocation(query.value(7).toString());
+           tmpProduct.setProductStatus(tmpProduct.QStringToProductStatus(query.value(8).toString()));
 
-//               for (int i = 0; i < 9; ++i) {
-//                   qDebug() << query.value(i) << " ";
-//               }
-               m_searchResults.append(tmpProduct);
-           }
+//           for (int i = 0; i < 9; ++i) {
+//               qDebug() << query.value(i) << " ";
+//           }
+           m_searchResults.append(tmpProduct);
        }
     }
 
-    qDebug() << "Product List: ";
-    for (auto i : m_searchResults) {
-        qDebug() << i.productClassToQString() << " " << i.productTypeToQString() << " " << i.productStatusToQString() << " " << i.getProductRevision();
-    }
+//    qDebug() << "Product List: ";
+//    for (auto i : m_searchResults) {
+//        qDebug() << i.productClassToQString() << " " << i.productTypeToQString() << " " << i.productStatusToQString() << " " << i.getProductRevision();
+//    }
 }
 
 
@@ -209,25 +209,23 @@ void DatabaseManager::printAll(QString productClass) {
 
     // execute query
     if (query.exec()) {
-       if (query.next()) {
-           while(query.next()) {
-               ProductData tmpProduct;
-               tmpProduct.setProductClass(tmpProduct.QStringToProductClass(productClass));
-               tmpProduct.setProductType(tmpProduct.QStringToProductType(query.value(0).toString()));
-               tmpProduct.setProductVariant(query.value(1).toString());
-               tmpProduct.setArticleNumber(query.value(2).toString());
-               tmpProduct.setSerialNumber(query.value(3).toInt());
-               tmpProduct.setProductRevision(query.value(4).toFloat());
-               tmpProduct.setAccount(query.value(5).toString());
-               tmpProduct.setComments(query.value(6).toString());
-               tmpProduct.setLocation(query.value(7).toString());
-               tmpProduct.setProductStatus(tmpProduct.QStringToProductStatus(query.value(8).toString()));
+       while(query.next()) {
+           ProductData tmpProduct;
+           tmpProduct.setProductClass(tmpProduct.QStringToProductClass(productClass));
+           tmpProduct.setProductType(tmpProduct.QStringToProductType(query.value(0).toString()));
+           tmpProduct.setProductVariant(query.value(1).toString());
+           tmpProduct.setArticleNumber(query.value(2).toString());
+           tmpProduct.setSerialNumber(query.value(3).toInt());
+           tmpProduct.setProductRevision(query.value(4).toFloat());
+           tmpProduct.setAccount(query.value(5).toString());
+           tmpProduct.setComments(query.value(6).toString());
+           tmpProduct.setLocation(query.value(7).toString());
+           tmpProduct.setProductStatus(tmpProduct.QStringToProductStatus(query.value(8).toString()));
 
-//               for (int i = 0; i < 9; ++i) {
-//                   qDebug() << query.value(i) << " ";
-//               }
-               m_allProducts.append(tmpProduct);
-           }
+//           for (int i = 0; i < 9; ++i) {
+//               qDebug() << query.value(i) << " ";
+//           }
+           m_allProducts.append(tmpProduct);
        }
     }
 }

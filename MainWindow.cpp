@@ -286,8 +286,8 @@ void MainWindow::on_addProductBtn_clicked()
         m_productData->setComments(ui->commentsTbx->toPlainText());
         m_productData->setLocation(ui->locationBx->text());
 
-        m_productData->setBuildDate(ui->buildDateDTBx->dateTime());
-        m_productData->setLastUpdate(ui->inventoryDateDTBx->dateTime());
+        m_productData->setBuildDate(ui->buildDateDTBx->dateTime().toString());
+        m_productData->setLastUpdate(ui->inventoryDateDTBx->dateTime().toString());
 
         // save to database
         added = m_database->addProduct(m_productData);
@@ -440,6 +440,8 @@ void MainWindow::on_openItemSearchBtn_clicked()
         productInfo += "Product Class: " + selectedProduct.productClassToQString() + "\n";
         productInfo += "Product Type: " + selectedProduct.productTypeToQString() + "\n";
         productInfo += "Product Status: " + selectedProduct.productStatusToQString() + "\n";
+        productInfo += "Build Date: " + selectedProduct.getBuildDate() + "\n";
+        productInfo += "Last Update: " + selectedProduct.getLastUpdate() + "\n";
         productInfo += "\n\n\nDetailed Information:\n\n";
         productInfo += "Account Number: " + selectedProduct.getAccount() + "\n";
         productInfo += "Serial Number: " + QString::number(selectedProduct.getSerialNumber()) + "\n";
@@ -512,6 +514,8 @@ void MainWindow::on_openItemAllBtn_clicked()
         productInfo += "Product Class: " + selectedProduct.productClassToQString() + "\n";
         productInfo += "Product Type: " + selectedProduct.productTypeToQString() + "\n";
         productInfo += "Product Status: " + selectedProduct.productStatusToQString() + "\n";
+        productInfo += "Build Date: " + selectedProduct.getBuildDate() + "\n";
+        productInfo += "Last Update: " + selectedProduct.getLastUpdate() + "\n";
         productInfo += "\n\n\nDetailed Information:\n\n";
         productInfo += "Account Number: " + selectedProduct.getAccount() + "\n";
         productInfo += "Serial Number: " + QString::number(selectedProduct.getSerialNumber()) + "\n";
@@ -561,6 +565,9 @@ void MainWindow::on_confirmProductDeleteBtn_clicked()
         ui->articleDeleteConfirmLineBx->setText(tmpProduct.getArticleNumber());
         ui->locationDeleteConfirmBx->setText(tmpProduct.getLocation());
         ui->commentsDeleteConfirmTbx->setText(tmpProduct.getComments());
+        ui->buildDateDeleteInfo->setText(tmpProduct.getBuildDate());
+        ui->lastUpdateDeleteInfo->setText(tmpProduct.getLastUpdate());
+        ui->daysSinceLastUpdateDeleteInfo->setText("");
 
         // allow for true deletion
         ui->deleteProductBtn->setEnabled(true);
@@ -597,3 +604,33 @@ void MainWindow::on_deleteProductBtn_clicked()
     // reset button state
     ui->deleteProductBtn->setEnabled(false);
 }
+
+
+/**
+ * @brief MainWindow::on_clearDeleteParametersBtn_clicked
+ */
+void MainWindow::on_clearDeleteParametersBtn_clicked()
+{
+    // clear confirm product inputs
+    ui->productClassDeleteCmbx->setCurrentIndex(0);
+    ui->serialNumberDeleteConfirmSbx->clear();
+    ui->accountDeleteLineBx->clear();
+    ui->articleDeleteLineBx->clear();
+
+    // clear discovered infromation
+    ui->serialNumberDeleteSbx->clear();
+    ui->productRevisionDeleteConfirmSbx->clear();
+    ui->accountDeleteConfirmLineBx->clear();
+    ui->productVariantDeleteConfirmBx->clear();
+    ui->articleDeleteConfirmLineBx->clear();
+    ui->locationDeleteConfirmBx->clear();
+    ui->commentsDeleteConfirmTbx->clear();
+    ui->productClassDeleteConfirmInfo->clear();
+    ui->productTypeDeleteConfirmInfo->clear();
+    ui->productStatusDeleteInfo->clear();
+    ui->buildDateDeleteInfo->clear();
+    ui->lastUpdateDeleteInfo->clear();
+    ui->daysSinceLastUpdateDeleteInfo->clear();
+
+}
+
