@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Installer>
-    <Name>CC Product Manager</Name>
-    <Version>1.0.0</Version>
-    <Title>CC Product Manager Installer</Title>
-    <StartMenuDir>CC Product Manager</StartMenuDir>
-    <TargetDir>@HomeDir@/CC-Product-Manager</TargetDir>
-</Installer>
