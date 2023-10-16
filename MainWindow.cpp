@@ -28,6 +28,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     m_currentPalette = qApp->palette();
     ui->tabWidget->setCurrentIndex(0);
     ui->deleteProductBtn->setEnabled(false);
+    m_databaseFilename = "cc-product-database.db";
 
     // setup about dialog
     m_aboutDialog = new AboutDlg();
@@ -37,10 +38,19 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect(m_displayUpdateTimer, SIGNAL(timeout()), this, SLOT(UpdateDisplay()));
     m_displayUpdateTimer->start(DISPLAY_UPDATE_INTERVAL);
 
+    // ensure database file exists
+    m_databaseFileExists = false;
+    if(QFile::exists(m_databaseFilename)){
+        m_databaseFileExists = true;
+    }
+
     // setup data
     m_productData = new ProductData();
-    m_database = new DatabaseManager("cc-product-database.db");
-    m_refreshCounter = 0;
+    m_database = new DatabaseManager(m_databaseFilename);
+
+    if (!m_databaseFileExists) {
+        QMessageBox::critical(this, "Database Error!", "The database file was not found or is corrupted!");
+    }
 }
 
 

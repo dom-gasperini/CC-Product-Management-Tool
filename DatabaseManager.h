@@ -11,6 +11,7 @@
 
 // includes
 #include <QString>
+#include <QFile>
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <ProductData.h>
