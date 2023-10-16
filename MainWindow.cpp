@@ -428,22 +428,29 @@ void MainWindow::on_openItemSearchBtn_clicked()
 
     // gather selected infromation
     itemIndex = ui->searchResultsList->currentRow();
-    selectedProduct = m_database->getSearchResults().at(itemIndex);
 
-    productInfo += "General Infromation:\n\n";
-    productInfo += "Product Class: " + selectedProduct.productClassToQString() + "\n";
-    productInfo += "Product Type: " + selectedProduct.productTypeToQString() + "\n";
-    productInfo += "Product Status: " + selectedProduct.productStatusToQString() + "\n";
-    productInfo += "\n\n\nDetailed Information:\n\n";
-    productInfo += "Account Number: " + selectedProduct.getAccount() + "\n";
-    productInfo += "Serial Number: " + QString::number(selectedProduct.getSerialNumber()) + "\n";
-    productInfo += "Revision: " + QString::number(selectedProduct.getProductRevision()) + "\n";
-    productInfo += "Article Number: " + selectedProduct.getArticleNumber() + "\n";
-    productInfo += "Location: " + selectedProduct.getLocation() + "\n";
-    productInfo += "Comments: " + selectedProduct.getComments();
+    if (itemIndex == -1) {
+        // do popup
+        QMessageBox::warning(this, "Product Information", "No product selected!");
+    }
+    else {
+        selectedProduct = m_database->getSearchResults().at(itemIndex);
 
-    // do popup
-    QMessageBox::information(this, "Product Information", productInfo);
+        productInfo += "General Infromation:\n\n";
+        productInfo += "Product Class: " + selectedProduct.productClassToQString() + "\n";
+        productInfo += "Product Type: " + selectedProduct.productTypeToQString() + "\n";
+        productInfo += "Product Status: " + selectedProduct.productStatusToQString() + "\n";
+        productInfo += "\n\n\nDetailed Information:\n\n";
+        productInfo += "Account Number: " + selectedProduct.getAccount() + "\n";
+        productInfo += "Serial Number: " + QString::number(selectedProduct.getSerialNumber()) + "\n";
+        productInfo += "Revision: " + QString::number(selectedProduct.getProductRevision()) + "\n";
+        productInfo += "Article Number: " + selectedProduct.getArticleNumber() + "\n";
+        productInfo += "Location: " + selectedProduct.getLocation() + "\n";
+        productInfo += "Comments: " + selectedProduct.getComments();
+
+        // do popup
+        QMessageBox::information(this, "Product Information", productInfo);
+    }
 }
 
 
