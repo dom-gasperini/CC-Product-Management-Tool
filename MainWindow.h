@@ -49,7 +49,8 @@ private:
     // data
     ProductData* m_productData;
     DatabaseManager* m_database;
-    int m_refreshCounter;
+    QString m_databaseFilename;
+    bool m_databaseFileExists;
 
 private slots:
     void UpdateDisplay();
