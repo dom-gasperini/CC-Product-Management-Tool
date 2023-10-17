@@ -265,15 +265,6 @@ bool DatabaseManager::editProduct(QString productClass, int serialNumber, QStrin
         else {
             qDebug() << "Edit Product Status: ERROR";
         }
-        /*
-         *  UPDATE table
-            SET column_1 = new_value_1,
-                column_2 = new_value_2
-            WHERE
-                search_condition
-            ORDER column_or_expression
-            LIMIT row_count OFFSET offset;
-        */
     }
 
     return success;

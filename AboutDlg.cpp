@@ -24,11 +24,12 @@ AboutDlg::AboutDlg(QWidget *parent) : QDialog(parent), ui(new Ui::AboutDlg)
     // Setup UI
     ui->setupUi(this);
     this->setWindowTitle("About");
+    this->setWindowIcon(QIcon(":/images/cc-logo.ico"));
     ui->LogoLbl->setPixmap(QPixmap(":/images/crosscontrol-rgb-300dpi-png").scaledToHeight(ui->LogoLbl->height()));
     ui->qtLogoLbl->setPixmap(QPixmap(":/images/qt_logo.png").scaledToWidth(ui->qtLogoLbl->width()));
 
     // Fill in text boxes with information
-    ui->authorNameLbl->setText("newt");
+    ui->authorNameLbl->setText("Dominic Gasperini");
     ui->cppVersionNumLbl->setText(QString::number(CPP_VERSION));
     ui->qtVersionNumLbl->setText(getQtVersion());
 }
