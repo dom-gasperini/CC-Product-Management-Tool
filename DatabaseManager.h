@@ -9,6 +9,7 @@
 #ifndef DATABASEMANAGER_H
 #define DATABASEMANAGER_H
 
+
 // includes
 #include <QString>
 #include <QFile>
@@ -30,6 +31,7 @@ public:
     bool addProduct(ProductData* product);
     bool removeProduct(QString productClass, int serialNumber, QString account, QString article, bool confirmDelete);
     void findProduct(QString productClass, QVector<QString> paramType, QVector<QString> param);
+    bool editProduct(QString productClass, int serialNumber, QString account, QString article, QVector<QString> paramEdit, bool confirmEdit);
     void printAll(QString productClass);
     void clearSearchResults();
     void clearAllProducts();
@@ -37,6 +39,7 @@ public:
     // getters
     bool getDatabaseActive();
     ProductData getProductToDelete();
+    ProductData getProductToEdit();
     QVector<ProductData> getSearchResults();
     QVector<ProductData> getAllProducts();
 
@@ -47,6 +50,7 @@ private:
     QVector<ProductData> m_searchResults;
     QVector<ProductData> m_allProducts;
     ProductData m_productToDelete;
+    ProductData m_productToEdit;
 };
 
 #endif // DATABASEMANAGER_H

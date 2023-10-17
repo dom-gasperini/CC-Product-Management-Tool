@@ -239,58 +239,112 @@ QString ProductData::productTypeToQString() {
     return str;
 }
 
+
 // -------------------------------------------------- //
 //                      Getters
 // -------------------------------------------------- //
 
+
+/**
+ * @brief ProductData::getProductClass
+ * @return
+ */
 ProductClass ProductData::getProductClass() {
     return m_productClass;
 }
 
+/**
+ * @brief ProductData::getProductType
+ * @return
+ */
 ProductType ProductData::getProductType() {
     return m_productType;
 }
 
+/**
+ * @brief ProductData::getProductStatus
+ * @return
+ */
 ProductStatus ProductData::getProductStatus() {
     return m_productStatus;
 }
 
+/**
+ * @brief ProductData::getProductVariant
+ * @return
+ */
 QString ProductData::getProductVariant() {
     return m_productVariant;
 }
 
+/**
+ * @brief ProductData::getArticleNumber
+ * @return
+ */
 QString ProductData::getArticleNumber() {
     return m_articleNumber;
 }
 
+/**
+ * @brief ProductData::getSerialNumber
+ * @return
+ */
 uint16_t ProductData::getSerialNumber() {
     return m_serialNumber;
 }
 
+/**
+ * @brief ProductData::getProductRevision
+ * @return
+ */
 float ProductData::getProductRevision() {
     return m_productRevision;
 }
 
+/**
+ * @brief ProductData::getAccount
+ * @return
+ */
 QString ProductData::getAccount() {
     return m_account;
 }
 
+/**
+ * @brief ProductData::getComments
+ * @return
+ */
 QString ProductData::getComments() {
     return m_comments;
 }
 
+/**
+ * @brief ProductData::getLocation
+ * @return
+ */
 QString ProductData::getLocation() {
     return m_location;
 }
 
+/**
+ * @brief ProductData::getBuildDate
+ * @return
+ */
 QString ProductData::getBuildDate() {
     return m_buildDate;
 }
 
+/**
+ * @brief ProductData::getLastUpdate
+ * @return
+ */
 QString ProductData::getLastUpdate() {
     return m_lastUpdate;
 }
 
+/**
+ * @brief ProductData::getDaysSinceLastUpdate
+ * @return
+ */
 uint16_t ProductData::getDaysSinceLastUpdate() {
     QDateTime currentDateTime = QDateTime::currentDateTime();
     QDateTime tmpLastUpdate = QDateTime::fromString(m_lastUpdate);
@@ -303,54 +357,106 @@ uint16_t ProductData::getDaysSinceLastUpdate() {
 //                      Setters
 // -------------------------------------------------- //
 
+
+/**
+ * @brief ProductData::setProductClass
+ * @param productClass
+ */
 void ProductData::setProductClass(ProductClass productClass) {
     m_productClass = productClass;
 }
 
+/**
+ * @brief ProductData::setProductType
+ * @param productType
+ */
 void ProductData::setProductType(ProductType productType) {
     m_productType = productType;
 }
 
+/**
+ * @brief ProductData::setProductStatus
+ * @param productStatus
+ */
 void ProductData::setProductStatus(ProductStatus productStatus) {
     m_productStatus = productStatus;
 }
 
+/**
+ * @brief ProductData::setProductVariant
+ * @param productVariant
+ */
 void ProductData::setProductVariant(QString productVariant) {
     m_productVariant = productVariant;
 }
 
+/**
+ * @brief ProductData::setArticleNumber
+ * @param articleNumber
+ */
 void ProductData::setArticleNumber(QString articleNumber) {
     m_articleNumber = articleNumber;
 }
 
+/**
+ * @brief ProductData::setSerialNumber
+ * @param serialNumber
+ */
 void ProductData::setSerialNumber(uint16_t serialNumber) {
     m_serialNumber = serialNumber;
 }
 
+/**
+ * @brief ProductData::setProductRevision
+ * @param productRevision
+ */
 void ProductData::setProductRevision(float productRevision) {
     m_productRevision = productRevision;
 }
 
+/**
+ * @brief ProductData::setAccount
+ * @param account
+ */
 void ProductData::setAccount(QString account) {
     m_account = account;
 }
 
+/**
+ * @brief ProductData::setComments
+ * @param comments
+ */
 void ProductData::setComments(QString comments) {
     m_comments = comments;
 }
 
+/**
+ * @brief ProductData::setLocation
+ * @param location
+ */
 void ProductData::setLocation(QString location) {
     m_location = location;
 }
 
+/**
+ * @brief ProductData::setBuildDate
+ * @param buildDate
+ */
 void ProductData::setBuildDate(QString buildDate) {
     m_buildDate = buildDate;
 }
 
+/**
+ * @brief ProductData::setLastUpdate
+ * @param lastUpdate
+ */
 void ProductData::setLastUpdate(QString lastUpdate) {
     m_lastUpdate = lastUpdate;
 }
 
+/**
+ * @brief ProductData::setDaysSinceLastUpdate
+ */
 void ProductData::setDaysSinceLastUpdate() {
 
 }

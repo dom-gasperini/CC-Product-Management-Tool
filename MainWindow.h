@@ -9,6 +9,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+
 // includes
 #include <QMainWindow>
 #include <QTimer>
@@ -22,6 +23,7 @@
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
+
 
 /**
  * @brief The MainWindow class
@@ -41,6 +43,7 @@ public:
     // timers
     QTimer* m_displayUpdateTimer;
 
+
 private:
     // UI
     Ui::MainWindow *ui;
@@ -51,6 +54,7 @@ private:
     DatabaseManager* m_database;
     QString m_databaseFilename;
     bool m_databaseFileExists;
+
 
 private slots:
     void UpdateDisplay();
@@ -69,5 +73,8 @@ private slots:
     void on_confirmProductDeleteBtn_clicked();
     void on_deleteProductBtn_clicked();
     void on_clearDeleteParametersBtn_clicked();
+    void on_confirmProductEditBtn_clicked();
+    void on_editProductBtn_clicked();
+    void on_clearEditParametersBtn_clicked();
 };
 #endif // MAINWINDOW_H
