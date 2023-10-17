@@ -50,8 +50,6 @@ typedef enum ProductStatus {
  */
 class ProductData
 {
-//    Q_OBJECT
-
 public:
     // constructor
     ProductData();

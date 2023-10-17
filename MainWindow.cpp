@@ -69,7 +69,7 @@ MainWindow::~MainWindow()
 void MainWindow::UpdateDisplay() {
 
     // add a product
-    if (ui->tab_1->isActiveWindow()) {
+    if (ui->add_tab->isActiveWindow()) {
         // set last updated
         ui->inventoryDateDTBx->setDateTime(QDateTime::currentDateTime());
 
@@ -102,12 +102,12 @@ void MainWindow::UpdateDisplay() {
     }
 
     // remove a product
-    if (ui->tab_2->isActiveWindow()) {
+    if (ui->delete_tab->isActiveWindow()) {
         // nothing needs to be done proactivly here
     }
 
     // search for a product or products
-    if (ui->tab_3->isActiveWindow()) {
+    if (ui->search_tab->isActiveWindow()) {
         // handle checkboxes
         if (ui->typeSearchCb->isChecked()) ui->typeSearchCbx->setEnabled(true);
         else ui->typeSearchCbx->setEnabled(false);
@@ -141,7 +141,7 @@ void MainWindow::UpdateDisplay() {
     }
 
     // view all products
-    if (ui->tab_4->isActiveWindow()) {
+    if (ui->all_products_tab->isActiveWindow()) {
         // if its empty
         if (ui->allProductsList->count() == 0) {
             on_refreshAllBtn_clicked();
@@ -150,77 +150,9 @@ void MainWindow::UpdateDisplay() {
 }
 
 
-/**
- * @brief MainWindow::on_actionDark_Mode_toggled
- * @param checked
- */
-void MainWindow::on_actionDark_Mode_toggled(bool checked) {
-    if (checked) {
-        // Set Style
-        qApp->setStyle(QStyleFactory::create("Fusion"));
-        // Init a Dark Mode Palette
-        QPalette darkPalette;
-        darkPalette.setColor(QPalette::Window,QColor(53,53,53));
-        darkPalette.setColor(QPalette::WindowText,Qt::white);
-        darkPalette.setColor(QPalette::Disabled,QPalette::WindowText,QColor(127,127,127));
-        darkPalette.setColor(QPalette::Base,QColor(42,42,42));
-        darkPalette.setColor(QPalette::AlternateBase,QColor(66,66,66));
-        darkPalette.setColor(QPalette::ToolTipBase,Qt::white);
-        darkPalette.setColor(QPalette::ToolTipText,Qt::white);
-        darkPalette.setColor(QPalette::Text,Qt::white);
-        darkPalette.setColor(QPalette::Disabled,QPalette::Text,QColor(127,127,127));
-        darkPalette.setColor(QPalette::Dark,QColor(35,35,35));
-        darkPalette.setColor(QPalette::Shadow,QColor(20,20,20));
-        darkPalette.setColor(QPalette::Button,QColor(53,53,53));
-        darkPalette.setColor(QPalette::ButtonText,Qt::white);
-        darkPalette.setColor(QPalette::Disabled,QPalette::ButtonText,QColor(127,127,127));
-        darkPalette.setColor(QPalette::BrightText,Qt::red);
-        darkPalette.setColor(QPalette::Link,QColor(42,130,218));
-        darkPalette.setColor(QPalette::Highlight, QColor(142,45,197));
-        darkPalette.setColor(QPalette::Disabled,QPalette::Highlight,QColor(80,80,80));
-        darkPalette.setColor(QPalette::HighlightedText,Qt::white);
-        darkPalette.setColor(QPalette::Disabled,QPalette::HighlightedText,QColor(127,127,127));
-
-        // Set to Dark Mode
-        qApp->setPalette(darkPalette);
-
-        // Change Progress Bar Color to Green
-        QPalette progressBarPalette;
-        progressBarPalette.setColor(QPalette::Highlight, Qt::green);
-    }
-
-    else {
-        // Reset Style to Windows Vista
-        qApp->setStyle(QStyleFactory::create("windowsvista"));
-
-        // Reset to Light Mode
-        m_currentPalette.setColor(QPalette::Text, Qt::black);
-        m_currentPalette.setColor(QPalette::HighlightedText, Qt::black);
-        m_currentPalette.setColor(QPalette::Disabled, QPalette::ButtonText, Qt::black);
-        m_currentPalette.setColor(QPalette::ButtonText,Qt::black);
-        m_currentPalette.setColor(QPalette::HighlightedText, Qt::black);
-        m_currentPalette.setColor(QPalette::Disabled, QPalette::Text, Qt::black);
-        m_currentPalette.setColor(QPalette::WindowText, Qt::black);
-        m_currentPalette.setColor(QPalette::Disabled, QPalette::WindowText, Qt::black);
-        m_currentPalette.setColor(QPalette::ToolTipBase,Qt::black);
-        m_currentPalette.setColor(QPalette::ToolTipText,Qt::black);
-        m_currentPalette.setColor(QPalette::Disabled,QPalette::Highlight, Qt::black);
-        m_currentPalette.setColor(QPalette::HighlightedText,Qt::black);
-        m_currentPalette.setColor(QPalette::Disabled,QPalette::HighlightedText, Qt::black);
-        m_currentPalette.setColor(QPalette::All, QPalette::ButtonText, Qt::black);
-        m_currentPalette.setColor(QPalette::All, QPalette::Text, Qt::black);
-        qApp->setPalette(m_currentPalette);
-    }
-}
-
-
-/**
- * @brief MainWindow::on_actionAbout_triggered
- */
-void MainWindow::on_actionAbout_triggered()
-{
-    m_aboutDialog->show();
-}
+// -------------------------------------------------- //
+//              Add Product Functions
+// -------------------------------------------------- //
 
 
 /**
@@ -298,6 +230,11 @@ void MainWindow::on_addProductBtn_clicked()
         }
     }
 }
+
+
+// -------------------------------------------------- //
+//             Search Products Functions
+// -------------------------------------------------- //
 
 
 /**
@@ -381,15 +318,6 @@ void MainWindow::on_searchBtn_clicked()
         params.append(ui->locationSearchBx->text());
     }
 
-//    qDebug() << "types: ";
-//    for (auto i : paramType) {
-//        qDebug() << QString(i);
-//    }
-//    qDebug() << "params: ";
-//    for (auto i : params) {
-//        qDebug() << i;
-//    }
-
     // clear current results list
     m_database->clearSearchResults();
     ui->searchResultsList->clear();
@@ -401,7 +329,6 @@ void MainWindow::on_searchBtn_clicked()
     if (m_database->getSearchResults().length() == 0) {
         QMessageBox::warning(this, "Search Results Warning", "No results found based upon the input parameters!");
     }
-
     else {
         // populate results
         for (ProductData i : m_database->getSearchResults()) {
@@ -434,8 +361,10 @@ void MainWindow::on_openItemSearchBtn_clicked()
         QMessageBox::warning(this, "Product Information", "No product selected!");
     }
     else {
+        // copy product
         selectedProduct = m_database->getSearchResults().at(itemIndex);
 
+        // gather infromation about the product and put together a formatted string
         productInfo += "General Infromation:\n\n";
         productInfo += "Product Class: " + selectedProduct.productClassToQString() + "\n";
         productInfo += "Product Type: " + selectedProduct.productTypeToQString() + "\n";
@@ -456,6 +385,11 @@ void MainWindow::on_openItemSearchBtn_clicked()
 }
 
 
+// -------------------------------------------------- //
+//              All Products Functions
+// -------------------------------------------------- //
+
+
 /**
  * @brief MainWindow::on_refreshAllBtn_clicked
  */
@@ -470,6 +404,7 @@ void MainWindow::on_refreshAllBtn_clicked()
 
     // refresh list of all products
     for (ProductData i : m_database->getAllProducts()) {
+        // build a brief string of summarized information about the product
         QString summarized = "";
         summarized += i.productClassToQString() + ": ";
         summarized += i.productTypeToQString() + " - ";
@@ -486,6 +421,7 @@ void MainWindow::on_refreshAllBtn_clicked()
  */
 void MainWindow::on_allProductsClassCmbx_currentTextChanged(const QString &arg1)
 {
+    // auto refresh list of all products when changing the product class
     on_refreshAllBtn_clicked();
 }
 
@@ -503,13 +439,16 @@ void MainWindow::on_openItemAllBtn_clicked()
     // gather selected infromation
     itemIndex = ui->allProductsList->currentRow();
 
+    // handle product selection validation
     if (itemIndex == -1) {
         // do popup
         QMessageBox::warning(this, "Product Information", "No product selected!");
     }
     else {
+        // copy product
         selectedProduct = m_database->getAllProducts().at(itemIndex);
 
+        // build up formatted string of product information
         productInfo += "General Infromation:\n\n";
         productInfo += "Product Class: " + selectedProduct.productClassToQString() + "\n";
         productInfo += "Product Type: " + selectedProduct.productTypeToQString() + "\n";
@@ -528,6 +467,11 @@ void MainWindow::on_openItemAllBtn_clicked()
         QMessageBox::information(this, "Product Information", productInfo);
     }
 }
+
+
+// -------------------------------------------------- //
+//             Delete Product Functions
+// -------------------------------------------------- //
 
 
 /**
@@ -547,7 +491,7 @@ void MainWindow::on_confirmProductDeleteBtn_clicked()
     serialNumber = ui->serialNumberDeleteSbx->value();
     article = ui->articleDeleteLineBx->text();
 
-    // confirm product
+    // confirm product existance and verify if it is the correct one to delete
     confirmDelete = m_database->removeProduct(productClass, serialNumber, account, article, false);
 
     if (confirmDelete) {
@@ -583,6 +527,7 @@ void MainWindow::on_confirmProductDeleteBtn_clicked()
  */
 void MainWindow::on_deleteProductBtn_clicked()
 {
+    // inits
     bool deleteComplete;
     int serialNumber;
     QString productClass, account, article;
@@ -634,3 +579,82 @@ void MainWindow::on_clearDeleteParametersBtn_clicked()
 
 }
 
+
+// -------------------------------------------------- //
+//                Tool Bar Functions
+// -------------------------------------------------- //
+
+
+/**
+ * @brief MainWindow::on_actionAbout_triggered
+ */
+void MainWindow::on_actionAbout_triggered()
+{
+    // show the about dialog
+    m_aboutDialog->show();
+}
+
+
+/**
+ * @brief MainWindow::on_actionDark_Mode_toggled
+ * @param checked
+ */
+void MainWindow::on_actionDark_Mode_toggled(bool checked) {
+    // switch between dark mode and light mode
+    if (checked) {
+        // Set Style
+        qApp->setStyle(QStyleFactory::create("Fusion"));
+        // Init a Dark Mode Palette
+        QPalette darkPalette;
+        darkPalette.setColor(QPalette::Window,QColor(53,53,53));
+        darkPalette.setColor(QPalette::WindowText,Qt::white);
+        darkPalette.setColor(QPalette::Disabled,QPalette::WindowText,QColor(127,127,127));
+        darkPalette.setColor(QPalette::Base,QColor(42,42,42));
+        darkPalette.setColor(QPalette::AlternateBase,QColor(66,66,66));
+        darkPalette.setColor(QPalette::ToolTipBase,Qt::white);
+        darkPalette.setColor(QPalette::ToolTipText,Qt::white);
+        darkPalette.setColor(QPalette::Text,Qt::white);
+        darkPalette.setColor(QPalette::Disabled,QPalette::Text,QColor(127,127,127));
+        darkPalette.setColor(QPalette::Dark,QColor(35,35,35));
+        darkPalette.setColor(QPalette::Shadow,QColor(20,20,20));
+        darkPalette.setColor(QPalette::Button,QColor(53,53,53));
+        darkPalette.setColor(QPalette::ButtonText,Qt::white);
+        darkPalette.setColor(QPalette::Disabled,QPalette::ButtonText,QColor(127,127,127));
+        darkPalette.setColor(QPalette::BrightText,Qt::red);
+        darkPalette.setColor(QPalette::Link,QColor(42,130,218));
+        darkPalette.setColor(QPalette::Highlight, QColor(142,45,197));
+        darkPalette.setColor(QPalette::Disabled,QPalette::Highlight,QColor(80,80,80));
+        darkPalette.setColor(QPalette::HighlightedText,Qt::white);
+        darkPalette.setColor(QPalette::Disabled,QPalette::HighlightedText,QColor(127,127,127));
+
+        // Set to Dark Mode
+        qApp->setPalette(darkPalette);
+
+        // Change Progress Bar Color to Green
+        QPalette progressBarPalette;
+        progressBarPalette.setColor(QPalette::Highlight, Qt::green);
+    }
+
+    else {
+        // Reset Style to Windows Vista
+        qApp->setStyle(QStyleFactory::create("windowsvista"));
+
+        // Reset to Light Mode
+        m_currentPalette.setColor(QPalette::Text, Qt::black);
+        m_currentPalette.setColor(QPalette::HighlightedText, Qt::black);
+        m_currentPalette.setColor(QPalette::Disabled, QPalette::ButtonText, Qt::black);
+        m_currentPalette.setColor(QPalette::ButtonText,Qt::black);
+        m_currentPalette.setColor(QPalette::HighlightedText, Qt::black);
+        m_currentPalette.setColor(QPalette::Disabled, QPalette::Text, Qt::black);
+        m_currentPalette.setColor(QPalette::WindowText, Qt::black);
+        m_currentPalette.setColor(QPalette::Disabled, QPalette::WindowText, Qt::black);
+        m_currentPalette.setColor(QPalette::ToolTipBase,Qt::black);
+        m_currentPalette.setColor(QPalette::ToolTipText,Qt::black);
+        m_currentPalette.setColor(QPalette::Disabled,QPalette::Highlight, Qt::black);
+        m_currentPalette.setColor(QPalette::HighlightedText,Qt::black);
+        m_currentPalette.setColor(QPalette::Disabled,QPalette::HighlightedText, Qt::black);
+        m_currentPalette.setColor(QPalette::All, QPalette::ButtonText, Qt::black);
+        m_currentPalette.setColor(QPalette::All, QPalette::Text, Qt::black);
+        qApp->setPalette(m_currentPalette);
+    }
+}

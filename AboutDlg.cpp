@@ -5,6 +5,8 @@
  *
  * About Dialog Class
 */
+
+
 // includes
 #include "AboutDlg.h"
 #include "ui_AboutDlg.h"
@@ -13,7 +15,6 @@
 #define CPP_VERSION     17
 
 
-// About Dialog Class
 /**
  * @brief AboutDlg::AboutDlg
  * @param parent

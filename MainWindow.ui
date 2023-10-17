@@ -36,9 +36,9 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>3</number>
     </property>
-    <widget class="QWidget" name="tab_1">
+    <widget class="QWidget" name="add_tab">
      <attribute name="title">
       <string>Add Product</string>
      </attribute>
@@ -530,7 +530,7 @@
       </widget>
      </widget>
     </widget>
-    <widget class="QWidget" name="tab_2">
+    <widget class="QWidget" name="delete_tab">
      <attribute name="title">
       <string>Delete Product</string>
      </attribute>
@@ -994,7 +994,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>451</x>
@@ -1046,7 +1046,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>451</x>
@@ -1074,7 +1074,7 @@
       </widget>
      </widget>
     </widget>
-    <widget class="QWidget" name="tab_3">
+    <widget class="QWidget" name="search_tab">
      <attribute name="title">
       <string>Find Product</string>
      </attribute>
@@ -1526,7 +1526,7 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="tab_4">
+    <widget class="QWidget" name="all_products_tab">
      <attribute name="title">
       <string>Show All Products</string>
      </attribute>

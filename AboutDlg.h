@@ -9,6 +9,7 @@
 #ifndef ABOUTDLG_H
 #define ABOUTDLG_H
 
+
 // includes
 #include <QDialog>
 #include <QDesktopServices>
@@ -18,6 +19,7 @@
 namespace Ui {
 class AboutDlg;
 }
+
 
 /**
  * @brief The AboutDlg class

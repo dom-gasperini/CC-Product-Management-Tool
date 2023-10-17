@@ -6,6 +6,7 @@
  * Database Manager Class
 */
 
+
 // includes
 #include "DatabaseManager.h"
 
@@ -63,9 +64,6 @@ bool DatabaseManager::addProduct(ProductData* product)
    // execute query
    if(query.exec()) {
        success = true;
-   }
-
-   if (success) {
        qDebug() << "Add Product Status: OK";
    }
    else {
@@ -87,6 +85,7 @@ bool DatabaseManager::removeProduct(QString productClass, int serialNumber, QStr
     QSqlQuery query;
     QString queryStr;
 
+    // confirm the existance of a product and prepare product for deletion
     if (!confirmDelete) {
         // prepare query
         queryStr = "SELECT * FROM " + productClass + " WHERE serial_number=\'" + QString::number(serialNumber) + "\' AND account=\'" + account + "\' AND article_number=\'" + article + "\';";
@@ -96,6 +95,7 @@ bool DatabaseManager::removeProduct(QString productClass, int serialNumber, QStr
         // execute query
         if (query.exec()) {
            if (query.next()) {
+               // copy over product information
                ProductData tmpProduct;
                tmpProduct.setProductClass(tmpProduct.QStringToProductClass(productClass));
                tmpProduct.setProductType(tmpProduct.QStringToProductType(query.value(0).toString()));
@@ -108,15 +108,14 @@ bool DatabaseManager::removeProduct(QString productClass, int serialNumber, QStr
                tmpProduct.setLocation(query.value(7).toString());
                tmpProduct.setProductStatus(tmpProduct.QStringToProductStatus(query.value(8).toString()));
 
-       //      for (int i = 0; i < 9; ++i) {
-       //          qDebug() << query.value(i) << " ";
-       //      }
+               // save product to delete
                m_productToDelete = tmpProduct;
                success = true;
            }
         }
     }
 
+    // remove product from the database
     if (confirmDelete) {
         // prepare query
         queryStr = "DELETE FROM " + productClass + " WHERE serial_number=\'" + QString::number(serialNumber) + "\' AND account=\'" + account + "\' AND article_number=\'" + article + "\';";
@@ -126,14 +125,11 @@ bool DatabaseManager::removeProduct(QString productClass, int serialNumber, QStr
         // execute query
         if (query.exec()) {
             success = true;
+            qDebug() << "Remove Product Status: OK";
         }
-    }
-
-    if(success) {
-        qDebug() << "Remove Product Status: OK";
-    }
-    else {
-        qDebug() << "Remove Product Status: ERROR";
+        else {
+            qDebug() << "Remove Product Status: ERROR";
+        }
     }
 
     return success;
@@ -151,13 +147,15 @@ void DatabaseManager::findProduct(QString productClass, QVector<QString> paramTy
     QString queryStr;
     QString whereClause = "";
 
-    // prepare query
+    // prepare search parameters
     if (paramType.length() > 1) {
+        // if there is more than 1 parameter to search by, iterate through and build up a string tied together by ANDs
         for (int i = 0; i < paramType.length() - 1; ++i) {
             whereClause += paramType.at(0) + "=\'" + param.at(0) + "\' AND ";
         }
         whereClause += paramType.at(paramType.length() -1) + + "=\'" + param.at(paramType.length() - 1) + "\';";
     }
+    // if there is only one parameter
     else {
         whereClause = paramType.at(0) + "=\'" + param.at(0) + "\';";
     }
@@ -170,6 +168,7 @@ void DatabaseManager::findProduct(QString productClass, QVector<QString> paramTy
     // execute query
     if (query.exec()) {
        while(query.next()) {
+           // copy product information
            ProductData tmpProduct;
            tmpProduct.setProductClass(tmpProduct.QStringToProductClass(productClass));
            tmpProduct.setProductType(tmpProduct.QStringToProductType(query.value(0).toString()));
@@ -182,17 +181,10 @@ void DatabaseManager::findProduct(QString productClass, QVector<QString> paramTy
            tmpProduct.setLocation(query.value(7).toString());
            tmpProduct.setProductStatus(tmpProduct.QStringToProductStatus(query.value(8).toString()));
 
-//           for (int i = 0; i < 9; ++i) {
-//               qDebug() << query.value(i) << " ";
-//           }
+           // add result to results vector
            m_searchResults.append(tmpProduct);
        }
     }
-
-//    qDebug() << "Product List: ";
-//    for (auto i : m_searchResults) {
-//        qDebug() << i.productClassToQString() << " " << i.productTypeToQString() << " " << i.productStatusToQString() << " " << i.getProductRevision();
-//    }
 }
 
 
@@ -209,7 +201,8 @@ void DatabaseManager::printAll(QString productClass) {
 
     // execute query
     if (query.exec()) {
-       while(query.next()) {
+       while(query.next()) {\
+           // copy product information
            ProductData tmpProduct;
            tmpProduct.setProductClass(tmpProduct.QStringToProductClass(productClass));
            tmpProduct.setProductType(tmpProduct.QStringToProductType(query.value(0).toString()));
@@ -222,9 +215,7 @@ void DatabaseManager::printAll(QString productClass) {
            tmpProduct.setLocation(query.value(7).toString());
            tmpProduct.setProductStatus(tmpProduct.QStringToProductStatus(query.value(8).toString()));
 
-//           for (int i = 0; i < 9; ++i) {
-//               qDebug() << query.value(i) << " ";
-//           }
+           // add to vector of all products
            m_allProducts.append(tmpProduct);
        }
     }

@@ -9,6 +9,7 @@
 #ifndef DATABASEMANAGER_H
 #define DATABASEMANAGER_H
 
+
 // includes
 #include <QString>
 #include <QFile>
