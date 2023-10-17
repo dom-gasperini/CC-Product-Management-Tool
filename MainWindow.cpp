@@ -28,6 +28,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     m_currentPalette = qApp->palette();
     ui->tabWidget->setCurrentIndex(0);
     ui->deleteProductBtn->setEnabled(false);
+    ui->editProductBtn->setEnabled(false);
     m_databaseFilename = "cc-product-database.db";
 
     // setup about dialog
@@ -138,6 +139,27 @@ void MainWindow::UpdateDisplay() {
             ui->searchBtn->setEnabled(true);
         }
         else ui->searchBtn->setEnabled(false);
+    }
+
+    // edit products
+    if (ui->edit_tab->isActiveWindow()) {
+        // enable/disable editing parameters
+        ui->productRevisionEditSbx->setEnabled(ui->editProductBtn->isEnabled());
+        ui->accountEditLineBx->setEnabled(ui->editProductBtn->isEnabled());
+        ui->productVariantEditBx->setEnabled(ui->editProductBtn->isEnabled());
+        ui->articleEditLineBx->setEnabled(ui->editProductBtn->isEnabled());
+        ui->locationEditBx->setEnabled(ui->editProductBtn->isEnabled());
+        ui->commentsEditTbx->setEnabled(ui->editProductBtn->isEnabled());
+        ui->productTypeEditCmbx->setEnabled(ui->editProductBtn->isEnabled());
+        ui->productStatusEditCmbx->setEnabled(ui->editProductBtn->isEnabled());
+        ui->buildDateEditDTBx->setEnabled(ui->editProductBtn->isEnabled());
+        ui->lastUpdateEditDTBx->setEnabled(ui->editProductBtn->isEnabled());
+
+        // enable/disable edit search inputs
+        ui->productClassConfirmEditCmbx->setEnabled(ui->confirmProductEditBtn->isEnabled());
+        ui->serialNumberConfirmEditSbx->setEnabled(ui->confirmProductEditBtn->isEnabled());
+        ui->accountConfirmEditLineBx->setEnabled(ui->confirmProductEditBtn->isEnabled());
+        ui->articleConfirmEditLineBx->setEnabled(ui->confirmProductEditBtn->isEnabled());
     }
 
     // view all products
@@ -577,6 +599,137 @@ void MainWindow::on_clearDeleteParametersBtn_clicked()
     ui->lastUpdateDeleteInfo->clear();
     ui->daysSinceLastUpdateDeleteInfo->clear();
 
+}
+
+
+// -------------------------------------------------- //
+//             Edit Product Functions
+// -------------------------------------------------- //
+
+
+/**
+ * @brief MainWindow::on_confirmProductEditBtn_clicked
+ */
+void MainWindow::on_confirmProductEditBtn_clicked()
+{
+    // inits
+    bool confirmEdit;
+    int serialNumber;
+    QString productClass, account, article;
+    ProductData tmpProduct;
+    QVector<QString> edits;
+
+    // gather information
+    productClass = ui->productClassConfirmEditCmbx->currentText();
+    account = ui->accountConfirmEditLineBx->text();
+    serialNumber = ui->serialNumberConfirmEditSbx->value();
+    article = ui->articleConfirmEditLineBx->text();
+
+    // confirm product existance and verify if it is the correct one to edit
+    confirmEdit = m_database->editProduct(productClass, serialNumber, account, article, edits, false);
+
+    if (confirmEdit) {
+        // disable search button
+        ui->confirmProductEditBtn->setEnabled(false);
+
+        // get product information
+        tmpProduct = m_database->getProductToEdit();
+
+        // populate information
+        ui->productClassEditInfo->setText(tmpProduct.productClassToQString());
+        ui->productTypeEditCmbx->setCurrentText(tmpProduct.productTypeToQString());
+        ui->productVariantEditBx->setText(tmpProduct.getProductVariant());
+        ui->articleEditLineBx->setText(tmpProduct.getArticleNumber());
+        ui->productRevisionEditSbx->setValue(tmpProduct.getProductRevision());
+        ui->accountEditLineBx->setText(tmpProduct.getAccount());
+        ui->commentsEditTbx->setText(tmpProduct.getComments());
+        ui->productStatusEditCmbx->setCurrentText(tmpProduct.productStatusToQString());
+        ui->locationEditBx->setText(tmpProduct.getLocation());
+        ui->buildDateEditDTBx->setDateTime(QDateTime::fromString(tmpProduct.getBuildDate()));
+        ui->lastUpdateEditDTBx->setDateTime(QDateTime::fromString(tmpProduct.getLastUpdate()));
+        ui->daysSinceLastUpdateDeleteInfo->setText("");
+
+        // allow finalizing the edit
+        ui->editProductBtn->setEnabled(true);
+    }
+    else {
+        QMessageBox::warning(this, "Product Confirmation", "This product could not be found!");
+    }
+}
+
+
+/**
+ * @brief MainWindow::on_editProductBtn_clicked
+ */
+void MainWindow::on_editProductBtn_clicked()
+{
+    // inits
+    bool editComplete;
+    int serialNumber;
+    QString productClass, account, article;
+    QVector<QString> edits;
+
+    // get serial number
+    productClass = ui->productClassCmbx->currentText();
+    serialNumber = ui->serialNumberConfirmEditSbx->value();
+    account = ui->accountConfirmEditLineBx->text();
+    article = ui->articleConfirmEditLineBx->text();
+
+    // gather editable information (this has to be done in database column order!!!)
+    edits.append(ui->productTypeEditCmbx->currentText());
+    edits.append(ui->productVariantEditBx->text());
+    edits.append(ui->articleEditLineBx->text());
+    edits.append(QString::number(ui->productRevisionEditSbx->value()));
+    edits.append(ui->accountEditLineBx->text());
+    edits.append(ui->commentsEditTbx->toPlainText());
+    edits.append(ui->productStatusEditCmbx->currentText());
+    edits.append(ui->locationEditBx->text());
+    edits.append(ui->buildDateEditDTBx->dateTime().toString());
+    edits.append(ui->lastUpdateEditDTBx->dateTime().toString());
+
+    // edit product
+    editComplete = m_database->editProduct(productClass, serialNumber, account, article, edits, true);
+
+    // popup
+    if (editComplete) {
+        QMessageBox::information(this, "Product Edit", "The product has been successfully edited!");
+    }
+
+    // reset everything
+    on_clearEditParametersBtn_clicked();
+}
+
+
+/**
+ * @brief MainWindow::on_clearEditParametersBtn_clicked
+ */
+void MainWindow::on_clearEditParametersBtn_clicked()
+{
+    // clear out serach parameters
+    ui->productClassConfirmEditCmbx->setCurrentIndex(0);
+    ui->serialNumberConfirmEditSbx->clear();
+    ui->accountConfirmEditLineBx->clear();
+    ui->articleConfirmEditLineBx->clear();
+
+    // re-enable search button
+    ui->confirmProductEditBtn->setEnabled(true);
+
+    // disable save edit button
+    ui->editProductBtn->setEnabled(false);
+
+    // clear out the discovered/editable infromation
+    ui->productRevisionEditSbx->clear();
+    ui->accountEditLineBx->clear();
+    ui->productVariantEditBx->clear();
+    ui->articleEditLineBx->clear();
+    ui->locationEditBx->clear();
+    ui->commentsEditTbx->clear();
+    ui->productClassEditInfo->clear();
+    ui->productTypeEditCmbx->setCurrentIndex(0);
+    ui->productStatusEditCmbx->setCurrentIndex(0);
+    ui->buildDateEditDTBx->clear();
+    ui->lastUpdateEditDTBx->clear();
+    ui->daysSinceLastUpdateEditInfo->clear();
 }
 
 

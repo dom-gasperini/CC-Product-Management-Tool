@@ -1862,13 +1862,6 @@
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_13">
-        <item row="0" column="0">
-         <widget class="QLabel" name="productClassEditLbl">
-          <property name="text">
-           <string>Product Class: </string>
-          </property>
-         </widget>
-        </item>
         <item row="1" column="0">
          <widget class="QLabel" name="productTypeEditLbl">
           <property name="text">
@@ -1881,6 +1874,25 @@
           <property name="text">
            <string>Product Status: </string>
           </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QComboBox" name="productStatusEditCmbx">
+          <item>
+           <property name="text">
+            <string>In-Stock</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>On-Loan</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>FAE-Unit</string>
+           </property>
+          </item>
          </widget>
         </item>
         <item row="1" column="1">
@@ -1937,37 +1949,18 @@
           </item>
          </widget>
         </item>
-        <item row="2" column="1">
-         <widget class="QComboBox" name="productStatusEditCmbx">
-          <item>
-           <property name="text">
-            <string>In-Stock</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>On-Loan</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>FAE-Unit</string>
-           </property>
-          </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="productClassEditLbl">
+          <property name="text">
+           <string>Product Class:</string>
+          </property>
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QComboBox" name="productClassEditCmbx">
-          <item>
-           <property name="text">
-            <string>Displays</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Cables</string>
-           </property>
-          </item>
+         <widget class="QLabel" name="productClassEditInfo">
+          <property name="text">
+           <string/>
+          </property>
          </widget>
         </item>
        </layout>
@@ -1995,13 +1988,6 @@
           </property>
          </widget>
         </item>
-        <item row="0" column="1">
-         <widget class="QLabel" name="buildDateEdit_2">
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
         <item row="1" column="0">
          <widget class="QLabel" name="lastUpdateEditLbl">
           <property name="sizePolicy">
@@ -2015,10 +2001,13 @@
           </property>
          </widget>
         </item>
+        <item row="0" column="1">
+         <widget class="QDateTimeEdit" name="buildDateEditDTBx"/>
+        </item>
         <item row="1" column="1">
-         <widget class="QLabel" name="lastUpdateEditInfo">
-          <property name="text">
-           <string/>
+         <widget class="QDateTimeEdit" name="lastUpdateEditDTBx">
+          <property name="buttonSymbols">
+           <enum>QAbstractSpinBox::NoButtons</enum>
           </property>
          </widget>
         </item>
