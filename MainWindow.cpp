@@ -143,6 +143,9 @@ void MainWindow::UpdateDisplay() {
 
     // edit products
     if (ui->edit_tab->isActiveWindow()) {
+        // update date & time
+        ui->lastUpdateEditDTBx->setDateTime(QDateTime::currentDateTime());
+
         // enable/disable editing parameters
         ui->productRevisionEditSbx->setEnabled(ui->editProductBtn->isEnabled());
         ui->accountEditLineBx->setEnabled(ui->editProductBtn->isEnabled());
@@ -393,6 +396,7 @@ void MainWindow::on_openItemSearchBtn_clicked()
         productInfo += "Product Status: " + selectedProduct.productStatusToQString() + "\n";
         productInfo += "Build Date: " + selectedProduct.getBuildDate() + "\n";
         productInfo += "Last Update: " + selectedProduct.getLastUpdate() + "\n";
+        productInfo += "Days since last update: " + QString::number(selectedProduct.getDaysSinceLastUpdate()) + "\n";
         productInfo += "\n\n\nDetailed Information:\n\n";
         productInfo += "Account Number: " + selectedProduct.getAccount() + "\n";
         productInfo += "Serial Number: " + QString::number(selectedProduct.getSerialNumber()) + "\n";
@@ -477,6 +481,7 @@ void MainWindow::on_openItemAllBtn_clicked()
         productInfo += "Product Status: " + selectedProduct.productStatusToQString() + "\n";
         productInfo += "Build Date: " + selectedProduct.getBuildDate() + "\n";
         productInfo += "Last Update: " + selectedProduct.getLastUpdate() + "\n";
+        productInfo += "Days since last update: " + QString::number(selectedProduct.getDaysSinceLastUpdate()) + "\n";
         productInfo += "\n\n\nDetailed Information:\n\n";
         productInfo += "Account Number: " + selectedProduct.getAccount() + "\n";
         productInfo += "Serial Number: " + QString::number(selectedProduct.getSerialNumber()) + "\n";
@@ -533,7 +538,7 @@ void MainWindow::on_confirmProductDeleteBtn_clicked()
         ui->commentsDeleteConfirmTbx->setText(tmpProduct.getComments());
         ui->buildDateDeleteInfo->setText(tmpProduct.getBuildDate());
         ui->lastUpdateDeleteInfo->setText(tmpProduct.getLastUpdate());
-        ui->daysSinceLastUpdateDeleteInfo->setText("");
+        ui->daysSinceLastUpdateDeleteInfo->setText(QString::number(tmpProduct.getDaysSinceLastUpdate()));
 
         // allow for true deletion
         ui->deleteProductBtn->setEnabled(true);
@@ -647,7 +652,7 @@ void MainWindow::on_confirmProductEditBtn_clicked()
         ui->locationEditBx->setText(tmpProduct.getLocation());
         ui->buildDateEditDTBx->setDateTime(QDateTime::fromString(tmpProduct.getBuildDate()));
         ui->lastUpdateEditDTBx->setDateTime(QDateTime::fromString(tmpProduct.getLastUpdate()));
-        ui->daysSinceLastUpdateDeleteInfo->setText("");
+        ui->daysSinceLastUpdateDeleteInfo->setText(QString::number(tmpProduct.getDaysSinceLastUpdate()));
 
         // allow finalizing the edit
         ui->editProductBtn->setEnabled(true);

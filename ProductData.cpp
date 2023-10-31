@@ -458,5 +458,10 @@ void ProductData::setLastUpdate(QString lastUpdate) {
  * @brief ProductData::setDaysSinceLastUpdate
  */
 void ProductData::setDaysSinceLastUpdate() {
+    // inits
+    QDateTime currentDateTime = QDateTime::currentDateTime();
+    QDateTime lastDateTimeDT = QDateTime::fromString(m_lastUpdate);
 
+    // get days since last update
+    m_daysSinceLastUpdate = lastDateTimeDT.daysTo(currentDateTime);
 }
